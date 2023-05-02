@@ -1,24 +1,41 @@
-# README
+# <**Ve-Commu**>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+ヴィーガン・ベジタリアン対応の飲食店や宿泊施設などを
+ユーザー同士で情報共有しあえるコミュニティサイトを開発しました。
 
-Things you may want to cover:
+### テーマを選んだ理由
+私自身がベジタリアンであり、外食、日帰り観光、旅行の際、
+ヴィーガン・ベジタリアン対応の飲食店や宿泊施設を探すことに苦労をしたからです。
 
-* Ruby version
+そもそも日本ではまだ専門店自体が少なく、あったとしても都心部に集中しています。
+ですから、専門の施設ではない飲食店や宿泊施設に確認や相談をし、対応してもらうことが多いのが現状です。
 
-* System dependencies
+外食のたび、旅行のたびに自分でそれらの作業を行うことは非常に面倒でした。
+「もし、ヴィーガン・ベジタリアン対応を行なってくれた飲食店や施設がわかるようなサイトがあれば便利なのではないか？」と
+アイデアが浮かびテーマに選びました。
 
-* Configuration
+似たようなサービスに「ベジマップ」というヴィーガン・ベジタリアン対応の飲食店を
+地図にして配布しているサービスもありました。(東京・京都限定)
 
-* Database creation
+私の制作するサイトは「ユーザー同士が情報共有をし合い、
+菜食者同士のコミュニティの輪をつくること」が目的です。
+制作者側が情報を提供していない点や、情報をユーザー同士がシェアし合うところが
+大きな違いです。
 
-* Database initialization
+このサイトを通じて、ヴィーガン・ベジタリアンの人が
+外食や観光や旅行を楽しめるようになればいいと思います。
 
-* How to run the test suite
+## 設計書
+<...>
 
-* Services (job queues, cache servers, search engines, etc.)
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Deployment instructions
-
-* ...
+## 使用素材
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+- 使用しない場合は、使用素材の項目をREADMEから削除してください。
