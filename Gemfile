@@ -59,3 +59,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # ここから導入したもの
 gem 'dotenv-rails'
+gem 'devise'
+gem 'kaminari'
+gem 'enum_help'
+gem 'ransack'
