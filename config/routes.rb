@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
   namespace :admin do
+    get 'comments/index'
+    get 'comments/show'
+    get 'comments/edit'
+  end
+  namespace :admin do
     get 'tags/index'
     get 'tags/edit'
   end
