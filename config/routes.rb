@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
   namespace :public do
+    get 'bookmarks/index'
+    get 'bookmarks/show'
+  end
+  namespace :public do
     get 'posts/new'
     get 'posts/index'
     get 'posts/show'
