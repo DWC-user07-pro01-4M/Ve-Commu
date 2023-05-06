@@ -22,31 +22,26 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-
+    #homes
     scope module: :public do
     root to: "homes#top"
     get 'about' => 'homes#about'
-
-    resources :items, only: [:index, :show]
-    resources :customers, only: [:show, :edit, :update] do
+    #end_users
+    resources :end_users, only: [:index, :show, :edit, :update] do
       collection do
         get 'unsubscribe'
         patch 'withdrawal'
       end
     end
 
-
   namespace :public do
-    get 'bookmarks/index'
-    get 'bookmarks/show'
-  end
-  namespace :public do
-    get 'posts/new'
-    get 'posts/index'
-    get 'posts/show'
-    get 'posts/edit'
+    #posts
+    resources :posts, only: [:new, :index, :create, :edit, :update, :destroy]
+    #bookmarks
+    resources :bookmarks, only: [:index, :edit, :update, :destroy]
+    #comments
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-end
+  end
 end
