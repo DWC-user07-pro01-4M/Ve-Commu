@@ -14,6 +14,6 @@ class Post < ApplicationRecord
   # バリデーション
   validates :facility_name, presence: true
   validates :address, presence: true
-  validates :detailed_description, presence: true, length: {maximum:100}
+  validates :detailed_description, presence: true, length: {maximum:200}
 
 end
