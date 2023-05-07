@@ -13,7 +13,7 @@
             <%= render "public/shared/error_messages", resource: resource %>
             <div class="d-flex justify-content-start mb-3">
               <%= f.label :ニックネーム, class: "w-25" %>
-              <%= f.email_field :nickname, autofocus: true, autocomplete: "nickname", class: "w-50", placeholder: "10文字以内でニックネームを入力してください" %>
+              <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", class: "w-50", placeholder: "10文字以内でニックネームを入力してください" %>
             </div>
 
             <div class="d-flex justify-content-start mb-3">
