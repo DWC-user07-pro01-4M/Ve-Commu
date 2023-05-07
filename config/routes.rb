@@ -36,7 +36,7 @@ Rails.application.routes.draw do
 
   namespace :public do
     #posts
-    resources :posts, only: [:new, :index, :create, :edit, :update, :destroy]
+    resources :posts, only: [:index, :create, :edit, :update, :destroy]
     #bookmarks
     resources :bookmarks, only: [:index, :edit, :update, :destroy]
     #comments
