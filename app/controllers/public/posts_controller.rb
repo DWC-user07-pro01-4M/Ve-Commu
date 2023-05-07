@@ -1,12 +1,12 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_end_user!
 
-  def new
-    @post = Post.new
-  end
+  # def new
+  #   @post = Post.new
+  # end
 
   def create
-    @post = Post.new
+    @post = Post.new(post_params)
     @post.end_user_id = current_end_user.id
     if @post.save
       redirect_to public_post_path(@post), notice: "ありがとうございます。情報のシェアに成功しました。"
