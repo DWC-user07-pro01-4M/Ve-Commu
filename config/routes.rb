@@ -31,12 +31,13 @@ Rails.application.routes.draw do
       collection do
         get 'unsubscribe'
         patch 'withdrawal'
+        end
       end
     end
 
   namespace :public do
     #posts
-    resources :posts, only: [:index, :create, :edit, :update, :destroy]
+    resources :posts, only: [:index, :show, :create, :edit, :update, :destroy]
     #bookmarks
     resources :bookmarks, only: [:index, :edit, :update, :destroy]
     #comments
@@ -45,4 +46,3 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   end
-end

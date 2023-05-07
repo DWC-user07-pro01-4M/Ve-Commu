@@ -1,4 +1,4 @@
-<%= form_with model :post, local :true do |f| %>
+<%= form_with model: post, url: public_posts_path do |f| %>
   <div class="form-group">
     <%= f.label :画像 %>
     <%= f.file_field :image, accept: "image/*" %>
@@ -8,8 +8,8 @@
     <%= f.text_field :facility_name, class: "form-control", :placeholder => "施設名" %>
   </div>
   <div class="form-group">
-    <%= f.label :住所 %>
-    <%= f.text_field :address, class: "form-control", :placeholder => "住所" %>
+    <%= f.label :施設住所 %>
+    <%= f.text_field :address, class: "form-control", :placeholder => "施設住所" %>
   </div>
   <div class="form-group">
     <%= f.label :詳細説明 %>
