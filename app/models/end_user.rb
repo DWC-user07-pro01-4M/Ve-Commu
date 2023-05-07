@@ -5,7 +5,7 @@ class EndUser < ApplicationRecord
          :recoverable, :rememberable, :validatable
   # 追加・バリデーション
   validates :nickname, length: { minimum: 2, maximum: 10 }, presence: true
-  # 追加
+  # マイページに画像を添付する
   has_one_attached :image
   def get_image(width, height)
     unless image.attached?
@@ -14,5 +14,7 @@ class EndUser < ApplicationRecord
     end
     image.variant(resize: "#{width}x#{height}^", gravity: "center", crop: "#{width}x#{height}+0+0").processed
   end
+  # 投稿機能アソシエーション
+  has_many :posts, dependent: :destroy
 
 end

@@ -1,5 +1,7 @@
 class Post < ApplicationRecord
 
+  # 投稿機能アソシエーション
+  belongs_to :end_user
   # 追加
   has_one_attached :image
   def get_image(width, height)
