@@ -2,3 +2,15 @@
 @use '~bootstrap/scss/bootstrap';
 // FontAwesomeの導入
 @use '~@fortawesome/fontawesome-free/scss/fontawesome';
+// 背景
+header {
+    background-color: #cce1d4;
+}
+
+footer {
+    background-color: #cce1d4;
+}
+
+body {
+    background-color: #f7eee2;
+}

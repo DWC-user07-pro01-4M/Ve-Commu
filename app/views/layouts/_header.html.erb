@@ -1,6 +1,6 @@
 <div class="container">
   <nav class="navbar navbar-expand-lg">
-    <%= link_to image_tag('logo.png', width: '200', height: '200', class: 'mx-4 my-3'), root_path %>
+    <%= link_to image_tag('logo.png', width: '100', height: '100', class: 'mx-4 my-3'), root_path %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -9,7 +9,7 @@
 
       <div class="user-name text-dark center-block">
         <% if end_user_signed_in? %>
-          <p class="pt-3">ようこそ、<span class="h5"><strong><%= current_customer.nickname %></strong></span> 様</p>
+          <p class="pt-3">ようこそ、<span class="h5"><strong><%= current_end_user.nickname %></strong></span> 様</p>
         <% elsif admin_signed_in? %>
           <p class="h5 pt-5 pb-5"><strong>管理者ログイン中</strong></p>
         <% else %>
@@ -43,7 +43,7 @@
 
             <% elsif end_user_signed_in? %>
               <li class="nav-link px-2">
-                <%= link_to end_user_path(current_customer), class: "text-decoration-none text-primary h5" do %>
+                <%= link_to end_user_path(current_end_user), class: "text-decoration-none text-primary h5" do %>
                   <i class="fas fa-user"></i> マイページ
                 <% end %>
               </li>
