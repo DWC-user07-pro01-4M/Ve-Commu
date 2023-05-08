@@ -2,17 +2,9 @@
 @use '~bootstrap/scss/bootstrap';
 // FontAwesomeの導入
 @use '~@fortawesome/fontawesome-free/scss/fontawesome';
-// 背景
-// header {
-//     background-color: #cce1d4;
-// }
-
+// 他レイアウト
 footer {
-    // background-color: #cce1d4;
     width: 100%;
     position: absolute;
     bottom: 0;
 }
-// body {
-//     background-color: #f7eee2;
-// }
