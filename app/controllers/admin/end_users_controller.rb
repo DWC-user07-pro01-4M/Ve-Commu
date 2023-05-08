@@ -24,7 +24,7 @@ class Admin::EndUsersController < ApplicationController
 
   private
   def end_user_params               #ニックネーム、メールアドレス、ステータス
-    params.require(:end_user).permit(:nicknamem, :email, :is_deleted)
+    params.require(:end_user).permit(:nickname, :email, :is_deleted)
   end
 
 end

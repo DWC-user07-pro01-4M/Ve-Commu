@@ -1,9 +1,8 @@
-<div class="container my-5" >
+<div class="container my-5 bg-light" >
   <div class="row">
     <div class="col-3 mb-3 offset-1">
       <h3><strong class="border-bottom border-dark">会員一覧</strong></h3>
     </div>
-
       <div class="container mb-5">
         <div class="row">
           <div class="col-10 mx-auto">
@@ -18,13 +17,9 @@
               </thead>
               <% @end_users.each do |end_user| %>
               <tbody>
-                <tr>
+                <tr class="admin_end_user_index_tbody_tr tr-color" data-href="/admin/end_users/<%= end_user.id%>">
                 <td class="py-4"><%= end_user.id %></td>
-                <td class="py-4">
-                  <div class="link-secondary">
-                      <%= end_user.nickname %>
-                  </div>
-                </td>
+                <td class="py-4"><%= end_user.nickname %></td>
                 <td class="py-4"><%= end_user.email %></td>
                 <td class="py-4">
                   <% if end_user.is_deleted == false %>
@@ -38,10 +33,19 @@
               <% end %>
             </table>
             <div class="pagination justify-content-center mt-3">
-              <%= paginate @end_users, theme: 'bootstrap-5' %>
+
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <!--投稿の行をリンクにする-->
+<script>
+  jQuery(document).on("turbolinks:load", function() {
+  $(".admin_end_user_index_tbody_tr").on('click', function() {
+      window.location = $(this).data("href");
+  });
+});
+</script>
