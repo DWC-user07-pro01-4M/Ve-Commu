@@ -7,7 +7,7 @@ class Public::EndUsersController < ApplicationController
     end
 
     def show
-        @end_user = EndUser.find(params[:id])
+        @end_user = EndUser.find(current_end_user.id)
         @post = Post.new
     end
 
@@ -36,7 +36,7 @@ class Public::EndUsersController < ApplicationController
 
     private
     def end_user_params
-        params.require(:end_user).permit(:nickname)
+        params.require(:end_user).permit(:nickname, :email)
     end
 
 end
