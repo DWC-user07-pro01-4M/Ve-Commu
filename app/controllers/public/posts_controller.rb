@@ -14,6 +14,7 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @post = Post.new
   end
 
   def show
@@ -21,9 +22,11 @@ class Public::PostsController < ApplicationController
   end
 
   def edit
+    @post = Post.find(params[:id])
   end
 
   def update
+    @post = Post.find(params[:id])
     if @post.update(post_params)
       redirect_to public_post_path(@post), notice: "情報の更新に成功しました。"
     else
@@ -32,7 +35,8 @@ class Public::PostsController < ApplicationController
   end
 
   def destroy
-    @post.destroy
+    post = Post.find(params[:id])
+    post.destroy
     redirect_to public_posts_path
   end
 

@@ -7,7 +7,7 @@ class EndUser < ApplicationRecord
   validates :nickname, length: { minimum: 2, maximum: 10 }, presence: true
   # マイページに画像を添付する
   has_one_attached :image
-  def get_image(width, height)
+  def get_profile_image(width, height)
     unless image.attached?
       file_path = Rails.root.join("app/assets/images/no_image.png")
       image.attach(io: File.open(file_path), filename: "no_image.png", content_type: "image/png")
