@@ -1,2 +1,51 @@
-<h1>Admin::EndUsers#index</h1>
-<p>Find me in app/views/admin/end_users/index.html.erb</p>
+<div class="container my-5 bg-light" >
+  <div class="row">
+    <div class="col-3 mb-3 offset-1">
+      <h3><strong class="border-bottom border-dark">会員一覧</strong></h3>
+    </div>
+      <div class="container mb-5">
+        <div class="row">
+          <div class="col-10 mx-auto">
+            <table class="table table-hover text-center contents-area">
+              <thead>
+                <tr>
+                  <th>会員ID</th>
+                  <th>ニックネーム</th>
+                  <th>メールアドレス</th>
+                  <th>ステータス</th>
+                </tr>
+              </thead>
+              <% @end_users.each do |end_user| %>
+              <tbody>
+                <tr class="admin_end_user_index_tbody_tr tr-color" data-href="/admin/end_users/<%= end_user.id%>">
+                <td class="py-4"><%= end_user.id %></td>
+                <td class="py-4"><%= end_user.nickname %></td>
+                <td class="py-4"><%= end_user.email %></td>
+                <td class="py-4">
+                  <% if end_user.is_deleted == false %>
+                    <strong class="text-success">有効</strong>
+                  <% elsif %>
+                    <strong class="text-secondary">退会</stropng>
+                  <% end %>
+                </td>
+                </tr>
+              </tbody>
+              <% end %>
+            </table>
+            <div class="pagination justify-content-center mt-3">
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--投稿の行をリンクにする-->
+<script>
+  jQuery(document).on("turbolinks:load", function() {
+  $(".admin_end_user_index_tbody_tr").on('click', function() {
+      window.location = $(this).data("href");
+  });
+});
+</script>
