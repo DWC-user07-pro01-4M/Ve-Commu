@@ -1,4 +1,4 @@
-<%= form_with model: post, url: public_posts_path do |f| %>
+<%= form_with model: post, local:true do |f| %>
   <div class="form-group">
     <%= f.label :施設画像 %>
     <%= f.file_field :image, accept: "image/*" %>
@@ -16,7 +16,7 @@
     <%= f.text_area :detailed_description, class: "form-control", :placeholder => "詳細を記入してください" %>
   </div>
   <div class="form-group">
-    <% if f.object.new_record? %>
+    <% if f.post.new_record? %>
       <%= f.submit "情報をシェアする", class: "btn btn-primary" %>
     <% else %>
       <%= f.submit "情報を更新する", class: "btn btn-success" %>

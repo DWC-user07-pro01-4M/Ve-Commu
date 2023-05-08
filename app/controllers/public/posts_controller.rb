@@ -14,7 +14,6 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.all
-    @post = Post.new
   end
 
   def show
@@ -34,6 +33,7 @@ class Public::PostsController < ApplicationController
   end
 
   def destroy
+    post = Post.find(params[:id])
     post.destroy
     redirect_to public_posts_path
   end
