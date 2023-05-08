@@ -22,11 +22,9 @@ class Public::PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
   end
 
   def update
-
     if @post.update(post_params)
       redirect_to public_post_path(@post), notice: "情報の更新に成功しました。"
     else
