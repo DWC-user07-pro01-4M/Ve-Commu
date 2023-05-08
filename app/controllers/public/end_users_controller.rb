@@ -36,7 +36,7 @@ class Public::EndUsersController < ApplicationController
 
     private
     def end_user_params
-        params.require(:end_user).permit(:nickname, :email)
+        params.require(:end_user).permit(:nickname, :email, :profile_image)
     end
 
 end
