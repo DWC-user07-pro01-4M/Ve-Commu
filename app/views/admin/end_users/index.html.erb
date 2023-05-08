@@ -33,14 +33,14 @@
               <% end %>
             </table>
             <div class="pagination justify-content-center mt-3">
-
+            <%= paginate @end_users, theme: "bootstrap-5" %>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-<%= paginate @end_users, theme: "bootstrap-4" %>
+
   <!--投稿の行をリンクにする-->
 <script>
   jQuery(document).on("turbolinks:load", function() {
