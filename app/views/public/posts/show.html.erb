@@ -1,2 +1,37 @@
-<h1>Public::Posts#show</h1>
-<p>Find me in app/views/public/posts/show.html.erb</p>
+<div class="container my-5 bg-light">
+  <div class="row mt-5">
+    <div class="col-md-10 mx-auto">
+      <%= flash[:notice] %>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-md-5">
+      <div class="mx-5">
+        <%= image_tag @post.get_image(300,300) %>
+      </div>
+    </div>
+    <div class="col-md-7" style="text-left">
+      <h3><span class="border-bottom border-dark">投稿情報詳細</span></h3>
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <th style="width: 30%">施設名</th>
+            <td style="width: 70%"><%= @post.facility_name %></td>
+          </tr>
+          <tr>
+            <th style="width: 30%">施設住所</th>
+            <td style="width: 70%"><%= @post.address %></td>
+          </tr>
+          <tr>
+            <th style="width: 30%">詳細説明</th>
+            <td style="width: 70%"><%= @post.detailed_description %></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="my-5 ml-3">
+        <%= link_to "編集する", edit_public_post_path(@post.id),class: "btn btn-lg btn-success edit_post_#{@post.id}" %>
+        <%= link_to "新しく投稿する", public_posts_path, class: "btn btn-lg btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>
