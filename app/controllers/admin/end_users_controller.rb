@@ -23,8 +23,8 @@ class Admin::EndUsersController < ApplicationController
   end
 
   private
-  def end_user_params               #ニックネーム、メールアドレス、自己紹介文、退会ステータス
-    params.require(:end_user).permit(:nicknamem, :email, :introduction, :is_deleted)
+  def end_user_params               #ニックネーム、メールアドレス、ステータス
+    params.require(:end_user).permit(:nicknamem, :email, :is_deleted)
   end
 
 end
