@@ -14,6 +14,7 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @post = Post.new
   end
 
   def show
@@ -25,6 +26,7 @@ class Public::PostsController < ApplicationController
   end
 
   def update
+
     if @post.update(post_params)
       redirect_to public_post_path(@post), notice: "情報の更新に成功しました。"
     else
