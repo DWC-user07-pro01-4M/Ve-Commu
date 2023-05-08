@@ -22,6 +22,7 @@ class Public::PostsController < ApplicationController
   end
 
   def edit
+    @post = Post.find(params[:id])
   end
 
   def update
@@ -33,7 +34,7 @@ class Public::PostsController < ApplicationController
   end
 
   def destroy
-    @post.destroy
+    post.destroy
     redirect_to public_posts_path
   end
 
