@@ -64,3 +64,4 @@ gem 'kaminari'
 gem 'enum_help'
 gem 'ransack'
 gem 'whenever', require: false
+gem 'bootstrap5-kaminari-views', '~> 0.0.1'
