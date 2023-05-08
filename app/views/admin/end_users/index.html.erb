@@ -1,11 +1,12 @@
-<div class="container my-5 bg-light" >
-  <div class="row">
-    <div class="col-3 mb-3 offset-1">
-      <h3><strong class="border-bottom border-dark">会員一覧</strong></h3>
-    </div>
-      <div class="container mb-5">
+<div class="container border border-light contents-area bg-light" >
+  <div class="row mt-5">
+
+      <div class="container justify-content-center">
         <div class="row">
           <div class="col-10 mx-auto">
+
+            <h3><strong class="border-bottom border-dark">会員一覧</strong></h3>
+
             <table class="table table-hover text-center contents-area">
               <thead>
                 <tr>
@@ -16,32 +17,35 @@
                 </tr>
               </thead>
               <% @end_users.each do |end_user| %>
-              <tbody>
-                <tr class="admin_end_user_index_tbody_tr tr-color" data-href="/admin/end_users/<%= end_user.id%>">
-                <td class="py-4"><%= end_user.id %></td>
-                <td class="py-4"><%= end_user.nickname %></td>
-                <td class="py-4"><%= end_user.email %></td>
-                <td class="py-4">
-                  <% if end_user.is_deleted == false %>
-                    <strong class="text-success">有効</strong>
-                  <% elsif %>
-                    <strong class="text-secondary">退会</stropng>
-                  <% end %>
-                </td>
-                </tr>
-              </tbody>
+                <tbody>
+                  <tr class="admin_end_user_index_tbody_tr tr-color" data-href="/admin/end_users/<%= end_user.id%>">
+                    <td class="py-4"><%= end_user.id %></td>
+                    <td class="py-4"><%= end_user.nickname %></td>
+                    <td class="py-4"><%= end_user.email %></td>
+                    <td class="py-4">
+                      <% if end_user.is_deleted == false %>
+                        <strong class="text-success">有効</strong>
+                      <% elsif %>
+                        <strong class="text-secondary">退会</stropng>
+                      <% end %>
+                    </td>
+                  </tr>
+                </tbody>
               <% end %>
             </table>
+
             <div class="pagination justify-content-center mt-3">
             <%= paginate @end_users, theme: "bootstrap-5" %>
             </div>
+
           </div>
         </div>
       </div>
+
     </div>
   </div>
 
-  <!--投稿の行をリンクにする-->
+<!--投稿の行をリンクにする-->
 <script>
   jQuery(document).on("turbolinks:load", function() {
   $(".admin_end_user_index_tbody_tr").on('click', function() {

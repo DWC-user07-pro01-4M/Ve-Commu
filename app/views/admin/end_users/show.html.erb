@@ -1,12 +1,15 @@
-<div class="container my-5 bg-light" >
-  <div class="row">
+<div class="container border border-light contents-area bg-light" >
+  <div class="row mt-5">
+
     <div class="col-4 mb-3 offset-1">
       <%= flash[:notice] %>
       <h3><strong class="border-bottom border-dark"><%= @end_user.nickname %>さんの会員情報詳細</strong></h3>
     </div>
+
       <div class="container mb-5">
         <div class="row">
           <div class="col-10 mx-auto">
+
             <table class="table table-borderless contents-area">
               <thead>
                 <tr>
@@ -31,13 +34,16 @@
                 </tr>
               </thead>
             </table>
+
           <div class="d-grid gap-2 d-md-block">
             <%= link_to edit_admin_end_user_path(@end_user.id), class: 'text-light' do %>
               <button class="btn btn-success" type="submit">編集する</button>
             <% end %>
           </div>
+
         </div>
       </div>
     </div>
+
   </div>
 </div>
