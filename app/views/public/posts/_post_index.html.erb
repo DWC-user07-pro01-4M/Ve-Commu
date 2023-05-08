@@ -10,7 +10,7 @@
   </thead>
   <tbody>
     <% posts.each do |post| %>
-      <tr>
+      <tr class="post_index_tbody_tr tr-color" data-href="/public/posts/<%= post.id%>">
         <td>
           <%= image_tag post.get_image(50,50) %>
         </td>
@@ -21,3 +21,10 @@
     <% end %>
   </tbody>
 </table>
+<script>
+  jQuery(document).on("turbolinks:load", function() {
+  $(".post_index_tbody_tr").on('click', function() {
+      window.location = $(this).data("href");
+  });
+});
+</script>
