@@ -12,5 +12,13 @@
       </td>
     </tr>
     <% end %>
+    <tr>
+      <td>
+        <%= form_with url: public_posts_path do |f| %>
+          <%= f.text_area :comment, placeholder: "コメントをここに" %>
+          <%= f.submit "送信" %>
+        <% end %>
+      </td>
+    </tr>
   </tbody>
 </table>
