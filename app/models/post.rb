@@ -4,7 +4,7 @@ class Post < ApplicationRecord
   belongs_to :end_user
 
   # コメント機能アソシエーション
-  has_many :comments, dependent: :destroy
+  # has_many :comments, dependent: :destroy
 
   # タグ機能アソシエーション
   # has_many :association_post_and_tags, dependent: :destroy
