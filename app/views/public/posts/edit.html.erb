@@ -1,28 +1,43 @@
-<div class="container">
-  <div class="row mt4- md-2">
-    <div class="col-md-6 mx-auto">
-      <%= form_with model: @post,url: post_path(@post.id) do |f| %>
-        <div class="form-group">
-          <%= f.label :施設画像 %>
-          <%= f.file_field :image, accept: "image/*" %>
+<div class="container-field align-items-center">
+
+  <div class="text-center mt-5"><h3><strong><%= flash[:notice] %></strong></h3></div>
+
+  <div class="row d-flex justify-content-center m-5">
+    <div class="col-5">
+      <div class="border border-warning contents-area bg-light">
+
+        <div class="bg-warning p-2 text-light text-center">
+          <strong>投稿情報編集</strong>
         </div>
-        <div class="form-group">
-          <%= f.label :施設名 %>
-          <%= f.text_field :facility_name, class: "form-control", :placeholder => "施設名" %>
+
+        <%= form_with model: @post,url: post_path(@post.id) do |f| %>
+          <div class="form-group m-5">
+            <%= f.label :施設画像 %>
+            <%= f.file_field :image, accept: "image/*" %>
+          </div>
+          <div class="form-group m-5">
+            <%= f.label :施設名 %>
+            <%= f.text_field :facility_name, class: "form-control", :placeholder => "施設名" %>
+          </div>
+          <div class="form-group m-5">
+            <%= f.label :施設住所 %>
+            <%= f.text_field :address, class: "form-control", :placeholder => "施設住所" %>
+          </div>
+          <div class="form-group m-5">
+            <%= f.label :詳細説明 %>
+            <%= f.text_area :detailed_description, class: "form-control", :placeholder => "詳細を記入してください" %>
+          </div>
+          <div class="form-group text-center">
+            <%= f.submit "情報を更新する", class: "btn btn-lg btn-success" %>
+          </div>
+        <% end %>
+
+        <div class="mb-5 text-center">
+          <%= link_to "前のページへ戻る", post_path, class: "btn btn-lg btn-secondary"%>
         </div>
-        <div class="form-group">
-          <%= f.label :施設住所 %>
-          <%= f.text_field :address, class: "form-control", :placeholder => "施設住所" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :詳細説明 %>
-          <%= f.text_area :detailed_description, class: "form-control", :placeholder => "詳細を記入してください" %>
-        </div>
-        <div class="form-group">
-          <%= f.submit "情報を更新する", class: "btn btn-lg btn-success" %>
-        </div>
-      <% end %>
-        <%= link_to "前のページへ戻る", post_path, class: "btn btn-lg btn-secondary"%>
+
+      </div>
     </div>
   </div>
+
 </div>

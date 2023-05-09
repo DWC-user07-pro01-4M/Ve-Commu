@@ -1,12 +1,12 @@
 <div class="container my-5 bg-light">
   <div class="row mt-4 md-2">
     <div class="col-md-10 mx-auto">
-      <%= flash[:notice] %>
+      <div class="text-center mt-5"><h3><strong><%= flash[:notice] %></strong></h3></div>
     </div>
   </div>
   <div class="row mt-5">
     <div class="col-md-5">
-      <div class="mx-5">
+      <div class="mx-5 mb-5 ">
         <%= image_tag @post.get_image(300,300) %>
       </div>
     </div>

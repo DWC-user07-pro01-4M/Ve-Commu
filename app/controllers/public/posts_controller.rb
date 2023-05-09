@@ -32,7 +32,7 @@ class Public::PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to post_path(@post), notice: "シェア内容の更新に成功しました。"
     else
-      render :edit
+      render :edit, notice: "内容の更新に失敗しました。"
     end
   end
 
