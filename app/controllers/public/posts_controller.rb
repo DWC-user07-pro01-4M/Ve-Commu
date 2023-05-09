@@ -13,7 +13,7 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.end_user = current_end_user
     if @post.save
-      redirect_to public_post_path(@post), notice: "ありがとうございます。情報のシェアに成功しました。"
+      redirect_to post_path(@post), notice: "ありがとうございます。情報のシェアに成功しました。"
     else
       render :new, notice: "残念ながら情報のシェアに失敗しました。"
     end
@@ -30,7 +30,7 @@ class Public::PostsController < ApplicationController
   def update #投稿更新
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      redirect_to public_post_path(@post), notice: "シェア内容の更新に成功しました。"
+      redirect_to post_path(@post), notice: "シェア内容の更新に成功しました。"
     else
       render :edit
     end
@@ -39,7 +39,7 @@ class Public::PostsController < ApplicationController
   def destroy #投稿削除
     post = Post.find(params[:id])
     post.destroy
-    redirect_to public_posts_path, notice: "情報を削除しました。"
+    redirect_to posts_path, notice: "情報を削除しました。"
   end
 
   private
