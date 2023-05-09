@@ -4,7 +4,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-    <div class="font-weight-bold text-light">
+    <div class="font-weight-bold text-info">
       <% if end_user_signed_in? %>
         <p class="pt-3">ようこそ、<span class="h5"><strong><%= current_end_user.nickname %></strong></span> 様</p>
       <% elsif admin_signed_in? %>
