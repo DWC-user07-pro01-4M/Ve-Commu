@@ -1,0 +1,24 @@
+<table>
+  <tbody>
+    <% post.comments.each do |comment| %>
+    <tr>
+      <td><%= image_tag comment.user.get_profile_image,size: "20x20" %></td>
+      <td><%= comment.end_user.nickname %></td>
+      <td><%= comment.comment %></td>
+      <td>
+        <% if comment.end_user == current_end_user %>
+        <%= link_to "削除", public_post_comment_path(comment.post,comment), method: :delete, class: "btn btn-sm btn-danger p-0 p-1", style: "font-size: 8px;" %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+    <tr>
+      <td>
+        <%= form_with model: [@post, @comment], url: public_post_path, method: :post do |f| %>
+          <%= f.text_area :comment, placeholder: "コメントをここに" %>
+          <%= f.submit "送信" %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>

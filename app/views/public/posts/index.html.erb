@@ -1,18 +1,54 @@
-<div class="container px-5 px-sm-0">
+<div class="container my-5" >
   <div class="row">
-      <div class="col-md-3">
-        <!--新規投稿-->
-        <div class="border border-secondary contents-area">
-          <div class="bg-light p-2 text-secondary text-center">
-            <h1>新規投稿</h1>
-            <%= render 'post_form', post: @post%>
-          </div>
-        </div>
+    <div class="col-3 mb-3 offset-1">
+      <h3><strong class="border-bottom border-dark">投稿一覧</strong></h3>
+    </div>
+      <div class="col-7 mb-3 text-right">
+        <%= link_to new_public_post_path, class: "text-decoration-none h2" do %>
+    　    <i class="fas fa-plus-circle fa-lg" style="color: #d0d1d2;"></i>
+    　  <% end %>
       </div>
-        <!--投稿一覧-->
-        <div class="col-md-8 offset-md-1">
-          <h2>投稿一覧</h2>
-          <%= render "post_index", posts: @posts %>
+    <div class="container mb-5">
+      <div class="row">
+        <div class="col-10 mx-auto">
+          <table class='table table-hover table-inverse'>
+            <thead>
+              <tr>
+                <th>施設画像</th>
+                <th>施設名</th>
+                <th>施設住所</th>
+                <th>詳細説明</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @posts.each do |post| %>
+                <tr class="post_index_tbody_tr tr-color" data-href="/public/posts/<%= post.id%>">
+                  <td>
+                    <%= image_tag post.get_image(70,70) %>
+                  </td>
+                  <td><%= post.facility_name %></td>
+                  <td><%= post.address %></td>
+                  <td><%= post.detailed_description %></td>
+                  <td><%= link_to "投稿を確認する", public_post_path(post.id), class: "btn btn-warning" %></td>
+                  <td><%= link_to "削除する", public_post_path(post.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に投稿を削除してよろしいですか?" %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+         <div class="pagination justify-content-center mt-3">
+           <%= paginate @posts, theme: 'bootstrap-5' %>
+         </div>
         </div>
-  </div>
+    　</div>
+    </div>
+　</div>
 </div>
+
+<!--投稿の行をリンクにする-->
+<script>
+  jQuery(document).on("turbolinks:load", function() {
+  $(".post_index_tbody_tr").on('click', function() {
+      window.location = $(this).data("href");
+  });
+});
+</script>

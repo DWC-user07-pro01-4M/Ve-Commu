@@ -12,9 +12,7 @@ Rails.application.routes.draw do
     #tags
     resources :tags, only: [:index, :create, :edit, :update, :destroy]
     #comments
-    resources :comments, only: [:index, :show, :edit, :update, :destroy]
-    #order_items
-    resources :order_items, only: [:update]
+    resources :comments, only: [:index, :show, :destroy]
   end
 
   # 会員
@@ -37,13 +35,14 @@ Rails.application.routes.draw do
 
   namespace :public do
     #posts
-    resources :posts, only: [:index, :show, :create, :edit, :update, :destroy]
+    resources :posts, only: [:index, :new, :create, :show, :edit, :update, :destroy]
     #bookmarks
     resources :bookmarks, only: [:index, :edit, :update, :destroy]
     #comments
-    resources :comments, only: [:new, :index, :create, :destroy]
+    resources :comments, only: [:create, :destroy]
+
   end
-  
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   end
