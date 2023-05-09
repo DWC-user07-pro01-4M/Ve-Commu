@@ -1,14 +1,8 @@
 class Public::EndUsersController < ApplicationController
     before_action :authenticate_end_user!
 
-    def index
-        @end_users = EndUser.all
-        @post = Post.new
-    end
-
     def show
         @end_user = EndUser.find(current_end_user.id)
-        @post = Post.new
     end
 
     def edit
@@ -20,7 +14,7 @@ class Public::EndUsersController < ApplicationController
         if @end_user.update(end_user_params)
             redirect_to end_user_path(current_end_user.id), notice: "編集に成功しました。"
         else
-            render :edit
+            render :edit, notice: "編集に失敗しました。"
         end
     end
 
@@ -36,7 +30,7 @@ class Public::EndUsersController < ApplicationController
 
     private
     def end_user_params
-        params.require(:end_user).permit(:nickname, :email, :profile_image)
+        params.require(:end_user).permit(:nickname, :email, :introduction, :profile_image)
     end
 
 end

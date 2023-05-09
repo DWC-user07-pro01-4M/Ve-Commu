@@ -6,6 +6,7 @@ class EndUser < ApplicationRecord
 
   #バリデーション
   validates :nickname, length: { minimum: 2, maximum: 10 }, presence: true
+  validates :introduction, length: { maximum: 20 }
 
   # マイページに画像を添付する
   has_one_attached :image
