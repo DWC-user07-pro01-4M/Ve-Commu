@@ -1,24 +1,12 @@
-<div class="container">
-  <nav class="navbar navbar-expand-lg">
-    <%= link_to image_tag('logo.png', width: '100', height: '100', class: 'mx-4 my-3'), root_path %>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-      </button>
-    <div class="collapse navbar-collapse">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <%= link_to image_tag('logo.png', width: '100', height: '100', class: 'mx-4 my-3'), root_path %><h1 class="text-light">Ve-Commu</h1>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-      <div class="user-name text-dark center-block">
-        <% if end_user_signed_in? %>
-          <p class="pt-3">ようこそ、<span class="h5"><strong><%= current_end_user.nickname %></strong></span> 様</p>
-        <% elsif admin_signed_in? %>
-          <p class="h5 pt-5 pb-5"><strong>管理者ログイン中</strong></p>
-        <% else %>
-          <p class="pt-3">ようこそ、<span class="h5"><strong>ゲスト</strong></span> 様</p>
-        <% end %>
-      </div>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
 
-        <div class="d-flex flex-column ml-auto">
-          <ul class="navbar-nav">
             <% if admin_signed_in? %>
               <li class="nav-link px-2">
                 <%= link_to admin_end_users_path, class: "text-decoration-none text-primary h5" do %>
@@ -80,8 +68,9 @@
                 <% end %>
               </li>
             <% end %>
-          </ul>
-        </div>
-    </div>
-  </nav>
-</div>
+
+
+    </ul>
+
+  </div>
+</nav>
