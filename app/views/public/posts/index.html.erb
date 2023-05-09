@@ -1,54 +1,44 @@
-<div class="container my-5" >
-  <div class="row">
-    <div class="col-3 mb-3 offset-1">
-      <h3><strong class="border-bottom border-dark">投稿一覧</strong></h3>
-    </div>
-      <div class="col-7 mb-3 text-right">
-        <%= link_to new_post_path, class: "text-decoration-none h2" do %>
-    　    <i class="fas fa-plus-circle fa-lg" style="color: #d0d1d2;"></i>
-    　  <% end %>
-      </div>
-    <div class="container mb-5">
+<div class="container border border-light contents-area bg-light" >
+  <div class="row mt-5">
+
+    <div class="container justify-content-center">
       <div class="row">
         <div class="col-10 mx-auto">
-          <table class='table table-hover table-inverse'>
+
+          <h3><strong class="border-bottom border-dark">投稿一覧</strong></h3>
+
+          <div class="col-12 mb-3 text-right">
+            <%= link_to new_post_path, class: "text-decoration-none h2" do %>
+    　          <i class="fas fa-plus-circle fa-lg" style="color: #3cb371;"></i>
+    　        <% end %>
+          </div>
+
+          <table class="table table-hover text-center contents-area">
             <thead>
-              <tr>
+               <tr>
                 <th>施設画像</th>
                 <th>施設名</th>
                 <th>施設住所</th>
                 <th>詳細説明</th>
               </tr>
             </thead>
-            <tbody>
-              <% @posts.each do |post| %>
-                <tr class="post_index_tbody_tr tr-color" data-href="/public/posts/<%= post.id%>">
-                  <td>
-                    <%= image_tag post.get_image(70,70) %>
-                  </td>
+            <% @posts.each do |post| %>
+              <tbody>
+                <tr>
+                  <td><%= image_tag post.get_image(70,70) %></td>
                   <td><%= post.facility_name %></td>
                   <td><%= post.address %></td>
                   <td><%= post.detailed_description %></td>
-                  <td><%= link_to "投稿を確認する", post_path(post.id), class: "btn btn-warning" %></td>
-                  <td><%= link_to "削除する", post_path(post.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に投稿を削除してよろしいですか?" %></td>
+                  <td><%= link_to "投稿を確認する", post_path(post.id), class: "btn btn-warning btn_lg" %></td>
+                  <td><%= link_to "削除する", post_path(post.id), class: "btn btn-danger btn_lg", method: :delete, "data-confirm" => "本当に投稿を削除してよろしいですか?" %></td>
                 </tr>
-              <% end %>
-            </tbody>
+              </tbody>
+            <% end %>
           </table>
-         <div class="pagination justify-content-center mt-3">
-           <%= paginate @posts, theme: 'bootstrap-5' %>
-         </div>
-        </div>
-    　</div>
-    </div>
-　</div>
-</div>
 
-<!--投稿の行をリンクにする-->
-<script>
-  jQuery(document).on("turbolinks:load", function() {
-  $(".post_index_tbody_tr").on('click', function() {
-      window.location = $(this).data("href");
-  });
-});
-</script>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
