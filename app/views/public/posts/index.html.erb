@@ -4,7 +4,7 @@
       <h3><strong class="border-bottom border-dark">投稿一覧</strong></h3>
     </div>
       <div class="col-7 mb-3 text-right">
-        <%= link_to new_public_post_path, class: "text-decoration-none h2" do %>
+        <%= link_to new_post_path, class: "text-decoration-none h2" do %>
     　    <i class="fas fa-plus-circle fa-lg" style="color: #d0d1d2;"></i>
     　  <% end %>
       </div>
@@ -29,8 +29,8 @@
                   <td><%= post.facility_name %></td>
                   <td><%= post.address %></td>
                   <td><%= post.detailed_description %></td>
-                  <td><%= link_to "投稿を確認する", public_post_path(post.id), class: "btn btn-warning" %></td>
-                  <td><%= link_to "削除する", public_post_path(post.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に投稿を削除してよろしいですか?" %></td>
+                  <td><%= link_to "投稿を確認する", post_path(post.id), class: "btn btn-warning" %></td>
+                  <td><%= link_to "削除する", post_path(post.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に投稿を削除してよろしいですか?" %></td>
                 </tr>
               <% end %>
             </tbody>

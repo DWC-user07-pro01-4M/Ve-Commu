@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row mt4- md-2">
     <div class="col-md-6 mx-auto">
-      <%= form_with model: @post,url: public_post_path(@post.id) do |f| %>
+      <%= form_with model: @post,url: post_path(@post.id) do |f| %>
         <div class="form-group">
           <%= f.label :施設画像 %>
           <%= f.file_field :image, accept: "image/*" %>
@@ -22,7 +22,7 @@
           <%= f.submit "情報を更新する", class: "btn btn-lg btn-success" %>
         </div>
       <% end %>
-        <%= link_to "前のページへ戻る", public_post_path, class: "btn btn-lg btn-secondary"%>
+        <%= link_to "前のページへ戻る", post_path, class: "btn btn-lg btn-secondary"%>
     </div>
   </div>
 </div>

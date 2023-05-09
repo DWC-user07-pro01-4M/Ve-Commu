@@ -4,7 +4,7 @@
       <%= flash[:notice] %>
       <h1><span class="border-bottom border-dark">新規投稿</span></h1>
 
-        <%= form_with model: @post, url: public_posts_path, local:true do |f| %>
+        <%= form_with model: @post, url: posts_path, local:true do |f| %>
           <div class="form-group">
             <%= f.label :施設画像 %>
             <%= f.file_field :image, accept: "image/*" %>
