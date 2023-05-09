@@ -2,20 +2,16 @@ class Admin::CommentsController < ApplicationController
   before_action :authenticate_end_user!
 
   def create
-    @post = Post.find(params[:travel_record_id])
-    @comment = @post.comments.new(comment_params)
-    @comment.end_user_id = current_end_user.id
-    if @comment.save
-      render :index, notice: "コメントの投稿に成功しました。"
-    else
-      render :index, notice: "コメントの投稿に失敗しました。"
-    end
+    post = Post.find(params[:post_id])
+    comment = current_end_user.comments.new(comment_params)
+    comment.post_id = post.id
+    comment.save
+    redirect_to public_post_path(post)
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
-    @comment.destroy
-    render :index, notice: "コメントを削除しました。"
+    Comment.find(params[:id]).destroy
+    redirect_to public_post_path(params[:post_id])
   end
 
   private
