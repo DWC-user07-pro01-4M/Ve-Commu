@@ -14,7 +14,7 @@
     <% end %>
     <tr>
       <td>
-        <%= form_with url: public_posts_path do |f| %>
+        <%= form_with model: [@post, @comment], url: public_post_path, method: :post do |f| %>
           <%= f.text_area :comment, placeholder: "コメントをここに" %>
           <%= f.submit "送信" %>
         <% end %>
