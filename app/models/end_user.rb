@@ -3,8 +3,10 @@ class EndUser < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  # 追加・バリデーション
+
+  #バリデーション
   validates :nickname, length: { minimum: 2, maximum: 10 }, presence: true
+
   # マイページに画像を添付する
   has_one_attached :image
   def get_profile_image(width, height)
@@ -14,7 +16,11 @@ class EndUser < ApplicationRecord
     end
     image.variant(resize: "#{width}x#{height}^", gravity: "center", crop: "#{width}x#{height}+0+0").processed
   end
+
   # 投稿機能アソシエーション
   has_many :posts, dependent: :destroy
+
+  # コメント機能アソシエーション
+  has_many :comments, dependent: :destroy
 
 end

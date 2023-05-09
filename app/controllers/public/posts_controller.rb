@@ -5,7 +5,7 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.end_user_id = current_end_user.id
     if @post.save
-      @post.save_tags(params[:post][:tag])
+      # @post.save_tags(params[:post][:tag])
       redirect_to public_post_path(@post), notice: "ありがとうございます。情報のシェアに成功しました。"
     else
       @posts = Post.all
@@ -20,6 +20,8 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+
+    @comment = current_user.comments.new
   end
 
   def edit
@@ -29,7 +31,7 @@ class Public::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      @post.save_tags(params[:post][:tag])
+      # @post.save_tags(params[:post][:tag])
       redirect_to public_post_path(@post), notice: "情報の更新に成功しました。"
     else
       render :edit
