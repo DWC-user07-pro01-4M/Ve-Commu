@@ -1,2 +1,30 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="container-field align-items-center">
+  <div class="row d-flex justify-content-center m-5">
+    <div class="col-5">
+      <div class="border border-secondary contents-area bg-light">
+
+      <div class="bg-secondary p-2 text-light text-center">
+        <h1 class="text-light">ようこそ！！<strong>Ve-Commu</strong>へ！！</h1>
+      </div>
+
+        <div class="m-5">
+          <div class="btn-wrapper col-10 mx-auto">
+            <div class="row mb-3">
+              <div class="col-12 text-center">
+                <%= link_to "あなたのシェアがきっと誰かの役にたつ", about_path %>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <%= link_to "登録済みなのでログインする",new_end_user_session_path, class: "btn btn-primary btn-lg btn-block mb-3" %>
+            </div>
+            <div class="row">
+              <%= link_to "未登録なので新規登録する",new_end_user_registration_path, class: "btn btn-success btn-lg btn-block mb-3" %>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
