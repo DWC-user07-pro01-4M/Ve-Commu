@@ -12,9 +12,7 @@ Rails.application.routes.draw do
     #tags
     resources :tags, only: [:index, :create, :edit, :update, :destroy]
     #comments
-    resources :comments, only: [:index, :show, :edit, :update, :destroy]
-    #order_items
-    resources :order_items, only: [:update]
+    resources :comments, only: [:index, :show, :destroy]
   end
 
   # 会員
