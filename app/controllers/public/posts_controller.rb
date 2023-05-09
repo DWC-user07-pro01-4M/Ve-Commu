@@ -11,6 +11,7 @@ class Public::PostsController < ApplicationController
 
   def create #新規作成
     @post = Post.new(post_params)
+    @post.end_user = current_end_user
     if @post.save
       redirect_to public_post_path(@post), notice: "ありがとうございます。情報のシェアに成功しました。"
     else
