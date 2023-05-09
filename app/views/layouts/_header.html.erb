@@ -41,12 +41,12 @@
 
       <% elsif end_user_signed_in? %>
         <li class="nav-link px-2">
-          <%= link_to end_users_path, class: "btn btn-outline-light btn-lg" do %>
-            <i class="fas fa-users"></i> 会員一覧
+          <%= link_to end_user_path(current_end_user), class: "btn btn-outline-light btn-lg" do %>
+            <i class="fas fa-users"></i> マイページ
           <% end %>
         </li>
         <li class="nav-link px-2">
-          <%= link_to public_posts_path, class: "btn btn-outline-success btn-lg" do %>
+          <%= link_to posts_path, class: "btn btn-outline-success btn-lg" do %>
             <i class="fas fa-share"></i> 投稿情報情報一覧
           <% end %>
         </li>
