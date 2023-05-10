@@ -1,24 +1,31 @@
-<div class="container">
-  <div class="row">
-    <div class="col-12 text-center mt-5">
-      <h3 class="mt-5 mb-5">本当に退会しますか？</h3>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12 text-center mb-3">
-      <p>
-        退会すると、会員登録情報や</br>
-        これまでの購入履歴を閲覧できなくなります。</br>
-        退会する場合は、「退会する」をクリックしてください。</br>
-      </p>
-    </div>
-  </div>
-  <div class="row justify-content-center mb-3">
-    <div class="col-2 ml-5">
-      <%= link_to "退会しない", :back, class: "btn btn-primary" %>
-    </div>
-    <div class="col-2 col-offset-1">
-      <%= link_to "退会する", withdrawal_end_users_path, method: :patch, class: "btn btn-danger", "data-confirm" => "本当に退会しますか？" %>
+<div class="container-field align-items-center">
+  <div class="row d-flex justify-content-center m-5">
+    <div class="col-5">
+      <div class="border border-danger contents-area bg-light">
+        <div class="bg-danger p-2 text-light text-center">
+          <h1>本当に退会しますか？</h1>
+        </div>
+
+        <div class="m-5">
+          <div class="d-flex justify-content-center mb-5">
+            <p>
+              退会すると、会員登録情報や投稿履歴も全て削除されます。</br>
+              他の方の投稿も閲覧できなくなりますので、ご注意ください。</br>
+              退会する場合は、「退会する」をクリックしてください。</br>
+            </p>
+          </div>
+        </div>
+
+        <div class="row justify-content-center mb-3">
+          <div class="col-2 ml-5">
+            <%= link_to "退会しない", :back, class: "btn btn-primary" %>
+          </div>
+          <div class="col-2 col-offset-1">
+            <%= link_to "退会する", withdrawal_end_users_path, method: :patch, class: "btn btn-danger", "data-confirm" => "本当に退会しますか？" %>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 </div>

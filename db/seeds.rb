@@ -21,7 +21,7 @@ Admin.create!(
       password: "111-111",
       nickname: "お野菜大好きマン"
     )
-  end
+end
 
 # タグ種類
 Tag.create([
