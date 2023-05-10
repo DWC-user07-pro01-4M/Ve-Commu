@@ -14,9 +14,14 @@ class Public::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    @end_user = EndUser.find_by(email: params[:end_user][:email])
+    if @end_user.is_deleted == false
+      super
+    else
+      redirect_to new_end_user_registration_path
+    end
+  end
 
   # DELETE /resource/sign_out
   # def destroy
@@ -45,26 +50,5 @@ class Public::SessionsController < Devise::SessionsController
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up)
   end
-
-  # def end_user_state
-  #     ## 【処理内容1】 入力されたemailからアカウントを1件取得
-  #   @end_user = EndUser.find_by(email: params[:end_user][:email])
-  #     ## アカウントを取得できなかった場合、このメソッドを終了する
-  #   return if !@end_user
-  #     ## 【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
-  #   if @end_user.valid_password?(params[:end_user][:password]) && @end_u.is_deleted == true
-  #     ## 【処理内容3】処理内容2がtrueかつcustomerのis_deletedがtrueならサインアップ画面に遷移
-  #     flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
-  #     redirect_to new_end_user_registration_path
-  #   else
-  #     flash[:notice] = "ログインに成功しました。"
-  #   end
-  # end
-    def reject_user
-    @end_user = EndUser.find_by(email: params[:end_user][:email])
-      if @end_user.valid_password?(params[:end_user][:password]) && (@end_user.is_deleted == false)
-        redirect_to new_end_user_registration_path, notice = "退会済みです。再度ご登録をしてご利用ください。"
-      end
-    end
 
 end
