@@ -12,6 +12,11 @@
 
         <%= form_with model: @post,url: post_path(@post.id) do |f| %>
           <div class="form-group m-5">
+            <%= f.label :投稿者 %>
+            <%= @post.end_user.nickname %>
+          </div>
+
+          <div class="form-group m-5">
             <%= f.label :施設画像 %>
             <%= f.file_field :image, accept: "image/*" %>
           </div>

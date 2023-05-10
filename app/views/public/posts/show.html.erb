@@ -15,6 +15,11 @@
       <table class="table table-borderless">
         <tbody>
           <tr>
+            <th style="width: 30%">投稿者 </th>
+            <td style="width: 70%"><%= @post.end_user.nickname %></td>
+          </tr>
+
+          <tr>
             <th style="width: 30%">施設名</th>
             <td style="width: 70%"><%= @post.facility_name %></td>
           </tr>
