@@ -27,6 +27,13 @@
             <td style="width: 70%"><%= @post.detailed_description %></td>
           </tr>
 
+          <% @post.tags.each do |tag| %>
+            <tr>
+              <th style="width: 30%">タグ</th>
+              <td style="width: 70%"><%= tag.tag_type %></td>
+            </tr>
+          <% end %>
+
         </tbody>
       </table>
       <div class="my-5 ml-3">

@@ -24,6 +24,19 @@
             <%= f.label :詳細説明 %>
             <%= f.text_area :detailed_description, class: "form-control", :placeholder => "詳細を記入してください" %>
           </div>
+
+            <div class="check_box">
+              <span>タグ</span>
+                <%= form.collection_check_boxes(:post, :tag_ids, Tag.all, :id, :tag_type) do |tag| %>
+                  <div>
+                    <%= tag.label do %>
+                      <%= tag.check_box %>
+                      <%= tag.text %>
+                    <% end %>
+                  </div>
+                <% end %>
+            </div>
+
           <div class="form-group text-center">
             <%= f.submit "情報をシェアする", class: "btn btn-success" %>
           </div>
