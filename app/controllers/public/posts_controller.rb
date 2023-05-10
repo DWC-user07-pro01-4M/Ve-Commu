@@ -21,6 +21,7 @@ class Public::PostsController < ApplicationController
 
   def show #投稿詳細
     @post = Post.find(params[:id])
+    @comment = Comment.new
   end
 
   def edit #投稿編集
