@@ -13,6 +13,16 @@
     　        <% end %>
           </div>
 
+          <%= form_tag posts_path, method: :get, class: 'boards__searchForm' do %>
+            <%= select_tag :tag_id,
+              options_from_collection_for_select(Tag.all, :id, :tag_type, params[:tag_id]),
+                {
+                  prompt: 'タグで絞り込み検索',
+                  onchange: 'submit(this.form);'
+                }
+            %>
+          <% end %>
+
           <table class="table table-hover text-center contents-area">
             <thead>
                <tr>
@@ -20,6 +30,7 @@
                 <th>施設名</th>
                 <th>施設住所</th>
                 <th>詳細説明</th>
+                <th colspan="3"></th>
               </tr>
             </thead>
             <% @posts.each do |post| %>
@@ -42,6 +53,10 @@
               </tbody>
             <% end %>
           </table>
+
+            <!--<div class="pagination justify-content-center mt-3">-->
+            <!--  <= paginate @posts, theme: "bootstrap-5" %>-->
+            <!--</div>-->
 
         </div>
       </div>
