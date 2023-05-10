@@ -3,6 +3,7 @@ class Public::PostsController < ApplicationController
 
   def index #投稿一覧
     @posts = Post.page(params[:page])
+    # @posts = Tag.page(params[:page])
     @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
   end
 
