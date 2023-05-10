@@ -15,6 +15,6 @@ class EndUser < ApplicationRecord
   has_many :posts, dependent: :destroy
 
   # コメント機能アソシエーション
-  # has_many :comments, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
 end

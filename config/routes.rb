@@ -32,7 +32,10 @@ Rails.application.routes.draw do
       end
     end
       #posts
-      resources :posts, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+      resources :posts, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
+        #comments
+        resources :comments, only: [:create, :destroy]
+      end
       #bookmarks
       resources :bookmarks, only: [:index, :edit, :update, :destroy]
       #comments
