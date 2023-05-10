@@ -12,6 +12,11 @@
 
         <%= form_with model: @post,url: post_path(@post.id) do |f| %>
           <div class="form-group m-5">
+            <%= f.label :投稿者 %>
+            <%= @post.end_user.nickname %>
+          </div>
+
+          <div class="form-group m-5">
             <%= f.label :施設画像 %>
             <%= f.file_field :image, accept: "image/*" %>
           </div>
@@ -28,26 +33,23 @@
             <%= f.text_area :detailed_description, class: "form-control", :placeholder => "詳細を記入してください" %>
           </div>
 
-          <div class="check_box">
-            <span>タグ</span>
-              <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :tag_type) do |tag| %>
-                <div>
-                  <%= tag.label do %>
-                    <%= tag.check_box %>
-                    <%= tag.text %>
-                  <% end %>
-                </div>
-              <% end %>
-          </div>
+           <div class="form-group m-5">タグ</div>
+            <div class="row d-flex justify-content-start m-5">
+                <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :tag_type) do |tag| %>
+                  <div class="form-check form-check-inline flex flex-wrap">
+                    <%= tag.label do %>
+                      <%= tag.check_box %>
+                      <%= tag.text %>
+                    <% end %>
+                  </div>
+                <% end %>
+            </div>
 
-          <div class="form-group text-center">
-            <%= f.submit "情報を更新する", class: "btn btn-lg btn-success" %>
-          </div>
+            <div class="my-5 ml-5">
+              <%= f.submit "情報を更新する", class: "btn btn-lg btn-success" %>
         <% end %>
-
-        <div class="mb-5 text-center">
-          <%= link_to "前のページへ戻る", post_path, class: "btn btn-lg btn-secondary"%>
-        </div>
+              <%= link_to "前のページへ戻る", post_path, class: "btn btn-lg btn-secondary"%>
+            </div>
 
       </div>
     </div>

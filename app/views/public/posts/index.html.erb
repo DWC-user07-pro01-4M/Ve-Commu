@@ -13,18 +13,32 @@
     　        <% end %>
           </div>
 
+          <%= form_tag posts_path, method: :get, class: 'boards__searchForm' do %>
+            <%= select_tag :tag_id,
+              options_from_collection_for_select(Tag.all, :id, :tag_type, params[:tag_id]),
+                {
+                  prompt: 'タグで絞り込み検索',
+                  onchange: 'submit(this.form);'
+                }
+            %>
+          <% end %>
+
           <table class="table table-hover text-center contents-area">
             <thead>
                <tr>
+                <th>投稿者</th>
                 <th>施設画像</th>
                 <th>施設名</th>
                 <th>施設住所</th>
                 <th>詳細説明</th>
+                <th>タグ</th>
+                <th colspan="3"></th>
               </tr>
             </thead>
             <% @posts.each do |post| %>
               <tbody>
                 <tr>
+                  <td><%= post.end_user.nickname %></td>
                   <td><%= image_tag post.get_image(70,70) %></td>
                   <td><%= post.facility_name %></td>
                   <td><%= post.address %></td>
@@ -37,11 +51,15 @@
                   </td>
 
                   <td><%= link_to "投稿を確認する", post_path(post.id), class: "btn btn-warning btn_lg" %></td>
-                  <td><%= link_to "削除する", post_path(post.id), class: "btn btn-danger btn_lg", method: :delete, "data-confirm" => "本当に投稿を削除してよろしいですか?" %></td>
+                  <td></td>
                 </tr>
               </tbody>
             <% end %>
           </table>
+
+            <!--<div class="pagination justify-content-center mt-3">-->
+            <!--  <= paginate @posts, theme: "bootstrap-5" %>-->
+            <!--</div>-->
 
         </div>
       </div>

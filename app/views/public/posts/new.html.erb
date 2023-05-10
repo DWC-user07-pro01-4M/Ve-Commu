@@ -25,10 +25,10 @@
             <%= f.text_area :detailed_description, class: "form-control", :placeholder => "詳細を記入してください" %>
           </div>
 
-            <div class="check_box">
-              <span>タグ</span>
+            <div class="form-group m-5">タグ</div>
+            <div class="row d-flex justify-content-start m-5">
                 <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :tag_type) do |tag| %>
-                  <div>
+                  <div class="form-check form-check-inline flex flex-wrap">
                     <%= tag.label do %>
                       <%= tag.check_box %>
                       <%= tag.text %>

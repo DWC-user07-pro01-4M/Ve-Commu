@@ -15,6 +15,11 @@
       <table class="table table-borderless">
         <tbody>
           <tr>
+            <th style="width: 30%">投稿者 </th>
+            <td style="width: 70%"><%= @post.end_user.nickname %></td>
+          </tr>
+
+          <tr>
             <th style="width: 30%">施設名</th>
             <td style="width: 70%"><%= @post.facility_name %></td>
           </tr>
@@ -38,19 +43,21 @@
       </table>
       <div class="my-5 ml-3">
         <%= link_to "編集する", edit_post_path(@post.id), class: "btn btn-lg btn-success" %>
+        <%= link_to "削除する", post_path(@post.id), class: "btn btn-danger btn_lg", method: :delete, "data-confirm" => "本当に投稿を削除してよろしいですか?" %>
         <%= link_to "新しく投稿する", new_post_path, class: "btn btn-lg btn-primary" %>
       </div>
 
       <table>
         <tbody>
           <% @comments.each do |comment| %>
-            <tr>
+            <tr div class="row mt-5 my-5 ml-3">
               <td><%= comment.end_user.nickname %></td>
+              <td></td><td></td><td></td><td></td><td></td><td></td>
               <td><%= comment.comment %></td>
               <td>
-            <% if comment.end_user == current_end_user %>
-              <%= link_to "削除", post_comment_path(comment.post,comment), method: :delete, class: "btn btn-sm btn-danger p-0 p-1", style: "font-size: 8px;" %>
-            <% end %>
+                <% if comment.end_user == current_end_user %>
+                  <%= link_to "削除", post_comment_path(comment.post,comment), method: :delete, class: "btn btn-sm btn-danger p-0 p-1", style: "font-size: 8px;" %>
+                <% end %>
               </td>
             </tr>
           <% end %>
@@ -58,7 +65,8 @@
             <tr>
               <td>
                 <%= form_with(model: [@post, @comment]) do |f| %>
-                  <%= f.text_area :comment, placeholder: "コメントをここに" %>
+                  <%= f.text_area :comment, placeholder: "コメントをここに", class: "form-control", size: "80x5" %>
+                  <br>
                   <%= f.submit "送信" %>
                 <% end %>
               </td>
