@@ -28,7 +28,7 @@
             <%= f.text_area :detailed_description, class: "form-control", :placeholder => "詳細を記入してください" %>
           </div>
 
-          <div class="check_box">
+          <div class="form-check form-check-inline">
             <span>タグ</span>
               <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :tag_type) do |tag| %>
                 <div>
