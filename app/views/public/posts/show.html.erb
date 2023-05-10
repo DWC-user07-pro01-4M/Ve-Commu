@@ -34,21 +34,29 @@
         <%= link_to "新しく投稿する", new_post_path, class: "btn btn-lg btn-primary" %>
       </div>
 
-      <% @comments.each do |comment| %>
-        <p><%= comment.comment %></p>
-          <% if comment.end_user == current_end_user %>
-          <p><%= link_to  "Destroy", post_comment_path(comment.post_id, comment.id), method: :delete, remote: true %></p>
-        <% end %>
-        <% end %>
-
-<div class="form-group row">
-  <%= form_with(model: [@post, @comment]) do |f| %>
-    <%= f.label :comment,"コメント", class:"form-label" %>
-    <%= f.text_area :comment %>
-    <%= button_tag type: "submit", class: "btn btn-default" do %>
-      <i class="far fa-comment-alt"></i>
-    <% end %>
-<% end %>
+      <table>
+        <tbody>
+          <% @comments.each do |comment| %>
+            <tr>
+              <td><%= comment.end_user.nickname %></td>
+              <td><%= comment.comment %></td>
+              <td>
+            <% if comment.end_user == current_end_user %>
+              <%= link_to "削除", post_comment_path(comment.post,comment), method: :delete, class: "btn btn-sm btn-danger p-0 p-1", style: "font-size: 8px;" %>
+            <% end %>
+              </td>
+            </tr>
+          <% end %>
+            <tr>
+              <td>
+                <%= form_with(model: [@post, @comment]) do |f| %>
+                  <%= f.text_area :comment, placeholder: "コメントをここに" %>
+                  <%= f.submit "送信" %>
+                <% end %>
+              </td>
+            </tr>
+        </tbody>
+      </table>
 
     </div>
   </div>
