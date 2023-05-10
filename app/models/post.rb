@@ -6,6 +6,10 @@ class Post < ApplicationRecord
   # コメント機能アソシエーション
   has_many :comments, dependent: :destroy
 
+  # タグ機能アソシエーション
+  has_many :association_post_and_tags, dependent: :destroy
+  has_many :tags, through: :association_post_and_tags
+
   # 画像
   has_one_attached :image
   def get_image(width, height)
