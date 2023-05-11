@@ -16,6 +16,8 @@ class Post < ApplicationRecord
       Post.where(["facility_name LIKE?", "%#{keyword}%"])
     elsif
       Post.where(["address LIKE?", "%#{keyword}%"])
+    elsif
+      Post.where(["tag_type LIKE?", "%#{keyword}%"])
     else
       Post.all
     end
