@@ -38,7 +38,7 @@ Rails.application.routes.draw do
       end
       #bookmarks
       resources :bookmarks, only: [:index, :edit, :update, :destroy]
-     　#search
+      #search
       get 'search' => 'posts#search'
 
   end
