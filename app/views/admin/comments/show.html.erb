@@ -1,2 +1,39 @@
-<h1>Admin::Comments#show</h1>
-<p>Find me in app/views/admin/comments/show.html.erb</p>
+<div class="container border border-light contents-area bg-light" >
+  <div class="row mt-5">
+
+    <div class="col-4 mb-3 offset-1">
+      <h3><strong class="border-bottom border-dark"><%= @end_user.nickname %>さんの会員情報詳細</strong></h3>
+    </div>
+
+      <div class="container mb-5">
+        <div class="row">
+          <div class="col-10 mx-auto">
+
+            <table class="table table-borderless contents-area">
+              <thead>
+                <tr>
+                  <th>会員ID</th>
+                  <td><%= @end_user.id %></td>
+                </tr>
+                <tr>
+                  <th>ニックネーム</th>
+                  <td><%= @end_user.nickname %></td>
+                </tr>
+                <tr>
+                  <th>コメント</th>
+                  <td><%= @comment.comment %></td>
+                </tr>
+              </thead>
+            </table>
+
+          <div class="d-grid gap-2 d-md-block">
+            <%= link_to "削除", admin_comment_path(@comment), method: :delete, class: "btn btn-sm btn-danger p-0 p-1", style: "font-size: 8px;" %>
+            <%= link_to "前のページへ戻る", admin_comments_path, class: "btn btn-lg btn-secondary"%>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

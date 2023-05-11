@@ -1,2 +1,46 @@
-<h1>Admin::Comments#index</h1>
-<p>Find me in app/views/admin/comments/index.html.erb</p>
+<div class="container border border-light contents-area bg-light" >
+  <div class="row mt-5">
+      <div class="container justify-content-center">
+        <div class="row">
+          <div class="col-10 mx-auto">
+            <%= flash[:notice] %>
+            <h3><strong class="border-bottom border-dark">コメント一覧</strong></h3>
+
+            <table class="table table-hover text-center contents-area">
+              <thead>
+                <tr>
+                  <th>会員ID</th>
+                  <th>ニックネーム</th>
+                  <th>コメント</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <% @comments.each do |comment| %>
+                <tbody>
+                  <tr class="admin_comments_index_tbody_tr tr-color" data-href="/admin/comments/<%= comment.id%>">
+                    <td class="py-4"><%= comment.id %></td>
+                    <td class="py-4"><%= comment.end_user.nickname %></td>
+                    <td class="py-4"><%= comment.comment %></td>
+                  </tr>
+                </tbody>
+              <% end %>
+            </table>
+
+            <div class="pagination justify-content-center mt-3">
+            <%= paginate @comments, theme: "bootstrap-5" %>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--投稿の行をリンクにする-->
+<script>
+  jQuery(document).on("turbolinks:load", function() {
+  $(".admin_comments_index_tbody_tr").on('click', function() {
+      window.location = $(this).data("href");
+  });
+});
+</script>
