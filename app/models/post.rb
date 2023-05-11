@@ -11,7 +11,9 @@ class Post < ApplicationRecord
   has_many :tags, through: :association_post_and_tags
 
   # キーワード検索
-
+  def Post.search(keyword)
+      Post.where("facility_name LIKE(?) OR address LIKE(?) OR category LIKE(?)",  "%#{search}%", "%#{search}%")
+  end
 
   # 画像
   has_one_attached :image
