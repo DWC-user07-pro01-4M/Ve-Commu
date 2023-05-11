@@ -1,7 +1,7 @@
 class Admin::CommentsController < ApplicationController
   before_action :authenticate_end_user!
 
-  def create
+  def index
     post = Post.find(params[:post_id])
     comment = current_end_user.comments.new(comment_params)
     comment.post_id = post.id
