@@ -12,6 +12,7 @@ class Post < ApplicationRecord
 
   # キーワード検索
 
+
   # 画像
   has_one_attached :image
   def get_image(width, height)
