@@ -1,22 +1,22 @@
 class Admin::CommentsController < ApplicationController
-  before_action :authenticate_end_user!
+  before_action :authenticate_admin!
 
   def index
-    post = Post.find(params[:post_id])
-    comment = current_end_user.comments.new(comment_params)
-    comment.post_id = post.id
-    comment.save
-    redirect_to public_post_path(post)
+    @comments = Comment.all
+  end
+
+  def show
+    @comment = Comment.find(params[:id])
   end
 
   def destroy
     Comment.find(params[:id]).destroy
-    redirect_to public_post_path(params[:post_id])
+    redirect_to admin_comments_path(params[:post_id]), notice: "不適切なコメントを削除しました。"
   end
 
   private
   def comment_params
-    params.require(:comment).permit(:comment, :end_user_id, :post_id)
+    params.require(:comment).permit(:comment)
   end
 
 end
