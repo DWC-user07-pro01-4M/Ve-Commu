@@ -1,6 +1,6 @@
 <div class="container border border-light contents-area bg-light" >
   <div class="row mt-5">
-
+      <%= flash[:notice] %>
       <div class="container justify-content-center">
         <div class="row">
           <div class="col-10 mx-auto">
@@ -19,9 +19,9 @@
               <% @comments.each do |comment| %>
                 <tbody>
                   <tr class="admin_comments_index_tbody_tr tr-color" data-href="/admin/comments/<%= comment.id%>">
-                    <td class="py-4"><%= end_user.id %></td>
-                    <td class="py-4"><%= end_user.nickname %></td>
-                    <td class="py-4"><%= end_user.comment %></td>
+                    <td class="py-4"><%= comment.id %></td>
+                    <td class="py-4"><%= comment.end_user.nickname %></td>
+                    <td class="py-4"><%= comment.comment %></td>
                   </tr>
                 </tbody>
               <% end %>
