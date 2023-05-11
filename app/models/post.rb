@@ -10,6 +10,18 @@ class Post < ApplicationRecord
   has_many :association_post_and_tags, dependent: :destroy
   has_many :tags, through: :association_post_and_tags
 
+  # 検索分岐
+  def self.search(keyword)
+    if keyword
+      Post.where(["facility_name LIKE?", "%#{keyword}%"])
+    elsif
+      Post.where(["address LIKE?", "%#{keyword}%"])
+    else
+      Post.all
+    end
+  end
+
+
   # 画像
   has_one_attached :image
   def get_image(width, height)

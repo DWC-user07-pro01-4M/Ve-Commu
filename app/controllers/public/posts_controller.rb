@@ -7,6 +7,14 @@ class Public::PostsController < ApplicationController
     @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
   end
 
+  def search
+    # キーワード検索
+    @search = Post.ransack(params[:q])
+    @results = @search.result.order("created_at DESC").page(params[:page])
+    # タグ検索
+    @tag_search = Product.tagged_with(params[:search])
+  end
+
   def new #新規投稿
     @post = Post.new
   end
