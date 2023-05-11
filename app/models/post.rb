@@ -12,7 +12,7 @@ class Post < ApplicationRecord
 
   # キーワード検索
   def Post.search(keyword)
-      Post.where("facility_name LIKE(?) OR address LIKE(?) OR category LIKE(?)",  "%#{search}%", "%#{search}%")
+      Post.where("facility_name LIKE(?) OR address LIKE(?)",  "%#{keyword}%", "%#{keyword}%")
   end
 
   # 画像

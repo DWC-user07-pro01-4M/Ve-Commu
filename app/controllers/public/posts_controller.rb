@@ -46,6 +46,11 @@ class Public::PostsController < ApplicationController
     redirect_to posts_path, notice: "情報を削除しました。"
   end
 
+  def search #検索機能
+    @posts = Post.search(params[:keyword])
+    @keyword = params[:keyword]
+  end
+
   private
 
   def post_params

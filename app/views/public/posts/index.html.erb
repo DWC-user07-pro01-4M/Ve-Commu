@@ -23,6 +23,17 @@
             %>
           <% end %>
 
+          <div class="search_form" style="border-radius: 0!important;">
+            <%= form_with url: search_path, local: true, method: :get do |f| %>
+              <div class="input-group no-border">
+                <%= f.text_field :keyword, value: @keyword, class: "form-control search-control", placeholder: "店名か住所を入力してください" %>
+                <%= button_tag type: "submit", class: "btn btn-secondary search-btn" do %>
+                  <i class="fas fa-search"></i>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+
           <table class="table table-hover text-center contents-area">
             <thead>
                <tr>
