@@ -6,6 +6,9 @@ class Public::PostsController < ApplicationController
     @posts = Post.page(params[:page])
     # @posts = Tag.page(params[:page])
     @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
+    @search = Post.ransack(params[:q])
+    @search.build_condition if @search.conditions.empty?
+    @posts = @search.result
   end
 
   def new #新規投稿

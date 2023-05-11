@@ -23,6 +23,13 @@
             %>
           <% end %>
 
+          <%= search_form_for @q, url: search_posts_path do |f| %>
+            <%= f.label :address_cont, "住所検索" %>
+            <%= f.search_field :address_cont %>
+              <br>
+            <%= f.submit '検索' %>
+          <% end %>
+
           <table class="table table-hover text-center contents-area">
             <thead>
                <tr>
