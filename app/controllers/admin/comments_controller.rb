@@ -3,6 +3,7 @@ class Admin::CommentsController < ApplicationController
 
   def index
     @comments = Comment.all
+    @comments = Comment.page(params[:page])
   end
 
   def show
