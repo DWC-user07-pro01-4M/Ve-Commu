@@ -1,14 +1,13 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_end_user!
-  before_action :set_q, only: [:index, :search]
+  before_action :set_q
 
   def index #投稿一覧
     @posts = Post.page(params[:page])
     # @posts = Tag.page(params[:page])
     @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
-    @search = Post.ransack(params[:q])
-    @search.build_condition if @search.conditions.empty?
-    @posts = @search.result
+    @q = Post.ransack(params[:q])
+    @posts = @q.result(distinct: true)
   end
 
   def new #新規投稿
@@ -48,10 +47,6 @@ class Public::PostsController < ApplicationController
     post = Post.find(params[:id])
     post.destroy
     redirect_to posts_path, notice: "情報を削除しました。"
-  end
-
-  def search #ransackを使用した定義
-    @results = @q.result
   end
 
   private

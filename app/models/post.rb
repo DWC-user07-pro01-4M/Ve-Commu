@@ -16,7 +16,7 @@ class Post < ApplicationRecord
   end
 
   def self.ransackable_associations(auth_object = nil)
-     ["association_post_and_tags", "comments", "end_user", "image_attachment", "image_blob", "tags"]
+    ["association_post_and_tags", "comments", "end_user", "image_attachment", "image_blob", "tags"]
   end
 
   # 画像
