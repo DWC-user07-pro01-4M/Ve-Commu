@@ -1,5 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_end_user!
+  before_action :set_q, only: [:index, :search]
 
   def index #投稿一覧
     @posts = Post.page(params[:page])
@@ -46,7 +47,16 @@ class Public::PostsController < ApplicationController
     redirect_to posts_path, notice: "情報を削除しました。"
   end
 
+  def search #ransackを使用した定義
+    @results = @q.result
+  end
+
   private
+
+  def set_q #ransackを使用した定義
+    @q = Post.ransack(params[:q])
+  end
+
   def post_params
     params.require(:post).permit(:facility_name, :address, :detailed_description, :image, tag_ids: [])
   end
