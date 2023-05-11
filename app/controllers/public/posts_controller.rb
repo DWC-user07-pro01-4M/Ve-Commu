@@ -1,13 +1,10 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_end_user!
-  before_action :set_q
 
   def index #投稿一覧
     @posts = Post.page(params[:page])
     # @posts = Tag.page(params[:page])
     @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
-    @q = Post.ransack(params[:q])
-    @posts = @q.result(distinct: true)
   end
 
   def new #新規投稿
@@ -50,10 +47,6 @@ class Public::PostsController < ApplicationController
   end
 
   private
-
-  def set_q #ransackを使用した定義
-    @q = Post.ransack(params[:q])
-  end
 
   def post_params
     params.require(:post).permit(:facility_name, :address, :detailed_description, :image, tag_ids: [])

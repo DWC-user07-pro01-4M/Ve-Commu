@@ -35,13 +35,12 @@ Rails.application.routes.draw do
       resources :posts, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
         #comments
         resources :comments, only: [:create, :destroy]
-        # search
-        collection do
-          get 'search'
-        end
       end
       #bookmarks
       resources :bookmarks, only: [:index, :edit, :update, :destroy]
+     　#search
+      get 'search' => 'posts#search'
+
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

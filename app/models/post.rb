@@ -11,13 +11,6 @@ class Post < ApplicationRecord
   has_many :tags, through: :association_post_and_tags
 
   # キーワード検索
-  def self.ransackable_attributes(auth_object = nil)
-      ["created_at", "end_user_id", "id", "updated_at"]
-  end
-
-  def self.ransackable_associations(auth_object = nil)
-    ["association_post_and_tags", "comments", "end_user", "image_attachment", "image_blob", "tags"]
-  end
 
   # 画像
   has_one_attached :image
