@@ -3,6 +3,7 @@
     <div class="container justify-content-center">
       <div class="row">
         <div class="col-10 mx-auto">
+
           <h3><strong><%= flash[:notice] %></strong></h3>
           <h3><strong class="border-bottom border-dark">コメント一覧</strong></h3>
 
@@ -21,7 +22,7 @@
                   <td class="py-4"><%= comment.id %></td>
                   <td class="py-4"><%= comment.end_user.nickname %></td>
                   <td class="py-4"><%= comment.comment %></td>
-                  <td><%= link_to "詳細を確認する", admin_comment_path(comment.id), class: 'btn btn-warning' %></td>
+                  <td><%= link_to "詳細を確認する", admin_comment_path(comment.id), class: 'btn btn-warning btn-lg' %></td>
                 </tr>
               </tbody>
             <% end %>
