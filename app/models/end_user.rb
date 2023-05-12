@@ -13,4 +13,7 @@ class EndUser < ApplicationRecord
   # コメント機能アソシエーション
   has_many :comments, dependent: :destroy
 
+  # ブックマークアソシエーション
+  has_many :bookmarks, dependent: :destroy
+
 end
