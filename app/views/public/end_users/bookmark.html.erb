@@ -5,14 +5,11 @@
   <% if @bookmarks.length != 0 %>
     <% @bookmarks.each do |post| %>
       <div class="recipe-contents d-flex">
-        <% if post.images.present? %>
-          <%= image_tag post.images[0], class: "index-img" %>
-        <% else %>
-          <%= image_tag post.get_image(70,70), class: "index-img"  %>
-        <% end %>
+
         <div class="bookmarks">
 
           <div class="content">
+            <span><%= image_tag post.get_image(70,70), class: "index-img"  %></span>
             投稿者: <span><%= post.end_user.nickname %></span>
             施設名: <span><%= post.facility_name %></span>
             施設住所: <span><%= post.address %></span>

@@ -31,7 +31,7 @@ class Public::EndUsersController < ApplicationController
     def bookmark
         @end_user = EndUser.find(params[:id])
         bookmarks = Bookmark.where(end_user_id: current_end_user.id).pluck(:post_id)
-        @bookmarks = Post.find(posts)
+        @bookmarks = Post.find(bookmarks)
     end
 
     private

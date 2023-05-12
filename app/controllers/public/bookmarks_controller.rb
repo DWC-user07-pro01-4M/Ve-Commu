@@ -6,10 +6,10 @@ class Public::BookmarksController < ApplicationController
   end
 
   def create
-    @bookmark = current_end_user.bookmerks.build(bookmark_params)
+    @bookmark = current_end_user.bookmarks.build(bookmark_params)
     @post = @bookmark.post
     if @bookmark.valid?
-      @bookmark.save!
+      @bookmark.save
       redirect_to post_path(@post), notice: "この投稿をブックマークしました。"
     end
   end
