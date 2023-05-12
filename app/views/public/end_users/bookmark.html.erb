@@ -10,13 +10,13 @@
         <% else %>
           <%= image_tag post.get_image(70,70), class: "index-img"  %>
         <% end %>
-        <div class="recipe">
-          <div class="recipe-title">
-            <%= link_to recipe.title, recipe_path(recipe) %>
-          </div>
-          <div class="recipe-content">
-            カテゴリー: <span class="recipe-category"><%= recipe.category.name %></span>
-            所要時間: <span class="recipe-time"><%= recipe.time_required.name %></span>
+        <div class="bookmarks">
+
+          <div class="content">
+            投稿者: <span><%= post.end_user.nickname %></span>
+            施設名: <span><%= post.facility_name %></span>
+            施設住所: <span><%= post.address %></span>
+            施設住所: <span><%= post.detailed_description %></span>
           </div>
         </div>
       </div>
@@ -25,9 +25,3 @@
     お気に入りはまだ登録されていません
   <% end %>
 </div>
-
-<td><%= post.end_user.nickname %></td>
-                  <td><%= image_tag post.get_image(70,70) %></td>
-                  <td><%= post.facility_name %></td>
-                  <td><%= post.address %></td>
-                  <td><%= post.detailed_description %></td>
