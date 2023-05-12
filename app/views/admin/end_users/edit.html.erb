@@ -25,7 +25,7 @@
                 <%= form_with model: @end_user, url:admin_end_user_path, method: :patch do |f| %>
                   <div class="col-3">
                     <%= f.radio_button :is_deleted, false %>
-                    <%= f.label :is_deleted, '有効', class: "mr-2" %>
+                    <%= f.label :is_deleted, '有効' %>
                     <%= f.radio_button :is_deleted, true %>
                     <%= f.label :is_deleted, '退会' %>
                   </div>

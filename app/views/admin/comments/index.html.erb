@@ -1,45 +1,38 @@
 <div class="container border border-light contents-area bg-white" >
   <div class="row mt-5">
-      <div class="container justify-content-center">
-        <div class="row">
-          <div class="col-10 mx-auto">
-            <strong><%= flash[:notice] %></strong>
-            <h3><strong class="border-bottom border-dark">コメント一覧</strong></h3>
+    <div class="container justify-content-center">
+      <div class="row">
+        <div class="col-10 mx-auto">
+          <h3><strong><%= flash[:notice] %></strong></h3>
+          <h3><strong class="border-bottom border-dark">コメント一覧</strong></h3>
 
-            <table class="table table-hover text-center contents-area">
-              <thead>
-                <tr>
-                  <th>会員ID</th>
-                  <th>ニックネーム</th>
-                  <th>コメント</th>
+          <table class="table table-hover text-center contents-area">
+            <thead>
+              <tr>
+                <th>会員ID</th>
+                <th>ニックネーム</th>
+                <th>コメント</th>
+                <th colspan = "3"></th>
+              </tr>
+            </thead>
+            <% @comments.each do |comment| %>
+              <tbody>
+                 <tr>
+                  <td class="py-4"><%= comment.id %></td>
+                  <td class="py-4"><%= comment.end_user.nickname %></td>
+                  <td class="py-4"><%= comment.comment %></td>
+                  <td><%= link_to "詳細を確認する", admin_comment_path(comment.id), class: 'btn btn-warning' %></td>
                 </tr>
-              </thead>
-              <% @comments.each do |comment| %>
-                <tbody>
-                  <tr class="admin_comments_index_tbody_tr tr-color" data-href="/admin/comments/<%= comment.id%>">
-                    <td class="py-4"><%= comment.id %></td>
-                    <td class="py-4"><%= comment.end_user.nickname %></td>
-                    <td class="py-4"><%= comment.comment %></td>
-                  </tr>
-                </tbody>
-              <% end %>
-            </table>
+              </tbody>
+            <% end %>
+          </table>
 
             <div class="pagination justify-content-center mt-3">
             <%= paginate @comments, theme: "bootstrap-5" %>
             </div>
 
-          </div>
         </div>
       </div>
     </div>
   </div>
-
-<!--投稿の行をリンクにする-->
-<script>
-  jQuery(document).on("turbolinks:load", function() {
-  $(".admin_comments_index_tbody_tr").on('click', function() {
-      window.location = $(this).data("href");
-  });
-});
-</script>
+</div>

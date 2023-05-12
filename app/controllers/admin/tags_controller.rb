@@ -3,7 +3,7 @@ class Admin::TagsController < ApplicationController
 
   def index #タグ一覧
     @tag = Tag.new
-    @tags = Tag.all
+    @tags = Tag.page(params[:page])
   end
 
   def create #タグ作成
@@ -16,7 +16,7 @@ class Admin::TagsController < ApplicationController
     end
   end
 
-  def edit
+  def edit #タグ編集
     @tag = Tag.find(params[:id])
   end
 

@@ -1,0 +1,8 @@
+<% if tag.errors.any? %>
+  <h4><strong><%= tag.errors.count %>件のエラーが発生しました</strong></h4>
+    <ul>
+      <% tag.errors.full_messages.each do |message| %>
+        <h5><li><%= message %></li></h5>
+      <% end %>
+    </ul>
+<% end %>
