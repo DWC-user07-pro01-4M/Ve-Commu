@@ -5,10 +5,6 @@ class Admin::EndUsersController < ApplicationController
     @end_users = EndUser.page(params[:page])
   end
 
-  def show #会員詳細
-    @end_user = EndUser.find(params[:id])
-  end
-
   def edit #会員編集
     @end_user = EndUser.find(params[:id])
   end
@@ -16,14 +12,14 @@ class Admin::EndUsersController < ApplicationController
   def update #会員情報更新
     @end_user = EndUser.find(params[:id])
     if @end_user.update(end_user_params)
-      redirect_to admin_end_user_path(@end_user.id), notice: "会員情報の更新に成功しました。"
+      redirect_to admin_end_users_path, notice: "会員情報の更新に成功しました。"
     else
-      render :edit
+      render :edit, notice: "会員情報の更新に失敗しました。"
     end
   end
 
   private
-  def end_user_params               #ニックネーム、メールアドレス、ステータス
+  def end_user_params
     params.require(:end_user).permit(:nickname, :email, :is_deleted)
   end
 
