@@ -1,0 +1,33 @@
+<div class="like-index text-center">
+  <div>
+    <%= @end_user.nickname %>様のお気に入り
+  </div>
+  <% if @bookmarks.length != 0 %>
+    <% @bookmarks.each do |post| %>
+      <div class="recipe-contents d-flex">
+        <% if post.images.present? %>
+          <%= image_tag post.images[0], class: "index-img" %>
+        <% else %>
+          <%= image_tag post.get_image(70,70), class: "index-img"  %>
+        <% end %>
+        <div class="recipe">
+          <div class="recipe-title">
+            <%= link_to recipe.title, recipe_path(recipe) %>
+          </div>
+          <div class="recipe-content">
+            カテゴリー: <span class="recipe-category"><%= recipe.category.name %></span>
+            所要時間: <span class="recipe-time"><%= recipe.time_required.name %></span>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    お気に入りはまだ登録されていません
+  <% end %>
+</div>
+
+<td><%= post.end_user.nickname %></td>
+                  <td><%= image_tag post.get_image(70,70) %></td>
+                  <td><%= post.facility_name %></td>
+                  <td><%= post.address %></td>
+                  <td><%= post.detailed_description %></td>

@@ -14,6 +14,21 @@
       <h3><span class="border-bottom border-dark">投稿情報詳細</span></h3>
       <table class="table table-borderless">
         <tbody>
+
+          <tr>
+            <th>
+              <% if current_end_user != @post.end_user %>
+                <div class="bookmark">
+                  <% if @post.liked_by(current_end_user).blank? %>
+                    <%= link_to "お気に入りに登録する", post_bookmarks_path(@post), method: :post, class: "btn btn-success btn-lg" %>
+                  <% else %>
+                    <%= link_to "お気に入りからはずす", post_bookmark_path(@post,@post.liked_by(current_end_user)), method: :delete, class: "btn btn-outline-success btn-lg" %>
+                <% end %>
+                </div>
+              <% end %>
+            </th>
+          </tr>
+
           <tr>
             <th style="width: 30%">投稿者 </th>
             <td style="width: 70%"><%= @post.end_user.nickname %></td>
