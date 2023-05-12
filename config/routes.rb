@@ -37,7 +37,6 @@ Rails.application.routes.draw do
         resources :comments, only: [:create, :destroy]
         #bookmarks
         resources :bookmarks, only: [:index, :create, :destroy]
-
       end
       #search
       get 'search' => 'posts#search'

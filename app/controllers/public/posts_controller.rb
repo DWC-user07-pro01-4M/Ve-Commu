@@ -2,8 +2,6 @@ class Public::PostsController < ApplicationController
   before_action :authenticate_end_user!
 
   def index #投稿一覧
-    # @posts = Post.page(params[:page])
-    # @posts = Tag.page(params[:page])
     @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
     @posts = @posts.search(params[:keyword])
     @posts = @posts.page(params[:page])
@@ -47,11 +45,6 @@ class Public::PostsController < ApplicationController
     post = Post.find(params[:id])
     post.destroy
     redirect_to posts_path, notice: "情報を削除しました。"
-  end
-
-  def search #検索機能
-    @posts = Post.search(params[:keyword])
-    @keyword = params[:keyword]
   end
 
   private
