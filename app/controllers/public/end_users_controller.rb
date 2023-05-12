@@ -28,6 +28,12 @@ class Public::EndUsersController < ApplicationController
         redirect_to root_path, notice: "退会処理が完了しました。ご利用ありがとうございました。"
     end
 
+    def bookmark
+        @end_user = EndUser.find(params[:id])
+        bookmarks = Bookmark.where(end_user_id: current_end_user.id).pluck(:post_id)
+        @bookmarks = Post.find(bookmarks)
+    end
+
     private
     def end_user_params
         params.require(:end_user).permit(:nickname, :email)

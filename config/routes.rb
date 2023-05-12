@@ -30,14 +30,18 @@ Rails.application.routes.draw do
         get 'unsubscribe'
         patch 'withdrawal'
       end
+      # bookmark
+      member do
+        get :bookmark
+      end
     end
       #posts
       resources :posts, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
         #comments
         resources :comments, only: [:create, :destroy]
+        #bookmarks
+        resources :bookmarks, only: [:create, :destroy]
       end
-      #bookmarks
-      resources :bookmarks, only: [:index, :edit, :update, :destroy]
       #search
       get 'search' => 'posts#search'
 

@@ -10,6 +10,12 @@ class Post < ApplicationRecord
   has_many :association_post_and_tags, dependent: :destroy
   has_many :tags, through: :association_post_and_tags
 
+  # ブックマークアソシエーション
+  has_many :bookmarks, dependent: :destroy
+  def bookmark_by(end_user)
+    Bookmark.find_by(end_user_id: end_user.id, post_id: id)
+  end
+
   # キーワード検索
   def Post.search(keyword)
       Post.where("facility_name LIKE(?) OR address LIKE(?)", "%#{keyword}%", "%#{keyword}%")
