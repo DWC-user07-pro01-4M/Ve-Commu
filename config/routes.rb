@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     #homes
     root to: "homes#top"
     #end_users
-    resources :end_users, only: [:index, :show, :edit, :update]
+    resources :end_users, only: [:index, :edit, :update]
     #tags
     resources :tags, only: [:index, :create, :edit, :update, :destroy]
     #comments

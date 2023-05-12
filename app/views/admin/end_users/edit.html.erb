@@ -1,7 +1,7 @@
 <div class="container border border-light contents-area bg-light" >
   <div class="row mt-5">
     <div class="col-md-10 mx-auto">
-
+      <%= render "error", end_user: @end_user %>
       <h3><strong class="border-bottom border-dark">会員情報編集</strong></h3>
         <%= form_with model: @end_user, url:admin_end_user_path, method: :patch do |f| %>
           <div class="contents-area mb-3 pt-3">
