@@ -1,4 +1,4 @@
-<div class="container border border-light contents-area bg-light" >
+<div class="container border border-white contents-area bg-white" >
   <div class="row mt-5">
 
     <div class="col-4 mb-3 offset-1">
@@ -27,8 +27,7 @@
             </table>
 
           <div class="d-grid gap-2 d-md-block">
-            <%= link_to "削除", admin_comment_path(@comment), method: :delete, class: "btn btn-sm btn-danger p-0 p-1", style: "font-size: 8px;" %>
-            <%= link_to "前のページへ戻る", admin_comments_path, class: "btn btn-lg btn-secondary"%>
+            <%= link_to "コメントを削除する", admin_comment_path(@comment), class: "btn btn-danger btn-lg", method: :delete, "data-confirm" => "本当にコメントを削除しますか?" %>
           </div>
 
         </div>

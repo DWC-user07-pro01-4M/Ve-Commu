@@ -1,10 +1,11 @@
-<div class="container border border-light contents-area bg-light" >
+<div class="container border border-white contents-area bg-white" >
   <div class="row mt-5">
 
       <div class="container justify-content-center">
         <div class="row">
           <div class="col-10 mx-auto">
 
+            <h3><strong><%= flash[:notice] %></strong></h3>
             <h3><strong class="border-bottom border-dark">会員一覧</strong></h3>
 
             <table class="table table-hover text-center contents-area">
@@ -14,11 +15,12 @@
                   <th>ニックネーム</th>
                   <th>メールアドレス</th>
                   <th>ステータス</th>
+                  <th colspan = "3"></th>
                 </tr>
               </thead>
               <% @end_users.each do |end_user| %>
                 <tbody>
-                  <tr class="admin_end_user_index_tbody_tr tr-color" data-href="/admin/end_users/<%= end_user.id%>">
+                  <tr>
                     <td class="py-4"><%= end_user.id %></td>
                     <td class="py-4"><%= end_user.nickname %></td>
                     <td class="py-4"><%= end_user.email %></td>
@@ -29,6 +31,7 @@
                         <strong class="text-secondary">退会</stropng>
                       <% end %>
                     </td>
+                    <td><%= link_to "会員情報を変更する", edit_admin_end_user_path(end_user.id), class: "btn btn-success btn-lg" %></td>
                   </tr>
                 </tbody>
               <% end %>
@@ -44,12 +47,3 @@
 
     </div>
   </div>
-
-<!--投稿の行をリンクにする-->
-<script>
-  jQuery(document).on("turbolinks:load", function() {
-  $(".admin_end_user_index_tbody_tr").on('click', function() {
-      window.location = $(this).data("href");
-  });
-});
-</script>
