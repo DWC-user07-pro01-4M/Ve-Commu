@@ -2,9 +2,12 @@ class Public::PostsController < ApplicationController
   before_action :authenticate_end_user!
 
   def index #投稿一覧
-    @posts = Post.page(params[:page])
+    # @posts = Post.page(params[:page])
     # @posts = Tag.page(params[:page])
     @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
+    @posts = @posts.search(params[:keyword])
+    @posts = @posts.page(params[:page])
+    @keyword = params[:keyword]
   end
 
   def new #新規投稿
