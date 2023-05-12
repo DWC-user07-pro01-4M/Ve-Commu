@@ -12,6 +12,9 @@ class Post < ApplicationRecord
 
   # ブックマークアソシエーション
   has_many :bookmarks, dependent: :destroy
+  def bookmark_by(end_user)
+    Bookmark.find_by(end_user_id: end_user.id, post_id: id)
+  end
 
   # キーワード検索
   def Post.search(keyword)
