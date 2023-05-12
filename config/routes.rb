@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     #end_users
     resources :end_users, only: [:index, :show, :edit, :update]
     #tags
-    resources :tags, only: [:index, :create, :edit, :update, :destroy]
+    resources :tags, only: [:index, :create, :update, :destroy]
     #comments
     resources :comments, only: [:index, :show, :destroy]
   end
