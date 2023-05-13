@@ -1,31 +1,42 @@
-<div class="container bg-light">
+<div class="container-field align-items-center">
+  <div class="row d-flex justify-content-center m-5">
+    <div class="col-7">
+      <div class="border border-white contents-area bg-white">
 
-  <div class="text-center mt-5"><h3><strong><%= flash[:notice] %></strong></h3></div>
+        <div class="text-center">
+            <h3><strong><%= flash[:notice] %></strong></h3>
+            <h3><strong class="border-bottom border-dark"><%= @end_user.nickname %>様のマイページ</strong></h3>
+        </div>
 
-  <h3 class="ml-5 mt-4 mb-5"><span class="border-bottom border-dark">マイページ</span></h3>
+          <div class="m-5">
 
-  <table class="table table-bordered contents-area mb-5">
-    <tbody>
-      <tr>
-        <th scope="row", class="table-light col-3 text-left">ニックネーム</th>
-        <td><%= @end_user.nickname %></td>
-      </tr>
-      <tr>
-        <th scope="row", class="table-light col-3 text-left">メールアドレス</th>
-        <td><%= @end_user.email %></td>
-      </tr>
-    </tbody>
-  </table>
+            <table class="table table-bordered contents-area mb-5">
+              <tbody>
+                <tr>
+                  <th scope="row", class="table-light col-3 text-left">ニックネーム</th>
+                  <td><%= @end_user.nickname %></td>
+                </tr>
+                <tr>
+                  <th scope="row", class="table-light col-3 text-left">メールアドレス</th>
+                  <td><%= @end_user.email %></td>
+                </tr>
+              </tbody>
+            </table>
 
+          </div>
 
-  <% if @end_user.nickname != "guestuser" %>
-    <div class="text-center">
-      <%= link_to "編集する", edit_end_user_path, class: "btn btn-success" %>
+          <div class="d-flex justify-content-around">
+              <% if @end_user.nickname != "guestuser" %>
+                <%= link_to "編集する", edit_end_user_path, class: "btn btn-success btn_lg" %>
+              <% end %>
+              <br>
+                <%= link_to "お気に入りを見る", bookmark_end_user_path, class: "btn btn-primary btn_lg" %>
+          </div>
+
+      </div>
     </div>
-  <% end %>
-
-  <div class="text-center">
-    <%= link_to "お気に入りを見る", bookmark_end_user_path, class: "btn btn-success" %>
   </div>
-
 </div>
+
+
+
