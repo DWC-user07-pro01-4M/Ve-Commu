@@ -18,17 +18,21 @@ Rails.application.routes.draw do
   # 会員
   devise_for :end_users,skip: [:passwords], controllers: {
     registrations: "public/registrations",
-    sessions: 'public/sessions'
+    sessions: "public/sessions"
   }
+  # ゲストログイン
+  devise_scope :end_users do
+    post "end_users/guest_sign_in", to: "public/sessions#guest_sign_in"
+  end
   #homes
   scope module: :public do
     root to: "homes#top"
-    get 'about' => 'homes#about'
+    get "about" => "homes#about"
     #end_users
     resources :end_users, only: [:show, :edit, :update] do
       collection do
-        get 'unsubscribe'
-        patch 'withdrawal'
+        get "unsubscribe"
+        patch "withdrawal"
       end
       # bookmark
       member do
@@ -43,7 +47,7 @@ Rails.application.routes.draw do
         resources :bookmarks, only: [:create, :destroy]
       end
       #search
-      get 'search' => 'posts#search'
+      get "search" => "posts#search"
 
   end
 
