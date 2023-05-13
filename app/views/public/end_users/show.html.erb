@@ -18,7 +18,7 @@
   </table>
 
 
-  <% if end_user.nickname != "guestuser" %>
+  <% if @end_user.nickname != "guestuser" %>
     <div class="text-center">
       <!--<= link_to "編集する", edit_end_user_path, class: "btn btn-success" %>-->
       <%= link_to "編集する", edit_end_user_path(end_user), class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_end_user_#{end_user.id}" %>
