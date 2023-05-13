@@ -16,6 +16,11 @@
               </div>
             </div>
             <br>
+
+             <div class="row">
+              <%= link_to 'ゲストログイン（閲覧用）', end_user_guest_sign_in_path, class: "btn btn-secondary btn-lg btn-block mb-3", method: :post %>
+            </div>
+
             <div class="row">
               <%= link_to "登録済みなのでログインする",new_end_user_session_path, class: "btn btn-primary btn-lg btn-block mb-3" %>
             </div>

@@ -45,6 +45,13 @@ class Public::SessionsController < Devise::SessionsController
     root_path
   end
 
+  # ゲストログイン
+  def guest_sign_in
+    end_user = EndUser.guest
+    sign_in end_user
+    redirect_to end_user_path(end_user), notice: "ゲストログインしました。"
+  end
+
   protected
 
   def configure_permitted_parameters

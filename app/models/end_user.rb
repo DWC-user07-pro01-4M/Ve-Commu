@@ -4,6 +4,14 @@ class EndUser < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # ゲストログイン
+  def self.guest
+    find_or_create_by!(nickname: "guestuser" ,email: "guest@example.com") do |end_user|
+      end_user.password = SecureRandom.urlsafe_base64
+      end_user.nickname = "guestuser"
+    end
+  end
+
   #バリデーション
   validates :nickname, length: { minimum: 2, maximum: 10 }, presence: true
 
