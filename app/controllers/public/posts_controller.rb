@@ -30,6 +30,11 @@ class Public::PostsController < ApplicationController
 
   def edit #投稿編集
     @post = Post.find(params[:id])
+    if @post.end_user == current_end_user
+      render :edit
+    else
+      redirect_to post_path, notice: "投稿者以外編集はできません。"
+    end
   end
 
   def update #投稿更新
@@ -48,9 +53,15 @@ class Public::PostsController < ApplicationController
   end
 
   private
-
   def post_params
     params.require(:post).permit(:facility_name, :address, :detailed_description, :image, tag_ids: [])
+  end
+
+  def ensure_end_user
+    @end_user = EndUser.find(params[:id])
+    if @end_user.nickname == "guestuser"
+      redirect_to end_user_path(current_end_user) , notice: "ゲストユーザーは編集画面へ遷移できません。"
+    end
   end
 
 end

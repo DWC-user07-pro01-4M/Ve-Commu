@@ -1,17 +1,24 @@
 <div class="container my-5 bg-light">
-  <div class="row mt-4 md-2">
+
+  <div class="row mt-5 md-5">
     <div class="col-md-10 mx-auto">
+      <%= render "error", post: @post %>
       <div class="text-center mt-5"><h3><strong><%= flash[:notice] %></strong></h3></div>
     </div>
   </div>
+
   <div class="row mt-5">
+
     <div class="col-md-5">
       <div class="mx-5 mb-5 ">
         <%= image_tag @post.get_image(300,300) %>
       </div>
     </div>
+
     <div class="col-md-7" style="text-left">
+
       <h3><span class="border-bottom border-dark">投稿情報詳細</span></h3>
+
       <table class="table table-borderless">
         <tbody>
 
@@ -23,7 +30,7 @@
                     <%= link_to "お気に入りに登録する", post_bookmarks_path(@post), method: :post, class: "btn btn-success btn-lg" %>
                   <% else %>
                     <%= link_to "お気に入りからはずす", post_bookmark_path(@post,@post.bookmark_by(current_end_user)), method: :delete, class: "btn btn-outline-success btn-lg" %>
-                <% end %>
+                  <% end %>
                 </div>
               <% end %>
             </th>
@@ -56,9 +63,12 @@
 
         </tbody>
       </table>
+
       <div class="my-5 ml-3">
-        <%= link_to "編集する", edit_post_path(@post.id), class: "btn btn-lg btn-success" %>
-        <%= link_to "削除する", post_path(@post.id), class: "btn btn-danger btn_lg", method: :delete, "data-confirm" => "本当に投稿を削除してよろしいですか?" %>
+        <% if @post.end_user == current_end_user %>
+          <%= link_to "編集する", edit_post_path(@post.id), class: "btn btn-warning btn-lg" %>
+          <%= link_to "削除する", post_path(@post.id), class: "btn btn-danger btn_lg", method: :delete, "data-confirm" => "本当に投稿を削除してよろしいですか?" %>
+        <% end %>
       </div>
 
       <table>
@@ -70,7 +80,7 @@
               <td><%= comment.comment %></td>
               <td>
                 <% if comment.end_user == current_end_user %>
-                  <%= link_to "削除", post_comment_path(comment.post,comment), method: :delete, class: "btn btn-sm btn-danger p-0 p-1", style: "font-size: 8px;" %>
+                  <%= link_to "削除", post_comment_path(comment.post,comment), method: :delete, class: "btn btn-danger btn-lg" %>
                 <% end %>
               </td>
             </tr>
@@ -89,5 +99,6 @@
       </table>
 
     </div>
+
   </div>
 </div>
