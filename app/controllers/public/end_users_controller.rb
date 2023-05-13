@@ -1,5 +1,6 @@
 class Public::EndUsersController < ApplicationController
     before_action :authenticate_end_user!
+    before_action :ensure_guest_end_user, only: [:edit]
 
     def show
         @end_user = EndUser.find(current_end_user.id)
@@ -37,6 +38,13 @@ class Public::EndUsersController < ApplicationController
     private
     def end_user_params
         params.require(:end_user).permit(:nickname, :email)
+    end
+
+    def ensure_guest_end_user
+        @end_user = EndUser.find(params[:id])
+        if @end_user.nickname == "guestuser"
+            redirect_to end_user_path(current_end_user) , notice: "ゲストユーザーは編集画面へ遷移できません。"
+        end
     end
 
 end
