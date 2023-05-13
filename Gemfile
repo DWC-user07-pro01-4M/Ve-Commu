@@ -63,5 +63,5 @@ gem 'dotenv-rails'
 gem 'devise'
 gem 'kaminari'
 gem 'enum_help'
-gem 'whenever', require: false
 gem 'bootstrap5-kaminari-views'
+gem 'whenever', require: false
