@@ -10,25 +10,27 @@
         </div>
 
           <div class="m-5">
-            <% if @bookmarks.length != 0 %>
-              <% @bookmarks.each do |post| %>
-                <div id="collapse1" class="panel-collapse collapse">
-                  <div class="panel-body">
-                <div class="d-flex justify-content-between border-bottom border-dark">
-                  <div class="py-1"><%= image_tag post.get_image(50,50) %></div>
-                  <div class="py-5"><%= post.end_user.nickname %></div>
-                  <div class="py-5"><%= post.facility_name %></div>
-                  <div class="py-5"><%= post.address %></div>
-                  <div class="py-5"><%= post.detailed_description %></div>
-                  <div class="py-5"><%= link_to "投稿を確認する", post_path(post.id), class: "btn btn-warning btn_lg" %></div>
-                </div>
-              <% end %>
-            <% else %>
-              <div class="text-center">
-                お気に入りはまだ登録されていません。
+            <div id="collapse1" class="panel-collapse collapse">
+              <div class="panel-body">
+
+                <% if @bookmarks.length != 0 %>
+                  <% @bookmarks.each do |post| %>
+                    <div class="d-flex justify-content-between border-bottom border-dark">
+                      <div class="py-1"><%= image_tag post.get_image(50,50) %></div>
+                      <div class="py-5"><%= post.end_user.nickname %></div>
+                      <div class="py-5"><%= post.facility_name %></div>
+                      <div class="py-5"><%= post.address %></div>
+                      <div class="py-5"><%= post.detailed_description %></div>
+                      <div class="py-5"><%= link_to "投稿を確認する", post_path(post.id), class: "btn btn-warning btn_lg" %></div>
+                    </div>
+                  <% end %>
+                <% else %>
+                  <div class="text-center">
+                    お気に入りはまだ登録されていません。
+                  </div>
+                <% end %>
+
               </div>
-            <% end %>
-            </div>
             </div>
           </div>
 
