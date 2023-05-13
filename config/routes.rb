@@ -21,8 +21,8 @@ Rails.application.routes.draw do
     sessions: "public/sessions"
   }
   # ゲストログイン
-  devise_scope :end_users do
-    post "end_users/guest_sign_in", to: "public/sessions#guest_sign_in"
+  devise_scope :end_user do
+    post "end_user/guest_sign_in", to: "public/sessions#guest_sign_in"
   end
   #homes
   scope module: :public do
