@@ -33,6 +33,7 @@ class Public::EndUsersController < ApplicationController
         @end_user = EndUser.find(params[:id])
         bookmarks = Bookmark.where(end_user_id: current_end_user.id).pluck(:post_id)
         @bookmarks = Post.find(bookmarks)
+        @bookmarks = Kaminari.paginate_array(@bookmaks).page(params[:page])
     end
 
     private

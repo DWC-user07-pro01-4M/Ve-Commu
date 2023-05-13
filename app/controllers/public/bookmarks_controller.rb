@@ -1,10 +1,6 @@
 class Public::BookmarksController < ApplicationController
   before_action :authenticate_end_user!
 
-  def index
-    @bookmarks = Bookmark.page(params[:page])
-  end
-
   def create
     @bookmark = current_end_user.bookmarks.build(bookmark_params)
     @post = @bookmark.post
