@@ -1,24 +1,31 @@
-<div class="like-index text-center">
-  <div>
-    <%= @end_user.nickname %>様のお気に入り
-  </div>
-  <% if @bookmarks.length != 0 %>
-    <% @bookmarks.each do |post| %>
-      <div class="recipe-contents d-flex">
+<div class="container-field align-items-center">
+  <div class="row d-flex justify-content-center m-5">
+    <div class="col-5">
+      <div class="border border-white contents-area bg-white">
 
-        <div class="bookmarks">
-
-          <div class="content">
-            <span><%= image_tag post.get_image(70,70), class: "index-img"  %></span>
-            投稿者: <span><%= post.end_user.nickname %></span>
-            施設名: <span><%= post.facility_name %></span>
-            施設住所: <span><%= post.address %></span>
-            施設住所: <span><%= post.detailed_description %></span>
-          </div>
+        <div class="text-center">
+          <%= @end_user.nickname %>様のお気に入り
         </div>
+
+          <div class="m-5">
+            <% if @bookmarks.length != 0 %>
+              <% @bookmarks.each do |post| %>
+                <div class="d-flex justify-content-start mb-5">
+                  <div><%= image_tag post.get_image(70,70) %></div>
+                  <div><%= post.end_user.nickname %></div>
+                  <div><%= post.facility_name %></div>
+                  <div><%= post.address %></div>
+                  <div><%= post.detailed_description %></div>
+                </div>
+              <% end %>
+            <% else %>
+              <div class="text-center">
+                お気に入りはまだ登録されていません。
+              </div>
+            <% end %>
+          </div>
+
       </div>
-    <% end %>
-  <% else %>
-    お気に入りはまだ登録されていません
-  <% end %>
+    </div>
+  </div>
 </div>
