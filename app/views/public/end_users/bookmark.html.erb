@@ -1,22 +1,22 @@
 <div class="container-field align-items-center">
   <div class="row d-flex justify-content-center m-5">
-    <div class="col-10">
+    <div class="col-7">
       <div class="border border-light contents-area bg-light">
 
         <div class="text-center">
-          <%= @end_user.nickname %>様のお気に入り
+          <h3><strong class="border-bottom border-dark"><%= @end_user.nickname %>様のお気に入り</strong></h3>
         </div>
 
           <div class="m-5">
             <% if @bookmarks.length != 0 %>
               <% @bookmarks.each do |post| %>
-                <div class="d-flex justify-content-around border-bottom border-dark">
-                  <div><%= image_tag post.get_image(70,70) %></div>
-                  <div><%= post.end_user.nickname %></div>
-                  <div><%= post.facility_name %></div>
-                  <div><%= post.address %></div>
-                  <div><%= post.detailed_description %></div>
-                  <div><%= link_to "投稿を確認する", post_path(post.id), class: "btn btn-warning btn_lg" %></div>
+                <div class="d-flex justify-content-between border-bottom border-dark">
+                  <div class="py-1"><%= image_tag post.get_image(70,70) %></div>
+                  <div class="py-5"><%= post.end_user.nickname %></div>
+                  <div class="py-5"><%= post.facility_name %></div>
+                  <div class="py-5"><%= post.address %></div>
+                  <div class="py-5"><%= post.detailed_description %></div>
+                  <div class="py-5"><%= link_to "投稿を確認する", post_path(post.id), class: "btn btn-warning btn_lg" %></div>
                 </div>
               <% end %>
             <% else %>
