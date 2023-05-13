@@ -1,58 +1,52 @@
 <div class="container-field align-items-center">
-
-  <div class="text-center mt-5"><h3><strong><%= flash[:notice] %></strong></h3></div>
-
   <div class="row d-flex justify-content-center m-5">
-    <div class="col-5">
-      <div class="border border-warning contents-area bg-light">
+    <div class="col-7">
+      <div class="border border-warning contents-area bg-white">
 
-        <div class="bg-warning p-2 text-light text-center">
-          <strong>投稿情報編集</strong>
-        </div>
-
-        <%= form_with model: @post,url: post_path(@post.id) do |f| %>
-          <div class="form-group m-5">
-            <%= f.label :投稿者 %>
-            <%= @post.end_user.nickname %>
+          <div class="bg-warning text-light text-center">
+            <h3><strong>投稿情報編集</strong></h3>
+          </div>
+            <%= render "error", post: @post %>
+          <div class="text-center">
+            <h3><strong><%= flash[:notice] %></strong></h3>
           </div>
 
-          <div class="form-group m-5">
-            <%= f.label :施設画像 %>
-            <%= f.file_field :image, accept: "image/*" %>
-          </div>
-          <div class="form-group m-5">
-            <%= f.label :施設名 %>
-            <%= f.text_field :facility_name, class: "form-control", :placeholder => "施設名" %>
-          </div>
-          <div class="form-group m-5">
-            <%= f.label :施設住所 %>
-            <%= f.text_field :address, class: "form-control", :placeholder => "施設住所" %>
-          </div>
-          <div class="form-group m-5">
-            <%= f.label :詳細説明 %>
-            <%= f.text_area :detailed_description, class: "form-control", :placeholder => "詳細を記入してください" %>
-          </div>
+            <%= form_with model: @post, url: post_path(@post.id) do |f| %>
+              <div class="form-group m-5">
+                <%= f.label :施設画像 %>
+                <%= f.file_field :image, accept: "image/*" %>
+              </div>
+              <div class="form-group m-5">
+                <%= f.label :施設名 %>
+                <%= f.text_field :facility_name, class: "form-control", :placeholder => "施設名" %>
+              </div>
+              <div class="form-group m-5">
+                <%= f.label :施設住所 %>
+                <%= f.text_field :address, class: "form-control", :placeholder => "施設住所" %>
+              </div>
+              <div class="form-group m-5">
+                <%= f.label :詳細説明 %>
+                <%= f.text_area :detailed_description, class: "form-control", :placeholder => "詳細を記入してください" %>
+              </div>
 
-           <div class="form-group m-5">タグ</div>
-            <div class="row d-flex justify-content-start m-5">
-                <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :tag_type) do |tag| %>
-                  <div class="form-check form-check-inline flex flex-wrap">
-                    <%= tag.label do %>
-                      <%= tag.check_box %>
-                      <%= tag.text %>
-                    <% end %>
-                  </div>
-                <% end %>
-            </div>
+              <div class="form-group m-5">タグ</div>
+                <div class="row d-flex justify-content-start m-5">
+                  <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :tag_type) do |tag| %>
+                    <div class="form-check form-check-inline flex flex-wrap">
+                      <%= tag.label do %>
+                        <%= tag.check_box %>
+                        <%= tag.text %>
+                      <% end %>
+                    </div>
+                  <% end %>
+                </div>
 
-            <div class="my-5 ml-5">
-              <%= f.submit "情報を更新する", class: "btn btn-lg btn-success" %>
-        <% end %>
-              <%= link_to "前のページへ戻る", post_path, class: "btn btn-lg btn-secondary"%>
-            </div>
+              <div class="form-group text-center">
+                <%= f.submit "情報を更新する", class: "btn btn-warning btn_lg" %>
+              </div>
+            <% end %>
 
       </div>
     </div>
   </div>
-
 </div>
