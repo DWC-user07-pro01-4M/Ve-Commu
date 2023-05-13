@@ -19,7 +19,7 @@ class Public::SessionsController < Devise::SessionsController
     if @end_user.is_deleted == false
       super
     else
-      redirect_to new_end_user_registration_path
+      redirect_to new_end_user_registration_path, notice: "退会済みの方はログインできません。新規登録を行なってください。"
     end
   end
 
