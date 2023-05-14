@@ -1,5 +1,5 @@
 # Ve-Commu
-![ve_commu](https://github.com/DWC-user07-pro01-4M/Ve-Commu/assets/124852092/1f88ce94-c990-4e42-b1b0-cb80b98e299b)
+![ve_commu](https://github.com/DWC-user07-pro01-4M/Ve-Commu/assets/124852092/6b099882-6dbb-4e79-b001-47a6bfaf04bf)
 ### サイトテーマ
 様々な思想・宗教上の理由から食事に制限のある方々が、<br>
 食文化に対応、または対応してくれる飲食店や宿泊施設を<br>
@@ -38,7 +38,12 @@ Ve-Commu(ヴィーコミュ)はそんな発想から生まれたコミュニテ�
 また相談、交渉により対応をしてくれた施設をユーザーが共有したいときに利用できます。
 
 ## 設計書
-![Ve_Commu_ER-1](https://github.com/DWC-user07-pro01-4M/Ve-Commu/assets/124852092/b0171183-6045-49e9-8f86-c5d58bd8c8cf)
+* ER図</br>
+![ve_commu_er](https://github.com/DWC-user07-pro01-4M/Ve-Commu/assets/124852092/c092cd01-9d17-49ef-a6a7-9344d753c719)
+* テーブル定義書</br>
+https://docs.google.com/spreadsheets/d/1xIf2JTtK0hWZwK1NNK-RFSDIh5LOmPg1/edit?usp=sharing
+* アプリケーション詳細設計書</br>
+https://docs.google.com/spreadsheets/d/1Rl7cGYJqYhMKqHqujCe9VE9xOM0oYX6I/edit?usp=sharing
 
 ## 開発環境
 - OS：Linux(CentOS)
