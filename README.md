@@ -38,7 +38,7 @@ Ve-Commu(ヴィーコミュ)はそんな発想から生まれたコミュニテ�
 また相談、交渉により対応をしてくれた施設をユーザーが共有したいときに利用できます。
 
 ## 設計書
-[Ve_Commu_ER.pdf](https://github.com/DWC-user07-pro01-4M/Ve-Commu/files/11471315/Ve_Commu_ER.pdf)
+![Ve_Commu_ER-1](https://github.com/DWC-user07-pro01-4M/Ve-Commu/assets/124852092/b0171183-6045-49e9-8f86-c5d58bd8c8cf)
 
 ## 開発環境
 - OS：Linux(CentOS)
