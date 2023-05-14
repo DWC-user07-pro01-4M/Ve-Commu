@@ -5,66 +5,17 @@
       <div class="row">
         <div class="col-10 mx-auto">
           <div class="text-center mt-5"><h3><strong><%= flash[:notice] %></strong></h3></div>
-          <h3><strong class="border-bottom border-dark">投稿一覧</strong></h3>
+            <h3><strong class="border-bottom border-dark">投稿一覧</strong></h3>
 
-          <div class="col-12 mb-3 text-right">
-            <%= link_to new_post_path, class: "text-decoration-none h2" do %>
-    　          <i class="fas fa-plus-circle fa-lg" style="color: #3cb371;"></i>
-    　        <% end %>
-          </div>
-
-          <%= form_with url: posts_path, method: :get, local: true, class: 'boards__searchForm' do |f|%>
-            <%= select_tag :tag_id,
-              options_from_collection_for_select(Tag.all, :id, :tag_type, params[:tag_id]),
-                {
-                  prompt: 'タグで絞り込み検索',
-                  onchange: 'submit(this.form);'
-                }
-            %>
-
-          <div class="search_form" style="border-radius: 0!important;">
-              <div class="input-group no-border">
-                <%= f.text_field :keyword, value: @keyword, class: "form-control search-control", placeholder: "店名か住所を入力してください" %>
-                <%= button_tag type: "submit", class: "btn btn-secondary search-btn" do %>
-                  <i class="fas fa-search"></i>
-                <% end %>
+              <div class="col-12 mb-3 text-right">
+                <%= link_to new_post_path, class: "text-decoration-none h2" do %>
+    　             <i class="fas fa-plus-circle fa-lg" style="color: #3cb371;"></i>
+    　           <% end %>
               </div>
-          </div>
-            <% end %>
 
-          <table class="table table-hover text-center contents-area">
-            <thead>
-               <tr>
-                <th>投稿者</th>
-                <th>施設画像</th>
-                <th>施設名</th>
-                <th>施設住所</th>
-                <th>詳細説明</th>
-                <th>タグ</th>
-                <th colspan="3"></th>
-              </tr>
-            </thead>
-            <% @posts.each do |post| %>
-              <tbody>
-                <tr>
-                  <td><%= post.end_user.nickname %></td>
-                  <td><%= image_tag post.get_image(50,50) %></td>
-                  <td><%= post.facility_name %></td>
-                  <td><%= post.address %></td>
-                  <td><%= post.detailed_description %></td>
+              <%= render "search", post: @post %>
 
-                  <td>
-                    <% post.tags.each do |tag| %>
-                      <%= tag.tag_type %>
-                    <% end %>
-                  </td>
-
-                  <td><%= link_to "投稿を確認する", post_path(post.id), class: "btn btn-warning btn_lg" %></td>
-                  <td></td>
-                </tr>
-              </tbody>
-            <% end %>
-          </table>
+              <%= render "index", post: @post %>
 
             <div class="pagination justify-content-center mt-3">
               <%= paginate @posts, theme: "bootstrap-5" %>

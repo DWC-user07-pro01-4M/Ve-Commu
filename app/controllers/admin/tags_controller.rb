@@ -3,8 +3,7 @@ class Admin::TagsController < ApplicationController
 
   def index #タグ一覧
     @tag = Tag.new
-    @tags = Tag.all
-    @tags = Kaminari.paginate_array(@tags).page(params[:page])
+    @tags = Tag.page(params[:page])
   end
 
   def create #タグ作成
@@ -13,6 +12,7 @@ class Admin::TagsController < ApplicationController
       redirect_to admin_tags_path, notice: "新しいタグを追加しました。"
     else
       @tags = Tag.all
+      @tags = Kaminari.paginate_array(@tags).page(params[:page])
       render :index, notice: "タグの追加に失敗しました。"
     end
   end
@@ -38,7 +38,7 @@ class Admin::TagsController < ApplicationController
 
   private
   def tag_params
-    params.require(:tag).permit(:tag_type, :tag_id, tag_ids: [])
+    params.require(:tag).permit(:tag_type, tag_ids: [])
   end
 
 end
