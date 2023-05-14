@@ -3,8 +3,7 @@ class Admin::TagsController < ApplicationController
 
   def index #タグ一覧
     @tag = Tag.new
-    @tags = Tag.all
-    @tags = Kaminari.paginate_array(@tags).page(params[:page])
+    @tags = Tag.page(params[:page])
   end
 
   def create #タグ作成
