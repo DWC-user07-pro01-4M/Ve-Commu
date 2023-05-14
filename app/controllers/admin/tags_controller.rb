@@ -13,6 +13,7 @@ class Admin::TagsController < ApplicationController
       redirect_to admin_tags_path, notice: "新しいタグを追加しました。"
     else
       @tags = Tag.all
+      @tags = Kaminari.paginate_array(@tags).page(params[:page])
       render :index, notice: "タグの追加に失敗しました。"
     end
   end
