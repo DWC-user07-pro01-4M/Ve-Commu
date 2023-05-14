@@ -1,0 +1,10 @@
+// Bootstrap導入
+@use '~bootstrap/scss/bootstrap';
+// FontAwesomeの導入
+@use '~@fortawesome/fontawesome-free/scss/fontawesome';
+// 他レイアウト
+footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}

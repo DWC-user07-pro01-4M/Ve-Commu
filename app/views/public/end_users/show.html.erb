@@ -1,0 +1,42 @@
+<div class="container-field align-items-center">
+  <div class="row d-flex justify-content-center m-5">
+    <div class="col-7">
+      <div class="border border-white contents-area bg-white">
+
+        <div class="text-center">
+            <h3><strong><%= flash[:notice] %></strong></h3>
+            <h3><strong class="border-bottom border-dark"><%= @end_user.nickname %>様のマイページ</strong></h3>
+        </div>
+
+          <div class="m-5">
+
+            <table class="table table-bordered contents-area mb-5">
+              <tbody>
+                <tr>
+                  <th scope="row", class="table-light col-3 text-left">ニックネーム</th>
+                  <td><%= @end_user.nickname %></td>
+                </tr>
+                <tr>
+                  <th scope="row", class="table-light col-3 text-left">メールアドレス</th>
+                  <td><%= @end_user.email %></td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+
+          <div class="row justify-content-center mb-3">
+            <% if @end_user.nickname != "guestuser" %>
+              <div class="col-2 ml-5">
+                <%= link_to "編集する", edit_end_user_path, class: "btn btn-success btn_lg" %>
+              </div>
+            <% end %>
+              <div class="col-2 col-offset-1">
+                <%= link_to "お気に入りを見る", bookmark_end_user_path, class: "btn btn-primary btn_lg" %>
+              </div>
+          </div>
+
+      </div>
+    </div>
+  </div>
+</div>

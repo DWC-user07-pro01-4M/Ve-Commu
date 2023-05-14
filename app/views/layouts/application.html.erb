@@ -1,16 +1,37 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>VeCommuApp</title>
+    <title>Ve-Commu</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!--Bootstrap導入-->
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!--ファビコン-->
+    <%= favicon_link_tag "favicon-16x16.png" %>
   </head>
 
-  <body>
-    <%= yield %>
-  </body>
+    <header>
+      <%= render 'layouts/header' %>
+    </header>
+    <body>
+        <%= yield %>
+    </body>
+    <footer>
+      <%= render 'layouts/footer' %>
+    </footer>
+
 </html>
+
+<!--背景画像-->
+<style>
+  body {
+    background-image: url(<%= asset_path "background.jpg" %>);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+}
+</style>
