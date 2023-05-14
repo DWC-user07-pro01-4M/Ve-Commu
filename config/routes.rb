@@ -5,8 +5,6 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
   namespace :admin do
-    #homes
-    root to: "homes#top"
     #end_users
     resources :end_users, only: [:index, :edit, :update]
     #tags
