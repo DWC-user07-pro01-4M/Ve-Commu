@@ -34,39 +34,7 @@
                   <% end %>
                 </div>
 
-          <table class="table table-hover text-center contents-area">
-            <thead>
-               <tr>
-                <th>投稿者</th>
-                <th>施設画像</th>
-                <th>施設名</th>
-                <th>施設住所</th>
-                <th>詳細説明</th>
-                <th>タグ</th>
-                <th colspan="3"></th>
-              </tr>
-            </thead>
-            <% @posts.each do |post| %>
-              <tbody>
-                <tr>
-                  <td><%= post.end_user.nickname %></td>
-                  <td><%= image_tag post.get_image(50,50) %></td>
-                  <td><%= post.facility_name %></td>
-                  <td><%= post.address %></td>
-                  <td><%= post.detailed_description %></td>
-
-                  <td>
-                    <% post.tags.each do |tag| %>
-                      <%= tag.tag_type %>
-                    <% end %>
-                  </td>
-
-                  <td><%= link_to "投稿を確認する", post_path(post.id), class: "btn btn-warning btn_lg" %></td>
-                  <td></td>
-                </tr>
-              </tbody>
-            <% end %>
-          </table>
+<%= render "index", post: @post %>
 
             <div class="pagination justify-content-center mt-3">
               <%= paginate @posts, theme: "bootstrap-5" %>
