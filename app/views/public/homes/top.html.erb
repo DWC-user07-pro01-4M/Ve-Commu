@@ -18,14 +18,14 @@
             <br>
 
              <div class="row">
-              <%= link_to 'ゲストログイン（閲覧用）', end_user_guest_sign_in_path, class: "btn btn-secondary btn-lg btn-block mb-3", method: :post %>
+              <%= link_to 'ゲストログイン（閲覧用）', end_user_guest_sign_in_path, class: "btn btn-secondary btn-lg btn-block mb-3 sign_in", method: :post %>
             </div>
 
             <div class="row">
-              <%= link_to "登録済みなのでログインする",new_end_user_session_path, class: "btn btn-primary btn-lg btn-block mb-3" %>
+              <%= link_to "登録済みなのでログインする",new_end_user_session_path, class: "btn btn-primary btn-lg btn-block mb-3 sign_in" %>
             </div>
             <div class="row">
-              <%= link_to "未登録なので新規登録する",new_end_user_registration_path, class: "btn btn-success btn-lg btn-block mb-3" %>
+              <%= link_to "未登録なので新規登録する",new_end_user_registration_path, class: "btn btn-success btn-lg btn-block mb-3 sign_up" %>
             </div>
           </div>
         </div>
