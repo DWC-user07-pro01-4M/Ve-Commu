@@ -13,7 +13,7 @@ class Admin::TagsController < ApplicationController
     else
       @tags = Tag.all
       @tags = Kaminari.paginate_array(@tags).page(params[:page])
-      render :index, notice: "タグの追加に失敗しました。"
+      render :index #フォームが空の状態ではバリデーションに引っかかり、一覧ページにとどまる
     end
   end
 
@@ -26,7 +26,7 @@ class Admin::TagsController < ApplicationController
     if @tag.update(tag_params)
       redirect_to admin_tags_path, notice: "タグの更新に成功しました。"
     else
-      render :edit, notice: "タグの更新に失敗しました。"
+      render :edit #フォームが空の状態ではバリデーションに引っかかり、編集ページにとどまる
     end
   end
 
