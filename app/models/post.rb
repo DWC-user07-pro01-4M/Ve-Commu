@@ -35,6 +35,7 @@ class Post < ApplicationRecord
     end
     image.variant(resize: "#{width}x#{height}^", gravity: "center", crop: "#{width}x#{height}+0+0").processed
   end
+
   # バリデーション
   validates :facility_name, presence: true
   validates :address, presence: true

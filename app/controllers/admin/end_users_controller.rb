@@ -14,7 +14,7 @@ class Admin::EndUsersController < ApplicationController
     if @end_user.update(end_user_params)
       redirect_to admin_end_users_path, notice: "会員情報の更新に成功しました。"
     else
-      render :edit, notice: "会員情報の更新に失敗しました。"
+      render :edit #フォームが空の状態ではバリデーションに引っかかり、編集ページにとどまる
     end
   end
 
