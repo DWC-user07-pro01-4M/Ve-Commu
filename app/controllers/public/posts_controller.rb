@@ -18,7 +18,7 @@ class Public::PostsController < ApplicationController
     if @post.save
       redirect_to post_path(@post), notice: "ありがとうございます。情報のシェアに成功しました。"
     else
-      render :new, notice: "残念ながら情報のシェアに失敗しました。"
+      render :new #投稿失敗時はnewへ遷移
     end
   end
 
@@ -42,7 +42,7 @@ class Public::PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to post_path(@post), notice: "シェア内容の更新に成功しました。"
     else
-      render :edit, notice: "内容の更新に失敗しました。"
+      render :edit #更新失敗時はeditへ遷移
     end
   end
 
