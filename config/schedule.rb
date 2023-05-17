@@ -19,19 +19,7 @@
 
 # Learn more: http://github.com/javan/whenever
 
-
-
-
-# set :output, 'log/crontab.log'
-# set :environment, ENV['RAILS_ENV']
-
-# every 1.minute do
-#   rake "whenever_test:test"
-# end
-
-
-
-
+# 5分おきにゲストユーザーの投稿は全て削除される
 require File.expand_path(File.dirname(__FILE__) + "/environment")
 rails_env = Rails.env.to_sym
 set :environment, rails_env
