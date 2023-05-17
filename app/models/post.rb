@@ -16,13 +16,13 @@ class Post < ApplicationRecord
     Bookmark.find_by(end_user_id: end_user.id, post_id: id)
   end
 
-  # キーワード検索
+  # キーワード&タグ検索
   def Post.search(keyword)
-      Post.where("facility_name LIKE(?) OR address LIKE(?)", "%#{keyword}%", "%#{keyword}%")
+      Post.where("facility_name LIKE(?) OR address LIKE(?) OR detailed_description LIKE(?)", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%")
   end
   def search(keyword)
     if keyword.present?
-       where("facility_name LIKE(?) OR address LIKE(?)", "%#{keyword}%", "%#{keyword}%")
+       where("facility_name LIKE(?) OR address LIKE(?) OR detailed_description LIKE(?)", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%")
     end
   end
 
