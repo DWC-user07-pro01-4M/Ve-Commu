@@ -19,12 +19,16 @@
 
 # Learn more: http://github.com/javan/whenever
 
-
-
-
-set :output, 'log/crontab.log'
-set :environment, ENV['RAILS_ENV']
-
-every 1.minute do
-  rake "whenever_test:test"
+# 5分おきにゲストユーザーの投稿は全て削除される
+require File.expand_path(File.dirname(__FILE__) + "/environment")
+rails_env = Rails.env.to_sym
+set :environment, rails_env
+set :output, 'log/cron.log'
+every 5.minute do
+  begin
+    runner "Batch::DataReset.data_reset"
+  rescue => e
+    Rails.logger.error("aborted rails runner")
+    raise e
+  end
 end
