@@ -1,20 +1,20 @@
 class Admin::EndUsersController < ApplicationController
   before_action :authenticate_admin!
 
-  def index #会員一覧
+  def index
     @end_users = EndUser.page(params[:page])
   end
 
-  def edit #会員編集
+  def edit
     @end_user = EndUser.find(params[:id])
   end
 
-  def update #会員情報更新
+  def update
     @end_user = EndUser.find(params[:id])
     if @end_user.update(end_user_params)
       redirect_to admin_end_users_path, notice: "会員情報の更新に成功しました。"
     else
-      render :edit #フォームが空の状態ではバリデーションに引っかかり、編集ページにとどまる
+      render :edit
     end
   end
 

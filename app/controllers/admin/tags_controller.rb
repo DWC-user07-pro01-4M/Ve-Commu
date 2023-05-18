@@ -1,36 +1,36 @@
 class Admin::TagsController < ApplicationController
   before_action :authenticate_admin!
 
-  def index #タグ一覧
+  def index
     @tag = Tag.new
     @tags = Tag.page(params[:page])
   end
 
-  def create #タグ作成
+  def create
     @tag = Tag.new(tag_params)
     if @tag.save
       redirect_to admin_tags_path, notice: "新しいタグを追加しました。"
     else
       @tags = Tag.all
       @tags = Kaminari.paginate_array(@tags).page(params[:page])
-      render :index #フォームが空の状態ではバリデーションに引っかかり、一覧ページにとどまる
+      render :index
     end
   end
 
-  def edit #タグ編集
+  def edit
     @tag = Tag.find(params[:id])
   end
 
-  def update #タグ更新
+  def update
     @tag = Tag.find(params[:id])
     if @tag.update(tag_params)
       redirect_to admin_tags_path, notice: "タグの更新に成功しました。"
     else
-      render :edit #フォームが空の状態ではバリデーションに引っかかり、編集ページにとどまる
+      render :edit
     end
   end
 
-  def destroy #タグ削除
+  def destroy
     tag = Tag.find(params[:id])
     tag.destroy
     redirect_to admin_tags_path, notice: "タグを削除しました。"
