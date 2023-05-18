@@ -13,7 +13,6 @@ module VeCommuApp
 
     # 日本語化のために追記
     config.i18n.default_locale = :ja
-    config.i18n.load_path += Dir[Rails.root.join('config/locales/ja.yml').to_s]
     # バッチ処理のために追記
     config.paths.add 'lib', eager_load: true
 
