@@ -18,7 +18,7 @@ class Public::EndUsersController < ApplicationController
         if @end_user.update(end_user_params)
             redirect_to end_user_path(current_end_user.id), notice: "編集に成功しました。"
         else
-            render :edit #フォームが空の状態ではバリデーションに引っかか編集画面にとどまる
+            render :edit
         end
     end
 
