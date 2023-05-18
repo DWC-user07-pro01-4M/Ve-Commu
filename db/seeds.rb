@@ -14,15 +14,6 @@ Admin.create!(
   password: '111-111'
 )
 
-# 会員
-30.times do |n|
-EndUser.create!(
-      email: "ve-commu#{n + 1}@portfolio.com",
-      password: "111-111",
-      nickname: "お野菜大好きマン"
-    )
-end
-
 # 投稿用会員
 end_users = EndUser.create!(
   [
