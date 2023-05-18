@@ -22,7 +22,7 @@
 # 5分おきにゲストユーザーの投稿は全て削除される
 require File.expand_path(File.dirname(__FILE__) + "/environment")
 rails_env = Rails.env.to_sym
-set :environment, rails_env
+set :environment, :production
 set :output, 'log/cron.log'
 every 5.minute do
   begin
