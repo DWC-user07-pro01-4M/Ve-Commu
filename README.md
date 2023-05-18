@@ -53,5 +53,5 @@ https://docs.google.com/spreadsheets/d/1Rl7cGYJqYhMKqHqujCe9VE9xOM0oYX6I/edit?us
 - IDE：Cloud9
 
 ## 使用素材
-- 「photoAC写真の素材フリーサイト」を利用しました。
-- 「かわいいフリー素材集いらすとや」を利用しました。
+- [photoAC写真の素材フリーサイト](https://www.photo-ac.com/)を利用しました。
+- [かわいいフリー素材集いらすとや](https://www.irasutoya.com/)を利用しました。
