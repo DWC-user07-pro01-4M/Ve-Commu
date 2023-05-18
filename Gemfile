@@ -65,7 +65,7 @@ gem 'kaminari'
 gem 'enum_help'
 gem 'bootstrap5-kaminari-views'
 gem 'whenever', require: false
-
+gem 'rails-i18n'
 
 gem 'dotenv-rails'
 group :production do
