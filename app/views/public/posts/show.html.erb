@@ -4,6 +4,7 @@
     <div class="col-md-10 mx-auto">
       <%= render "error", post: @post %>
       <div class="text-center mt-5"><h3><strong><%= flash[:notice] %></strong></h3></div>
+      <div class="text-center mt-5"><h3><strong><%= flash[:alert] %></strong></h3></div>
     </div>
   </div>
 
@@ -75,31 +76,15 @@
         <tbody>
             <tr>
               <td>
-                <%= form_with(model: [@post, @comment], local: true) do |f| %>
-                  <%= f.text_area :comment, placeholder: "コメントをここに", class: "form-control", size: "80x5" %>
-                  <br>
-                  <%= f.submit "送信" %>
-                <% end %>
+                <div class="new-comment">
+                  <%= render 'comment_form', post: @post, comment: @comment %>
+                </div>
               </td>
             </tr>
 
-            <% if @post.comments.present? %>
-              <p>コメント件数：<%= @post.comments.count %></p>
-                <% @comments.each do |comment| %>
-                  <tr class="row mt-5 my-5 ml-3">
-                    <td><%= comment.end_user.nickname %></td>
-                    <td><%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %></td>
-                    <td><%= comment.comment %></td>
-                    <td>
-                      <% if comment.end_user == current_end_user %>
-                        <%= link_to "削除", post_comment_path(comment.post,comment), class: "btn btn-danger btn-lg", method: :delete, data: {confirm: "本当に削除しますか？"} %>
-                      <% end %>
-                    </td>
-                  </tr>
-                <% end %>
-            <% else %>
-                <p>コメントはまだありません</p>
-            <% end %>
+              <div id="comments_area">
+                <%= render 'post_comments', post: @post %>
+              </div>
         </tbody>
       </table>
 

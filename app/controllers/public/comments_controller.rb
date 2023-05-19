@@ -11,7 +11,7 @@ class Public::CommentsController < ApplicationController
     # redirect_to request.referer
       redirect_to post_path(@post), notice: "コメントを投稿しました。"
     else
-      render :show
+      redirect_to request.referer
     end
   end
 
