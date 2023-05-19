@@ -4,6 +4,7 @@
     <div class="col-md-10 mx-auto">
       <%= render "error", post: @post %>
       <div class="text-center mt-5"><h3><strong><%= flash[:notice] %></strong></h3></div>
+      <div class="text-center mt-5"><h3><strong><%= flash[:alert] %></strong></h3></div>
     </div>
   </div>
 
@@ -73,28 +74,16 @@
 
       <table>
         <tbody>
-          <% @comments.each do |comment| %>
-            <tr div class="row mt-5 my-5 ml-3">
-              <td><%= comment.end_user.nickname %></td>
-              <td></td><td></td><td></td><td></td><td></td><td></td>
-              <td><%= comment.comment %></td>
-              <td>
-                <% if comment.end_user == current_end_user %>
-                  <%= link_to "削除", post_comment_path(comment.post,comment), method: :delete, class: "btn btn-danger btn-lg" %>
-                <% end %>
-              </td>
-            </tr>
-          <% end %>
-
-            <tr>
-              <td>
-                <%= form_with(model: [@post, @comment]) do |f| %>
-                  <%= f.text_area :comment, placeholder: "コメントをここに", class: "form-control", size: "80x5" %>
-                  <br>
-                  <%= f.submit "送信" %>
-                <% end %>
-              </td>
-            </tr>
+          <tr>
+            <td>
+              <div id = "comment_area">
+                <%= render "public/comments/form", comment: @comment %>
+              </div>
+            </td>
+          </tr>
+              <div>
+                <%= render "public/comments/index", comments: @comments, post: @post %>
+              </div>
         </tbody>
       </table>
 
