@@ -1,6 +1,6 @@
-<% if post.comments.present? %>
-  <p>コメント件数：<%= post.comments.count %></p>
-    <% post.comments.each do |comment| %>
+<% if comments.present? %>
+  <p>コメント件数：<%= comments.count %></p>
+    <% @comments.each do |comment| %>
       <tr class="row mt-5 my-5 ml-3">
         <td><%= comment.end_user.nickname %></td>
         <td><%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %></td>

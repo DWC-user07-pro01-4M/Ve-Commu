@@ -76,14 +76,14 @@
         <tbody>
             <tr>
               <td>
-                <div class="new-comment">
-                  <%= render 'comment_form', post: @post, comment: @comment %>
+                <div id = "comment_area">
+                  <%= render "public/comments/form", comment: @comment %>
                 </div>
               </td>
             </tr>
 
-              <div id="comments_area">
-                <%= render 'post_comments', post: @post %>
+              <div>
+                <%= render "public/comments/index", comments: @comments, post: @post %>
               </div>
         </tbody>
       </table>
