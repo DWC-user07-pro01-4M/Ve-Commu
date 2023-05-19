@@ -75,25 +75,31 @@
         <tbody>
             <tr>
               <td>
-                <%= form_with(model: [@post, @comment]) do |f| %>
+                <%= form_with(model: [@post, @comment], local: true) do |f| %>
                   <%= f.text_area :comment, placeholder: "コメントをここに", class: "form-control", size: "80x5" %>
                   <br>
                   <%= f.submit "送信" %>
                 <% end %>
               </td>
             </tr>
-            <% @comments.each do |comment| %>
-            <tr div class="row mt-5 my-5 ml-3">
-              <td><%= comment.end_user.nickname %></td>
-              <td></td><td></td><td></td><td></td><td></td><td></td>
-              <td><%= comment.comment %></td>
-              <td>
-                <% if comment.end_user == current_end_user %>
-                  <%= link_to "削除", post_comment_path(comment.post,comment), method: :delete, class: "btn btn-danger btn-lg" %>
+
+            <% if @post.comments.present? %>
+              <p>コメント件数：<%= @post.comments.count %></p>
+                <% @comments.each do |comment| %>
+                  <tr class="row mt-5 my-5 ml-3">
+                    <td><%= comment.end_user.nickname %></td>
+                    <td><%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %></td>
+                    <td><%= comment.comment %></td>
+                    <td>
+                      <% if comment.end_user == current_end_user %>
+                        <%= link_to "削除", post_comment_path(comment.post,comment), class: "btn btn-danger btn-lg", method: :delete, data: {confirm: "本当に削除しますか？"} %>
+                      <% end %>
+                    </td>
+                  </tr>
                 <% end %>
-              </td>
-            </tr>
-          <% end %>
+            <% else %>
+                <p>コメントはまだありません</p>
+            <% end %>
         </tbody>
       </table>
 
