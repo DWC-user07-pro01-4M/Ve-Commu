@@ -7,7 +7,6 @@ class Admin::CommentsController < ApplicationController
   end
 
   def show
-    @end_user = EndUser.find(params[:id])
     @comment = Comment.find(params[:id])
   end
 
@@ -18,7 +17,7 @@ class Admin::CommentsController < ApplicationController
 
   private
   def comment_params
-    params.require(:comment).permit(:comment)
+    params.require(:comment).permit(:comment, :post_id, :end_user_id)
   end
 
 end
