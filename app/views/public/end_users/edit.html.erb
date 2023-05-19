@@ -6,7 +6,7 @@
         <%= render "error", end_user: @end_user %>
 
         <div class="text-center">
-            <h3><strong><%= flash[:notice] %></strong></h3>
+            <h3><strong><%= flash[:notice] %><%= flash[:alert] %></strong></h3>
             <h3><strong class="border-bottom border-dark"><%= @end_user.nickname %>様の会員情報編集</strong></h3>
         </div>
 

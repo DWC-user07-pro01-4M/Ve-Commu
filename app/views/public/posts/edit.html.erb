@@ -8,7 +8,7 @@
           </div>
             <%= render "error", post: @post %>
           <div class="text-center">
-            <h3><strong><%= flash[:notice] %></strong></h3>
+            <h3><strong><%= flash[:notice] %><%= flash[:alert] %></strong></h3>
           </div>
 
             <%= form_with model: @post, url: post_path(@post.id) do |f| %>
