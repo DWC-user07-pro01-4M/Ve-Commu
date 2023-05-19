@@ -73,7 +73,16 @@
 
       <table>
         <tbody>
-          <% @comments.each do |comment| %>
+            <tr>
+              <td>
+                <%= form_with(model: [@post, @comment]) do |f| %>
+                  <%= f.text_area :comment, placeholder: "コメントをここに", class: "form-control", size: "80x5" %>
+                  <br>
+                  <%= f.submit "送信" %>
+                <% end %>
+              </td>
+            </tr>
+            <% @comments.each do |comment| %>
             <tr div class="row mt-5 my-5 ml-3">
               <td><%= comment.end_user.nickname %></td>
               <td></td><td></td><td></td><td></td><td></td><td></td>
@@ -85,16 +94,6 @@
               </td>
             </tr>
           <% end %>
-
-            <tr>
-              <td>
-                <%= form_with(model: [@post, @comment]) do |f| %>
-                  <%= f.text_area :comment, placeholder: "コメントをここに", class: "form-control", size: "80x5" %>
-                  <br>
-                  <%= f.submit "送信" %>
-                <% end %>
-              </td>
-            </tr>
         </tbody>
       </table>
 
