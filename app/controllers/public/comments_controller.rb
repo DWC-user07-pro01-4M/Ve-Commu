@@ -9,7 +9,9 @@ class Public::CommentsController < ApplicationController
     @comment.post_id = @post.id
     if @comment.save
     # redirect_to request.referer
-      redirect_to post_path(@post), notice: "コメントを投稿しました。"
+      # redirect_to post_path(@post), notice: "コメントを投稿しました。"
+      flash.now[:notice] = "コメントを投稿しました"
+      render :post_comments
     else
       redirect_to request.referer
     end
@@ -20,7 +22,10 @@ class Public::CommentsController < ApplicationController
     # @comment.destroy
     # redirect_to request.referer
     Comment.find_by(id: params[:id], post_id: params[:post_id]).destroy
-    redirect_to post_path(params[:post_id]), alert: "コメントを削除しました。"
+    # redirect_to post_path(params[:post_id]), alert: "コメントを削除しました。"
+    flash.now[:alert] = "投稿を削除しました。"
+    @post = Post.find(params[:post_id])
+    render :post_comments
   end
 
   private
