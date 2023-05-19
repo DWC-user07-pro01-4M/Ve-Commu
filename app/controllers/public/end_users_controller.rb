@@ -18,6 +18,7 @@ class Public::EndUsersController < ApplicationController
         if @end_user.update(end_user_params)
             redirect_to end_user_path(current_end_user.id), notice: "編集に成功しました。"
         else
+            flash.now[:alert] = "編集に失敗しました。"
             render :edit
         end
     end

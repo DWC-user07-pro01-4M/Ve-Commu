@@ -2,7 +2,7 @@
   <div class="row mt-5">
 
     <div class="col-4 mb-3 offset-1">
-      <h3><strong class="border-bottom border-dark"><%= @end_user.nickname %>さんの会員情報詳細</strong></h3>
+      <h3><strong class="border-bottom border-dark">コメント詳細</strong></h3>
     </div>
 
       <div class="container mb-5">
@@ -13,14 +13,12 @@
               <thead>
                 <tr>
                   <th>会員ID</th>
-                  <td><%= @end_user.id %></td>
-                </tr>
-                <tr>
                   <th>ニックネーム</th>
-                  <td><%= @end_user.nickname %></td>
+                  <th>コメント</th>
                 </tr>
                 <tr>
-                  <th>コメント</th>
+                  <td><%= @comment.end_user_id %></td>
+                  <td><%= @comment.end_user.nickname %></td>
                   <td><%= @comment.comment %></td>
                 </tr>
               </thead>

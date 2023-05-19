@@ -3,7 +3,7 @@
     <div class="col-10 mx-auto">
 
       <%= render "error", tag: @tag %>
-      <h3><strong><%= flash[:notice] %></strong></h3>
+      <h3><strong><%= flash[:notice] %><%= flash[:alert] %></strong></h3>
       <h3 class="text-center"><strong class="border-bottom border-dark">ジャンル一覧・追加/削除</strong></h3>
 
         <%= form_with model: @tag, url: admin_tags_path,method: :post do |f| %>

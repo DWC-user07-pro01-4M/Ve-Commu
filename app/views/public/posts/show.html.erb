@@ -4,7 +4,6 @@
     <div class="col-md-10 mx-auto">
       <%= render "error", post: @post %>
       <div class="text-center mt-5"><h3><strong><%= flash[:notice] %></strong></h3></div>
-      <div class="text-center mt-5"><h3><strong><%= flash[:alert] %></strong></h3></div>
     </div>
   </div>
 
@@ -22,46 +21,8 @@
 
       <table class="table table-borderless">
         <tbody>
-
-          <tr>
-            <th>
-              <% if current_end_user != @post.end_user %>
-                <div class="bookmark">
-                  <% if @post.bookmark_by(current_end_user).blank? %>
-                    <%= link_to "お気に入りに登録する", post_bookmarks_path(@post), method: :post, class: "btn btn-success btn-lg" %>
-                  <% else %>
-                    <%= link_to "お気に入りからはずす", post_bookmark_path(@post,@post.bookmark_by(current_end_user)), method: :delete, class: "btn btn-outline-success btn-lg" %>
-                  <% end %>
-                </div>
-              <% end %>
-            </th>
-          </tr>
-
-          <tr>
-            <th style="width: 30%">投稿者 </th>
-            <td style="width: 70%"><%= @post.end_user.nickname %></td>
-          </tr>
-
-          <tr>
-            <th style="width: 30%">施設名</th>
-            <td style="width: 70%"><%= @post.facility_name %></td>
-          </tr>
-          <tr>
-            <th style="width: 30%">施設住所</th>
-            <td style="width: 70%"><%= @post.address %></td>
-          </tr>
-          <tr>
-            <th style="width: 30%">詳細説明</th>
-            <td style="width: 70%"><%= @post.detailed_description %></td>
-          </tr>
-
-          <% @post.tags.each do |tag| %>
-            <tr>
-              <th style="width: 30%">タグ</th>
-              <td style="width: 70%"><%= tag.tag_type %></td>
-            </tr>
-          <% end %>
-
+          <%= render "bookmark", post: @post %>
+          <%= render "show", post: @post %>
         </tbody>
       </table>
 
@@ -77,7 +38,7 @@
           <tr>
             <td>
               <div id = "comment_area">
-                <%= render "public/comments/form", comment: @comment %>
+                  <%= render "public/comments/form", comment: @comment %>
               </div>
             </td>
           </tr>
@@ -88,6 +49,5 @@
       </table>
 
     </div>
-
   </div>
 </div>

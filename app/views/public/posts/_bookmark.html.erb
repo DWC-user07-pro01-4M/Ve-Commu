@@ -1,0 +1,9 @@
+<% if current_end_user != @post.end_user %>
+  <div class="bookmark">
+    <% if @post.bookmark_by(current_end_user).blank? %>
+      <%= link_to "お気に入りに登録する", post_bookmarks_path(@post), method: :post, class: "btn btn-success btn-lg" %>
+    <% else %>
+      <%= link_to "お気に入りからはずす", post_bookmark_path(@post,@post.bookmark_by(current_end_user)), method: :delete, class: "btn btn-outline-success btn-lg" %>
+    <% end %>
+  </div>
+<% end %>

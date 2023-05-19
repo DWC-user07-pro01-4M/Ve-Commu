@@ -19,7 +19,7 @@
             <% @comments.each do |comment| %>
               <tbody>
                  <tr>
-                  <td class="py-4"><%= comment.id %></td>
+                  <td class="py-4"><%= comment.end_user_id %></td>
                   <td class="py-4"><%= comment.end_user.nickname %></td>
                   <td class="py-4"><%= comment.comment %></td>
                   <td><%= link_to "詳細を確認する", admin_comment_path(comment.id), class: 'btn btn-warning btn-lg' %></td>

@@ -13,6 +13,7 @@ class Admin::TagsController < ApplicationController
     else
       @tags = Tag.all
       @tags = Kaminari.paginate_array(@tags).page(params[:page])
+      flash.now[:alert] = "タグの追加に失敗しました。"
       render :index
     end
   end
@@ -26,6 +27,7 @@ class Admin::TagsController < ApplicationController
     if @tag.update(tag_params)
       redirect_to admin_tags_path, notice: "タグの更新に成功しました。"
     else
+      flash.now[:alert] = "タグの更新に失敗しました。"
       render :edit
     end
   end

@@ -3,6 +3,7 @@
     <div class="col-md-10 mx-auto">
 
       <%= render "error", end_user: @end_user %>
+      <h3><strong><%= flash[:alert] %></strong></h3>
       <h3><strong class="border-bottom border-dark">会員情報編集</strong></h3>
 
         <%= form_with model: @end_user, url:admin_end_user_path, method: :patch do |f| %>
