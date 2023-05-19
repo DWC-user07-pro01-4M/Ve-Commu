@@ -74,14 +74,13 @@
 
       <table>
         <tbody>
-            <tr>
-              <td>
-                <div id = "comment_area">
-                  <%= render "public/comments/form", comment: @comment %>
-                </div>
-              </td>
-            </tr>
-
+          <tr>
+            <td>
+              <div id = "comment_area">
+                <%= render "public/comments/form", comment: @comment %>
+              </div>
+            </td>
+          </tr>
               <div>
                 <%= render "public/comments/index", comments: @comments, post: @post %>
               </div>
