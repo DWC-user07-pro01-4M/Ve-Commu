@@ -12,7 +12,13 @@
             <table class="table table-borderless contents-area">
               <thead>
                 <tr>
+                  <th>会員ID</th>
+                  <th>ニックネーム</th>
                   <th>コメント</th>
+                </tr>
+                <tr>
+                  <td><%= @comment.end_user_id %></td>
+                  <td><%= @comment.end_user.nickname %></td>
                   <td><%= @comment.comment %></td>
                 </tr>
               </thead>
