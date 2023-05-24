@@ -17,15 +17,15 @@
                 <%= f.file_field :image, accept: "image/*" %>
               </div>
               <div class="form-group m-5">
-                <%= f.label :施設名 %>
+                <%= f.label :施設名 %><%= f.label :※入力必須, class: "text-danger" %>
                 <%= f.text_field :facility_name, class: "form-control", :placeholder => "施設名" %>
               </div>
               <div class="form-group m-5">
-                <%= f.label :施設住所 %>
+                <%= f.label :施設住所 %><%= f.label :※入力必須, class: "text-danger" %>
                 <%= f.text_field :address, class: "form-control", :placeholder => "施設住所" %>
               </div>
               <div class="form-group m-5">
-                <%= f.label :詳細説明 %>
+                <%= f.label :詳細説明 %><%= f.label :※入力必須, class: "text-danger" %>
                 <%= f.text_area :detailed_description, class: "form-control", :placeholder => "詳細を記入してください" %>
               </div>
 
@@ -42,7 +42,7 @@
                 </div>
 
               <div class="form-group text-center">
-                <%= f.submit "情報をシェアする", class: "btn btn-success btn_lg" %>
+                <%= f.submit "情報のシェア", class: "btn btn-success btn_lg" %>
               </div>
             <% end %>
 

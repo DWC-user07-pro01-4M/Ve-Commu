@@ -5,6 +5,8 @@ class Public::EndUsersController < ApplicationController
 
     def show
         @end_user = EndUser.find(current_end_user.id)
+        bookmarks = Bookmark.where(end_user_id: current_end_user.id).pluck(:post_id)
+        @bookmarks = Post.find(bookmarks)
     end
 
     def edit
@@ -31,12 +33,6 @@ class Public::EndUsersController < ApplicationController
         @end_user.update(is_deleted: true)
         reset_session
         redirect_to root_path, notice: "退会処理が完了しました。ご利用ありがとうございました。"
-    end
-
-    def bookmark
-        @end_user = EndUser.find(params[:id])
-        bookmarks = Bookmark.where(end_user_id: current_end_user.id).pluck(:post_id)
-        @bookmarks = Post.find(bookmarks)
     end
 
     private

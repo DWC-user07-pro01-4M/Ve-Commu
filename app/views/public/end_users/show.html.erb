@@ -28,13 +28,12 @@
           <div class="row justify-content-center mb-3">
             <% if @end_user.nickname != "guestuser" %>
               <div class="col-2 ml-5">
-                <%= link_to "編集する", edit_end_user_path, class: "btn btn-success btn_lg" %>
+                <%= link_to "編集", edit_end_user_path, class: "btn btn-success btn_lg" %>
               </div>
             <% end %>
-              <div class="col-2 col-offset-1">
-                <%= link_to "お気に入りを見る", bookmark_end_user_path, class: "btn btn-primary btn_lg" %>
-              </div>
           </div>
+
+          <div><%= render "bookmark", bookmark: @bookmark %></div>
 
       </div>
     </div>
