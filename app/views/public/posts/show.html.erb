@@ -28,8 +28,8 @@
 
       <div class="my-5 ml-3">
         <% if @post.end_user == current_end_user %>
-          <%= link_to "編集する", edit_post_path(@post.id), class: "btn btn-warning btn-lg" %>
-          <%= link_to "削除する", post_path(@post.id), class: "btn btn-danger btn_lg", method: :delete, "data-confirm" => "本当に投稿を削除してよろしいですか?" %>
+          <%= link_to "編集", edit_post_path(@post.id), class: "btn btn-warning btn-lg" %>
+          <%= link_to "削除", post_path(@post.id), class: "btn btn-danger btn_lg", method: :delete, "data-confirm" => "本当に投稿を削除してよろしいですか?" %>
         <% end %>
       </div>
 
