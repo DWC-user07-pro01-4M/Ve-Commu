@@ -11,15 +11,15 @@
       <div class="correct-msg-main">
         <div class="contact-form">
             <div class="correct-text-field">
-              <%= f.label "お名前" %>
+              <%= f.label :お名前 %><%= f.label :※入力必須, class: "text-danger" %>
               <%= f.text_field :name, placeholder: "お名前", class: "input-form" %>
             </div>
             <div class="correct-text-field">
-              <%= f.label "メールアドレス" %>
+              <%= f.label :メールアドレス %><%= f.label :※入力必須, class: "text-danger" %>
               <%= f.email_field :email, placeholder: "メールアドレス", class: "input-form" %>
             </div>
             <div class="correct-text-field">
-              <%= f.label "お問合せ内容" %>
+              <%= f.label :お問い合わせ内容 %><%= f.label :※入力必須, class: "text-danger" %>
               <%= f.text_area :content, placeholder: "お問合せ内容を入力してください", class: "input-form" %>
             </div>
             <div class="send-btn-contents">
