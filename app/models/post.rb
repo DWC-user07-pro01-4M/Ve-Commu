@@ -13,7 +13,7 @@ class Post < ApplicationRecord
   validates :detailed_description, presence: true, length: {maximum:200}
 
   geocoded_by :address
-  after_validation :geocode
+  after_validation :geocode, if: :address_changed?
 
   def Post.search(keyword)
       Post.where("facility_name LIKE(?) OR address LIKE(?) OR detailed_description LIKE(?)", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%")
