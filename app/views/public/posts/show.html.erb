@@ -12,6 +12,7 @@
     <div class="col-md-5">
       <div class="mx-5 mb-5 ">
         <%= image_tag @post.get_image(300,300) %>
+        <div id="map"></div>
       </div>
     </div>
 
@@ -51,3 +52,24 @@
     </div>
   </div>
 </div>
+
+<style>
+     #map {
+     height: 300px;
+     width: 300px;
+    }
+</style>
+<script>
+  function initMap() {
+    var address = {lat: <%= @post.latitude %>, lng: <%= @post.longitude %>};
+    var map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 16,
+    center: address
+    });
+    var marker = new google.maps.Marker({
+      position: address,
+      map: map
+    });
+       }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLEMAP"] %>&callback=initMap"async defer></script>

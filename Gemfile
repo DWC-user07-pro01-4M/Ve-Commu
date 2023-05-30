@@ -66,8 +66,9 @@ gem 'enum_help'
 gem 'bootstrap5-kaminari-views'
 gem 'whenever', require: false
 gem 'rails-i18n'
-
 gem 'dotenv-rails'
+gem 'geocoder'
+gem 'gon'
 group :production do
   gem 'mysql2'
 end
