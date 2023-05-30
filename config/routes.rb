@@ -44,5 +44,11 @@ Rails.application.routes.draw do
 
     get "search" => "posts#search"
   end
+
+  # お問い合わせ用ルーティング
+  resources :contacts, only: [:new, :create] do
+    get "/thanks" => "contacts#thanks"
+  end
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
