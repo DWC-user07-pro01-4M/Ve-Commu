@@ -1,42 +1,3 @@
-<%= form_with(model: @contact, local: true) do |f| %>
-    <div class='form-wrap'>
-      <div class='form-header'>
-        <h5 class='form-header-text'>
-          お問い合わせフォーム
-        </h5>
-      </div>
-    </div>
-    <div class="correct-msg-box">
-
-      <div class="correct-msg-main">
-        <div class="contact-form">
-            <div class="correct-text-field">
-              <%= f.label :お名前 %><%= f.label :※入力必須, class: "text-danger" %>
-              <%= f.text_field :name, placeholder: "お名前", class: "input-form" %>
-            </div>
-            <div class="correct-text-field">
-              <%= f.label :メールアドレス %><%= f.label :※入力必須, class: "text-danger" %>
-              <%= f.email_field :email, placeholder: "メールアドレス", class: "input-form" %>
-            </div>
-            <div class="correct-text-field">
-              <%= f.label :お問い合わせ内容 %><%= f.label :※入力必須, class: "text-danger" %>
-              <%= f.text_area :content, placeholder: "お問合せ内容を入力してください", class: "input-form" %>
-            </div>
-            <div class="send-btn-contents">
-              <div class="register-btn">
-                <%= f.button type: "送信", class: "btn btn-lg btn-secondery" %>
-              </div>
-
-            </div>
-        </div>
-      </div>
-
-  </div>
-<% end %>
-
-
-
-
 <div class="container-field align-items-center">
   <div class="row d-flex justify-content-center m-5">
     <div class="col-7">
@@ -45,9 +6,29 @@
         <div class="bg-secondery text-light text-center">
           <h3><strong>お問い合わせフォーム</strong></h3>
         </div>
-
           <%= render "error", contact: @contact %>
+        <div class="text-center">
+          <h3><strong><%= flash[:alert] %></strong></h3>
+        </div>
 
+          <%= form_with(model: @contact, local: true) do |f| %>
+            <div class="form-group m-5">
+              <%= f.label :お名前 %><%= f.label :※入力必須, class: "text-danger" %>
+              <%= f.text_field :name, class: "form-control", :placeholder => "お名前" %>
+            </div>
+            <div class="form-group m-5">
+              <%= f.label :メールアドレス %><%= f.label :※入力必須, class: "text-danger" %>
+              <%= f.email_field :email, class: "form-control", :placeholder => "メールアドレス" %>
+             </div>
+            <div class="form-group m-5">
+              <%= f.label :お問い合わせ内容 %><%= f.label :※入力必須, class: "text-danger" %>
+              <%= f.text_area :content, class: "form-control", :placeholder => "お問合せ内容を入力してください" %>
+            </div>
+
+            <div class="form-group text-center">
+              <%= f.submit "送信", class: "btn btn-secondery btn_lg" %>
+            </div>
+          <% end %>
       </div>
     </div>
   </div>
