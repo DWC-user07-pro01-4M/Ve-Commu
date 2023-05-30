@@ -1,9 +1,9 @@
 <div class="container-field align-items-center">
   <div class="row d-flex justify-content-center m-5">
     <div class="col-7">
-      <div class="border border-secondery contents-area bg-white">
+      <div class="border border-white contents-area bg-white">
 
-        <div class="bg-secondery text-light text-center">
+        <div class="text-secondery text-center">
           <h3><strong>お問い合わせフォーム</strong></h3>
         </div>
           <%= render "error", contact: @contact %>
@@ -26,9 +26,10 @@
             </div>
 
             <div class="form-group text-center">
-              <%= f.submit "送信", class: "btn btn-secondery btn_lg" %>
+              <%= f.submit "送信", class: "btn btn-success btn_lg" %>
             </div>
           <% end %>
+
       </div>
     </div>
   </div>
