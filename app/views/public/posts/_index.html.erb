@@ -18,12 +18,13 @@
           <td><%= post.facility_name %></td>
           <td><%= post.address %></td>
           <td><%= post.detailed_description %></td>
-
           <td>
             <% post.tags.each do |tag| %>
               <%= tag.tag_type %>
             <% end %>
           </td>
+          <td>コメント数: <%= post.comments.count %></td>
+          <td>ブックマーク数: <%= post.bookmarks.count %></td>
 
           <td>
             <%= link_to "詳細を確認", post_path(post.id), class: "btn btn-warning btn_lg" %>
