@@ -17,9 +17,9 @@ Admin.create!(
 # 投稿用会員
 end_users = EndUser.create!(
   [
-    {email: "olivia@example.com", nickname: "Olivia", password: "password"},
-    {email: "james@example.com", nickname: "James", password: "password"},
-    {email: "lucas@example.com", nickname: "Lucas", password: "password"},
+    {email: "olivia@example.com", nickname: "オリバー", password: "password"},
+    {email: "james@example.com", nickname: "ジェームス", password: "password"},
+    {email: "lucas@example.com", nickname: "ルーカス", password: "password"},
     {email: "hitomi@example.com", nickname: "ひとみ", password: "password"},
     {email: "sousuke@example.com", nickname: "そうすけ", password: "password"},
     {email: "tatuya@example.com", nickname: "たつや", password: "password"},
@@ -58,25 +58,27 @@ Post.create!(
 Comment.create!(
   [
     {}
-    ]
-  )
+  ]
+)
 
 # タグ種類
-Tag.create([
-  { tag_type: "ヴィーガン対応" },
-  { tag_type: "フルータリアン対応" },
-  { tag_type: "ハラル対応" },
-  { tag_type: "アレルギー対応可能" },
-  { tag_type: "オリエンタル・ベジタリアン対応" },
-  { tag_type: "ラクト・ベジタリアン対応" },
-  { tag_type: "オボ・ベジタリアン対応" },
-  { tag_type: "ラクト・オボベジタリアン対応" },
-  { tag_type: "ペスコ・ベジタリアン対応" },
-  { tag_type: "ポーヨ・ベジタリアン対応" },
-  { tag_type: "フレキシタリアン対応" },
-  { tag_type: "マクロビオティック対応" },
-  { tag_type: "ローフード対応" },
-  { tag_type: "グルテンフリー対応" },
-  { tag_type: "相談・交渉可能" },
-  { tag_type: "その他" }
-])
+Tag.create!(
+  [
+    { tag_type: "ヴィーガン対応" },
+    { tag_type: "フルータリアン対応" },
+    { tag_type: "ハラル対応" },
+    { tag_type: "アレルギー対応可能" },
+    { tag_type: "オリエンタル・ベジタリアン対応" },
+    { tag_type: "ラクト・ベジタリアン対応" },
+    { tag_type: "オボ・ベジタリアン対応" },
+    { tag_type: "ラクト・オボベジタリアン対応" },
+    { tag_type: "ペスコ・ベジタリアン対応" },
+    { tag_type: "ポーヨ・ベジタリアン対応" },
+    { tag_type: "フレキシタリアン対応" },
+    { tag_type: "マクロビオティック対応" },
+    { tag_type: "ローフード対応" },
+    { tag_type: "グルテンフリー対応" },
+    { tag_type: "相談・交渉可能" },
+    { tag_type: "その他" }
+  ]
+)
