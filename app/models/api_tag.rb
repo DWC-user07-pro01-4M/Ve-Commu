@@ -1,0 +1,2 @@
+class ApiTag < ApplicationRecord
+end

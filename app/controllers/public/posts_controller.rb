@@ -15,7 +15,11 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.end_user = current_end_user
+    tags = Vision.get_image_data(post_params[:image])
     if @post.save
+      tags.each do |tag|
+        @post.tags.create(name: tag)
+      end
       redirect_to post_path(@post), notice: "ありがとうございます。情報のシェアに成功しました。"
     else
       flash.now[:alert] = "情報のシェアに失敗しました。"
