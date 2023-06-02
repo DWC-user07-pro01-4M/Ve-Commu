@@ -13,8 +13,8 @@ module VeCommuApp
 
     # 日本語化のために追記
     config.i18n.default_locale = :ja
-    # バッチ処理のために追記
-    config.paths.add 'lib', eager_load: true
+    # バッチ処理,APIのために追記
+    config.paths.add "lib", eager_load: true
 
 
     # Configuration for the application, engines, and railties goes here.
