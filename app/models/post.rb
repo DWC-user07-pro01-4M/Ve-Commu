@@ -6,7 +6,7 @@ class Post < ApplicationRecord
   has_many :tags, through: :association_post_and_tags
   has_many :bookmarks, dependent: :destroy
 
-  has_many_attached :images
+  has_one_attached :image
 
   validates :facility_name, presence: true
   validates :address, presence: true

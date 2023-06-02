@@ -1,36 +1,39 @@
 <div class="container-field align-items-center">
   <div class="row d-flex justify-content-center m-5">
-    <div class="col-5">
+    <div class="col-xl-9 col-lg-7 col-sm-5 col-md-3 col-sm-1">
+
       <div class="text-center mt-5"><h3><strong><%= flash[:notice] %></strong></h3></div>
-      <div class="border border-secondary contents-area bg-light">
 
-      <div class="bg-secondary p-2 text-light text-center">
-        <h1 class="text-light">ようこそ！！<strong>Ve-Commu</strong>へ！！</h1>
-      </div>
+        <div class="border border-secondary contents-area bg-light">
 
-        <div class="m-5">
-          <div class="btn-wrapper col-10 mx-auto">
-            <div class="row mb-3">
-              <div class="col-12 text-center">
-                <%= link_to "あなたのシェアがきっと誰かの役にたつ", about_path %>
+          <div class="bg-secondary p-2 text-light text-center">
+            <h1 class="text-light">ようこそ！！<strong>Ve-Commu</strong>へ！！</h1>
+          </div>
+
+          <div class="m-5">
+            <div class="btn-wrapper col-10 mx-auto">
+
+              <div class="row mb-3">
+                <div class="col-12 text-center">
+                  <%= link_to "あなたのシェアがきっと誰かの役にたつ", about_path %>
+                </div>
               </div>
-            </div>
-            <br>
+                <br>
+              <div class="row">
+                <%= link_to 'ゲストログイン（閲覧用）', end_user_guest_sign_in_path, class: "btn btn-secondary btn-lg btn-block mb-3 sign_in", method: :post %>
+              </div>
+              <div class="row">
+                <%= link_to "ログインする",new_end_user_session_path, class: "btn btn-primary btn-lg btn-block mb-3 sign_in" %>
+              </div>
+              <div class="row">
+                <%= link_to "新規登録する",new_end_user_registration_path, class: "btn btn-success btn-lg btn-block mb-3 sign_up" %>
+              </div>
 
-             <div class="row">
-              <%= link_to 'ゲストログイン（閲覧用）', end_user_guest_sign_in_path, class: "btn btn-secondary btn-lg btn-block mb-3 sign_in", method: :post %>
-            </div>
-
-            <div class="row">
-              <%= link_to "ログインする",new_end_user_session_path, class: "btn btn-primary btn-lg btn-block mb-3 sign_in" %>
-            </div>
-            <div class="row">
-              <%= link_to "新規登録する",new_end_user_registration_path, class: "btn btn-success btn-lg btn-block mb-3 sign_up" %>
             </div>
           </div>
+
         </div>
 
-      </div>
     </div>
   </div>
 </div>
