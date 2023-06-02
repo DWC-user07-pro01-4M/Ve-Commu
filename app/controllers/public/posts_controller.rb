@@ -56,7 +56,7 @@ class Public::PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:facility_name, :address, :detailed_description, :image, tag_ids: [])
+    params.require(:post).permit(:facility_name, :address, :detailed_description, :images, tag_ids: [])
   end
 
   def ensure_end_user
