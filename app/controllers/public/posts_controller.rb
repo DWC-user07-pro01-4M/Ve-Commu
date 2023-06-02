@@ -16,11 +16,11 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.end_user = current_end_user
     api_tags = Vision.get_image_data(post_params[:image])
-    if @post.save
+    if @post.save!
       api_tags.each do |api_tag|
         @post.api_tags.create(name: api_tag)
       end
-      redirect_to post_path(@post.id), notice: "ありがとうございます。情報のシェアに成功しました。"
+      redirect_to post_path(@post), notice: "ありがとうございます。情報のシェアに成功しました。"
     else
       flash.now[:alert] = "情報のシェアに失敗しました。"
       render :new
