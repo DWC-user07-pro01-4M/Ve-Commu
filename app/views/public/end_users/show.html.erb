@@ -8,32 +8,42 @@
             <h3><strong class="border-bottom border-dark"><%= @end_user.nickname %>様のマイページ</strong></h3>
         </div>
 
-
           <div class="m-5">
-            <table class="table table-bordered contents-area mb-5">
+            <table class="table table-bordered table-hover mb-5">
               <tbody>
                 <tr>
-                  <th scope="row", class="table-light col-3 text-left">ニックネーム</th>
-                  <td><%= @end_user.nickname %></td>
+                  <th scope="row">会員情報</th>
+                    <td>
+                      ニックネーム<br>
+                      <%= @end_user.nickname %>
+                    </td>
+                    <td>
+                      メールアドレス<br>
+                      <%= @end_user.email %>
+                    </td>
+                    <td>
+                      <% if @end_user.nickname != "guestuser" %>
+                        <%= link_to "編集", edit_end_user_path, class: "btn btn-success btn_lg btn-block" %>
+                      <% end %>
+                    </td>
                 </tr>
                 <tr>
-                  <th scope="row", class="table-light col-3 text-left">メールアドレス</th>
-                  <td><%= @end_user.email %></td>
+                  <th scope="row">投稿数</th>
+                    <td></td>
+                </tr>
+                <tr>
+                  <th scope="row">コメント数</th>
+                    <td></td>
+                </tr>
+                <tr>
+                  <th scope="row">いいね数</th>
+                  <td></td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-          <div class="row">
-            <% if @end_user.nickname != "guestuser" %>
-              <div class="col-sm">
-                <%= link_to "編集", edit_end_user_path, class: "btn btn-success btn_lg btn-block mb-3" %>
-              </div>
-            <% end %>
-          </div>
-
           <div><%= render "bookmark", bookmark: @bookmark %></div>
-
 
       </div>
     </div>
