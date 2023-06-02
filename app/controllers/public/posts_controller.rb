@@ -20,7 +20,7 @@ class Public::PostsController < ApplicationController
       api_tags.each do |api_tag|
         @post.api_tags.create(name: api_tag)
       end
-      redirect_to post_path(@post), notice: "ありがとうございます。情報のシェアに成功しました。"
+      redirect_to post_path(@post.id), notice: "ありがとうございます。情報のシェアに成功しました。"
     else
       flash.now[:alert] = "情報のシェアに失敗しました。"
       render :new
