@@ -9,6 +9,9 @@ module Vision
       api_url = "https://vision.googleapis.com/v1/images:annotate?key=#{ENV["GOOGLE_API_KEY"]}"
 
       base64_image = Base64.encode64(image_file.tempfile.read)
+      # base64_image = Base64.encode64(open("#{Rails.root}/public/uploads/#{image_file}").read)
+      # base64_image = Base64.encode64(open("#{Rails.root}join#{"storage"}").read)
+      # base64_image = Base64.encode64(open("#{Rails.root}#{image_file.id}").read)
 
       params = {
         requests: [{
