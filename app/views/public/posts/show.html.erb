@@ -1,41 +1,36 @@
-<%= render "error", post: @post %>
-<div class="text-center mt-5"><h3><strong><%= flash[:notice] %></strong></h3></div>
 
-<div class="container-field bg-light">
+
+
+<div class="container bg-light">
   <div class="row">
     <div class="col-xl col-lg col-md col-sm">
 
+      <%= render "error", post: @post %>
+      <div class="text-center mt-5"><h3><strong><%= flash[:notice] %></strong></h3></div>
 
-
-
-        <div class="row mt-5">
-          <div class="col-sm">
-            <div class="mx-5">
-              <%= image_tag @post.get_image(400,400) %>
-                <div>
-                  <% @post.api_tags.each do |api_tag| %>
-                    <span class="btn btn-lg btn-primary"><%= api_tag.name %></span>
-                  <% end %>
-                </div>
-            </div>
-          </div>
-          <div class="col-sm">
-            <div class="mx-5">
-              <div id="map"></div>
-            </div>
-          </div>
-          <div class="col-sm">
-            <div class="mx-5">
-              <h3><span class="border-bottom border-dark">投稿情報詳細</span></h3>
-                <table class="table table-borderless">
-                  <tbody>
-                    <%= render "bookmark", post: @post %>
-                    <%= render "show", post: @post %>
-                  </tbody>
-                </table>
-            </div>
+      <div class="row">
+        <div class="col">
+          <div class="mx-5">
+            <%= image_tag @post.get_image(400,400) %>
+              <% @post.api_tags.each do |api_tag| %>
+                <span class="btn btn-lg btn-primary"><%= api_tag.name %></span>
+              <% end %>
+            <div id="map"></div>
           </div>
         </div>
+
+        <div class="col">
+          <div class="mx-5">
+            <h3><span class="border-bottom border-dark">投稿情報詳細</span></h3>
+              <table class="table table-borderless">
+                <tbody>
+                  <%= render "bookmark", post: @post %>
+                  <%= render "show", post: @post %>
+                </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
 
     </div>
   </div>
