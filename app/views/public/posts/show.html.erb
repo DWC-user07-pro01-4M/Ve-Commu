@@ -6,6 +6,7 @@
       <div class="text-center mt-5"><h3><strong><%= flash[:notice] %></strong></h3></div>
 
       <div class="row">
+
         <div class="col-sm">
           <div class="mx-5">
             <%= image_tag @post.get_image(400,400) %>
@@ -31,16 +32,15 @@
                 </tbody>
               </table>
 
-
                 <div>
                   <%= render "public/comments/form", comment: @comment %>
                 </div>
                 <div id="comments_area">
                   <%= render "public/comments/index", comments: @comments, post: @post %>
                 </div>
-
           </div>
         </div>
+
       </div>
 
     </div>
