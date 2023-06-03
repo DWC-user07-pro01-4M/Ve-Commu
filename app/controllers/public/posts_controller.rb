@@ -15,7 +15,17 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.end_user = current_end_user
+    if post_params[:image].present?
+      api_tags = Vision.get_image_data(post_params[:image])
+    else
+      flash.now[:alert] = "画像ファイルを指定してください。"
+      render :new
+      return
+    end
     if @post.save
+      api_tags.each do |api_tag|
+        @post.api_tags.create(name: api_tag)
+      end
       redirect_to post_path(@post), notice: "ありがとうございます。情報のシェアに成功しました。"
     else
       flash.now[:alert] = "情報のシェアに失敗しました。"
@@ -56,7 +66,7 @@ class Public::PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:facility_name, :address, :detailed_description, :images, tag_ids: [])
+    params.require(:post).permit(:facility_name, :address, :detailed_description, :image, tag_ids: [])
   end
 
   def ensure_end_user

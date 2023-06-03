@@ -5,12 +5,14 @@ class Post < ApplicationRecord
   has_many :association_post_and_tags, dependent: :destroy
   has_many :tags, through: :association_post_and_tags
   has_many :bookmarks, dependent: :destroy
+  has_many :api_tags, dependent: :destroy
 
   has_one_attached :image
 
   validates :facility_name, presence: true
   validates :address, presence: true
   validates :detailed_description, presence: true, length: {maximum:200}
+  validates :image, presence: true
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
