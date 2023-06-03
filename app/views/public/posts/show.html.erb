@@ -19,7 +19,7 @@
         <div class="col">
           <div class="mx-5">
             <h3><span class="border-bottom border-dark">投稿情報詳細</span></h3>
-              <table class="table table-bordered table-hover mb-5">
+              <table class="table table-bordered table-hover bg-white mb-5">
                 <tbody>
                   <%= render "bookmark", post: @post %>
                   <%= render "show", post: @post %>
@@ -31,16 +31,14 @@
                 </tbody>
               </table>
 
-              <table>
-                <tbody>
-                    <div id="comment_area">
-                      <%= render "public/comments/form", comment: @comment %>
-                    </div>
-                    <div>
-                      <%= render "public/comments/index", comments: @comments, post: @post %>
-                    </div>
-                </tbody>
-              </table>
+
+                <div>
+                  <%= render "public/comments/form", comment: @comment %>
+                </div>
+                <div id="comments_area">
+                  <%= render "public/comments/index", comments: @comments, post: @post %>
+                </div>
+
           </div>
         </div>
       </div>
@@ -56,6 +54,7 @@
     }
 </style>
 <script>
+console.log('here')
   function initMap() {
     var address = {lat: <%= @post.latitude %>, lng: <%= @post.longitude %>};
     var map = new google.maps.Map(document.getElementById("map"), {
