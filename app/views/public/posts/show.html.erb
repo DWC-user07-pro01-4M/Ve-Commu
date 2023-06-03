@@ -1,15 +1,12 @@
-
-
-
 <div class="container bg-light">
-  <div class="row">
+  <div class="row m-5">
     <div class="col-xl col-lg col-md col-sm">
 
       <%= render "error", post: @post %>
       <div class="text-center mt-5"><h3><strong><%= flash[:notice] %></strong></h3></div>
 
       <div class="row">
-        <div class="col">
+        <div class="col-sm">
           <div class="mx-5">
             <%= image_tag @post.get_image(400,400) %>
               <% @post.api_tags.each do |api_tag| %>
@@ -22,10 +19,26 @@
         <div class="col">
           <div class="mx-5">
             <h3><span class="border-bottom border-dark">投稿情報詳細</span></h3>
-              <table class="table table-borderless">
+              <table class="table table-bordered table-hover mb-5">
                 <tbody>
                   <%= render "bookmark", post: @post %>
                   <%= render "show", post: @post %>
+                  <br>
+                  <% if @post.end_user == current_end_user %>
+                    <%= link_to "編集", edit_post_path(@post.id), class: "btn btn-warning btn-lg" %>
+                    <%= link_to "削除", post_path(@post.id), class: "btn btn-danger btn_lg", method: :delete, "data-confirm" => "本当に投稿を削除してよろしいですか?" %>
+                  <% end %>
+                </tbody>
+              </table>
+
+              <table>
+                <tbody>
+                    <div id="comment_area">
+                      <%= render "public/comments/form", comment: @comment %>
+                    </div>
+                    <div>
+                      <%= render "public/comments/index", comments: @comments, post: @post %>
+                    </div>
                 </tbody>
               </table>
           </div>
@@ -35,37 +48,6 @@
     </div>
   </div>
 </div>
-          <div class="col-md-7" style="text-left">
-            <h3><span class="border-bottom border-dark">投稿情報詳細</span></h3>
-              <table class="table table-borderless">
-                <tbody>
-                  <%= render "bookmark", post: @post %>
-                  <%= render "show", post: @post %>
-                </tbody>
-              </table>
-
-                <div class="my-5 ml-3">
-                  <% if @post.end_user == current_end_user %>
-                    <%= link_to "編集", edit_post_path(@post.id), class: "btn btn-warning btn-lg" %>
-                    <%= link_to "削除", post_path(@post.id), class: "btn btn-danger btn_lg", method: :delete, "data-confirm" => "本当に投稿を削除してよろしいですか?" %>
-                  <% end %>
-                </div>
-
-              <table>
-                <tbody>
-                  <tr>
-                    <td>
-                      <div id = "comment_area">
-                        <%= render "public/comments/form", comment: @comment %>
-                      </div>
-                    </td>
-                  </tr>
-                    <div>
-                      <%= render "public/comments/index", comments: @comments, post: @post %>
-                    </div>
-                </tbody>
-              </table>
-          </div>
 
 <style>
      #map {
