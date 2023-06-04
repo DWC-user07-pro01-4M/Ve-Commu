@@ -53,7 +53,6 @@
     }
 </style>
 <script>
-console.log('here')
   function initMap() {
     var address = {lat: <%= @post.latitude %>, lng: <%= @post.longitude %>};
     var map = new google.maps.Map(document.getElementById("map"), {
