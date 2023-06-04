@@ -31,13 +31,11 @@ module Vision
       response = https.request(request, params)
       result = JSON.parse(response.body)
 
-
-
       if (error = result["responses"][0]["error"]).present?
         raise error["message"]
       elsif
-        result_arr = result["responses"].flatten.map do |hash|
-          hash["SafeSearchAnnotation"].values
+        result_arr = result["responses"].flatten.map do |parsed_image|
+          parsed_image["safeSearchAnnotation"].values
         end.flatten
           if result_arr.include?("POSSIBLE") || result_arr.include?("LIKELY") || result_arr.include?("VERY_LIKELY")
             false

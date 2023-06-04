@@ -35,9 +35,7 @@ class Public::PostsController < ApplicationController
           flash.now[:alert] = "情報のシェアに失敗しました。"
          render :new
        end
-
     end
-
   end
 
   def show
