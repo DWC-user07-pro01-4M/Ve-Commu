@@ -1,53 +1,43 @@
-<div class="container my-5 bg-light">
+<div class="container bg-light">
+  <div class="row m-5">
+    <div class="col-xl col-lg col-md col-sm">
 
-  <div class="row mt-5 md-5">
-    <div class="col-md-10 mx-auto">
       <%= render "error", post: @post %>
       <div class="text-center mt-5"><h3><strong><%= flash[:notice] %></strong></h3></div>
-    </div>
-  </div>
 
-  <div class="row mt-5">
+      <div class="row">
 
-    <div class="col-md-5">
-      <div class="mx-5 mb-5 ">
-        <%= image_tag @post.get_image(300,300) %>
-        <div id="map"></div>
-      </div>
-    </div>
+        <div class="col-sm">
+          <div class="mx-5">
+            <%= image_tag @post.get_image(400,400) %>
+            <div id="map"></div>
+          </div>
+        </div>
 
-    <div class="col-md-7" style="text-left">
-
-      <h3><span class="border-bottom border-dark">投稿情報詳細</span></h3>
-
-      <table class="table table-borderless">
-        <tbody>
-          <%= render "bookmark", post: @post %>
-          <%= render "show", post: @post %>
-        </tbody>
-      </table>
-
-      <div class="my-5 ml-3">
-        <% if @post.end_user == current_end_user %>
-          <%= link_to "編集", edit_post_path(@post.id), class: "btn btn-warning btn-lg" %>
-          <%= link_to "削除", post_path(@post.id), class: "btn btn-danger btn_lg", method: :delete, "data-confirm" => "本当に投稿を削除してよろしいですか?" %>
-        <% end %>
-      </div>
-
-      <table>
-        <tbody>
-          <tr>
-            <td>
-              <div id = "comment_area">
-                  <%= render "public/comments/form", comment: @comment %>
-              </div>
-            </td>
-          </tr>
+        <div class="col">
+          <div class="mx-5">
+            <%= render "bookmark", post: @post %>
+            <br>
+              <h3><span class="border-bottom border-dark">投稿情報詳細</span></h3>
+              <br>
+              <%= render "show", post: @post %>
+                <div>
+                  <% if @post.end_user == current_end_user %>
+                    <%= link_to "編集", edit_post_path(@post.id), class: "btn btn-warning btn-lg" %>
+                    <%= link_to "削除", post_path(@post.id), class: "btn btn-danger btn_lg", method: :delete, "data-confirm" => "本当に投稿を削除してよろしいですか?" %>
+                  <% end %>
+                </div>
+                <br>
               <div>
+                <%= render "public/comments/form", comment: @comment %>
+              </div>
+              <div id="comments_area">
                 <%= render "public/comments/index", comments: @comments, post: @post %>
               </div>
-        </tbody>
-      </table>
+          </div>
+        </div>
+
+      </div>
 
     </div>
   </div>
@@ -55,8 +45,8 @@
 
 <style>
      #map {
-     height: 300px;
-     width: 300px;
+     height: 400px;
+     width: 400px;
     }
 </style>
 <script>
@@ -71,5 +61,5 @@
       map: map
     });
        }
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLEMAP"] %>&callback=initMap"async defer></script>
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLEMAP"] %>&callback=initMap"async defer></script>

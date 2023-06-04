@@ -15,11 +15,26 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.end_user = current_end_user
-    if @post.save
-      redirect_to post_path(@post), notice: "ありがとうございます。情報のシェアに成功しました。"
+    if post_params[:image].present?
+       result = Vision.image_analysis(post_params[:image])
+      if result
+        if @post.save
+          redirect_to post_path(@post), notice: "ありがとうございます。情報のシェアに成功しました。"
+        else
+          flash.now[:alert] = "情報のシェアに失敗しました。"
+          render :new
+        end
+      else
+        flash.now[:alert] = "画像が不適切です。"
+        render :new
+      end
     else
-      flash.now[:alert] = "情報のシェアに失敗しました。"
-      render :new
+       if @post.save
+         redirect_to post_path(@post), notice: "ありがとうございます。情報のシェアに成功しました。"
+       else
+          flash.now[:alert] = "情報のシェアに失敗しました。"
+         render :new
+       end
     end
   end
 

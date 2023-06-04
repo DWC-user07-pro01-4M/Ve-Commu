@@ -6,7 +6,7 @@ class Public::CommentsController < ApplicationController
     @comment = @post.comments.build(comment_params)
     @comment.end_user_id = current_end_user.id
     if @comment.save
-      redirect_to request.referer, notice: "コメントを送信しました。"
+      @comments = @post.comments
     else
       redirect_to request.referer, notice: "コメントを送信に失敗しました。"
     end
@@ -15,7 +15,8 @@ class Public::CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-    redirect_to request.referer, notice: "コメントを削除しました。"
+    @post = Post.find(params[:post_id])
+    @comments = @post.comments
   end
 
   private
