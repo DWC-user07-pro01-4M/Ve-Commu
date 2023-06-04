@@ -16,7 +16,7 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.end_user = current_end_user
     if post_params[:image].present?
-      result = Vision.image_analysis(params[:image].tempfile)
+      result = Vision.image_analysis(post_params[:image])
     end
     if result == true
       @post.save
