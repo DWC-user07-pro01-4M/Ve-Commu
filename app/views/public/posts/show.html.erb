@@ -10,9 +10,6 @@
         <div class="col-sm">
           <div class="mx-5">
             <%= image_tag @post.get_image(400,400) %>
-              <% @post.api_tags.each do |api_tag| %>
-                <span class="btn btn-lg btn-primary"><%= api_tag.name %></span>
-              <% end %>
             <div id="map"></div>
           </div>
         </div>
