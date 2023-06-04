@@ -17,7 +17,7 @@ module Vision
           },
           features: [
             {
-              type: "LABEL_DETECTION"
+              type: "SAFE_SEARCH_DETECTION"
             }
           ]
         }]
@@ -34,7 +34,12 @@ module Vision
       if (error = response_body["responses"][0]["error"]).present?
         raise error["message"]
       else
-        response_body["responses"][0]["labelAnnotations"].pluck("description").take(3)
+        response_body["responses"][0].safe_search_annotation.to_h
+        if result.values.include?(:POSSIBLE) ||  result.values.include?(:LIKELY) || result.values.include?(:VERY_LIKELY)
+          return false
+        else
+          return true
+        end
       end
     end
   end

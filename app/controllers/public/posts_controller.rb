@@ -16,7 +16,8 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.end_user = current_end_user
     if post_params[:image].present?
-      api_tags = Vision.get_image_data(post_params[:image])
+      image = File.open(params[:image].tempfile)
+      result = Vision.image_analysis(image)
     else
       flash.now[:alert] = "画像ファイルを指定してください。"
       render :new
