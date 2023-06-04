@@ -19,25 +19,24 @@
 
         <div class="col">
           <div class="mx-5">
-            <h3><span class="border-bottom border-dark">投稿情報詳細</span></h3>
-              <table class="table table-bordered table-hover bg-white mb-5">
-                <tbody>
-                  <%= render "bookmark", post: @post %>
-                  <%= render "show", post: @post %>
-                  <br>
+            <%= render "bookmark", post: @post %>
+            <br>
+              <h3><span class="border-bottom border-dark">投稿情報詳細</span></h3>
+              <br>
+              <%= render "show", post: @post %>
+                <div>
                   <% if @post.end_user == current_end_user %>
                     <%= link_to "編集", edit_post_path(@post.id), class: "btn btn-warning btn-lg" %>
                     <%= link_to "削除", post_path(@post.id), class: "btn btn-danger btn_lg", method: :delete, "data-confirm" => "本当に投稿を削除してよろしいですか?" %>
                   <% end %>
-                </tbody>
-              </table>
-
-                <div>
-                  <%= render "public/comments/form", comment: @comment %>
                 </div>
-                <div id="comments_area">
-                  <%= render "public/comments/index", comments: @comments, post: @post %>
-                </div>
+                <br>
+              <div>
+                <%= render "public/comments/form", comment: @comment %>
+              </div>
+              <div id="comments_area">
+                <%= render "public/comments/index", comments: @comments, post: @post %>
+              </div>
           </div>
         </div>
 
