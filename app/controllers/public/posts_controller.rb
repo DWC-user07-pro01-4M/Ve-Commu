@@ -18,16 +18,14 @@ class Public::PostsController < ApplicationController
     if post_params[:image].present?
       image = File.open(params[:image].tempfile)
       result = Vision.image_analysis(image)
-    else
-      flash.now[:alert] = "画像ファイルを指定してください。"
+    end
+    if result == true
+      @post.save
+      redirect_to post_path(@post), notice: "ありがとうございます。情報のシェアに成功しました。"
+    elsif result == false
+      flash.now[:alert] = "画像が不適切です。"
       render :new
       return
-    end
-    if @post.save
-      api_tags.each do |api_tag|
-        @post.api_tags.create(name: api_tag)
-      end
-      redirect_to post_path(@post), notice: "ありがとうございます。情報のシェアに成功しました。"
     else
       flash.now[:alert] = "情報のシェアに失敗しました。"
       render :new
