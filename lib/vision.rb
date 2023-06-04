@@ -31,15 +31,19 @@ module Vision
       response = https.request(request, params)
       result = JSON.parse(response.body)
 
+
+
       if (error = result["responses"][0]["error"]).present?
         raise error["message"]
       elsif
-        result["responses"][0]["safe_search_annotation"].to_h
-        if result.values.include?(:POSSIBLE) || result.values.include?(:LIKELY) || result.values.include?(:VERY_LIKELY)
-          return false
-        else
-          return true
-        end
+        result_arr = result["responses"].flatten.map do |hash|
+          hash["SafeSearchAnnotation"].values
+        end.flatten
+          if result_arr.include?("POSSIBLE") || result_arr.include?("LIKELY") || result_arr.include?("VERY_LIKELY")
+            false
+          else
+            true
+          end
       end
     end
   end
