@@ -4,7 +4,7 @@ require "net/https"
 
 module Vision
   class << self
-    def get_image_data(image_file)
+    def image_analysis(image_file)
 
       api_url = "https://vision.googleapis.com/v1/images:annotate?key=#{ENV["GOOGLE_API_KEY"]}"
 
@@ -17,7 +17,7 @@ module Vision
           },
           features: [
             {
-              type: "LABEL_DETECTION"
+              type: "SAFE_SEARCH_DETECTION"
             }
           ]
         }]
@@ -29,12 +29,19 @@ module Vision
       request = Net::HTTP::Post.new(uri.request_uri)
       request["Content-Type"] = "application/json"
       response = https.request(request, params)
-      response_body = JSON.parse(response.body)
+      result = JSON.parse(response.body)
 
-      if (error = response_body["responses"][0]["error"]).present?
+      if (error = result["responses"][0]["error"]).present?
         raise error["message"]
-      else
-        response_body["responses"][0]["labelAnnotations"].pluck("description").take(3)
+      elsif
+        result_arr = result["responses"].flatten.map do |parsed_image|
+          parsed_image["safeSearchAnnotation"].values
+        end.flatten
+          if result_arr.include?("POSSIBLE") || result_arr.include?("LIKELY") || result_arr.include?("VERY_LIKELY")
+            false
+          else
+            true
+          end
       end
     end
   end

@@ -10,34 +10,30 @@
         <div class="col-sm">
           <div class="mx-5">
             <%= image_tag @post.get_image(400,400) %>
-              <% @post.api_tags.each do |api_tag| %>
-                <span class="btn btn-lg btn-primary"><%= api_tag.name %></span>
-              <% end %>
             <div id="map"></div>
           </div>
         </div>
 
         <div class="col">
           <div class="mx-5">
-            <h3><span class="border-bottom border-dark">投稿情報詳細</span></h3>
-              <table class="table table-bordered table-hover bg-white mb-5">
-                <tbody>
-                  <%= render "bookmark", post: @post %>
-                  <%= render "show", post: @post %>
-                  <br>
+            <%= render "bookmark", post: @post %>
+            <br>
+              <h3><span class="border-bottom border-dark">投稿情報詳細</span></h3>
+              <br>
+              <%= render "show", post: @post %>
+                <div>
                   <% if @post.end_user == current_end_user %>
                     <%= link_to "編集", edit_post_path(@post.id), class: "btn btn-warning btn-lg" %>
                     <%= link_to "削除", post_path(@post.id), class: "btn btn-danger btn_lg", method: :delete, "data-confirm" => "本当に投稿を削除してよろしいですか?" %>
                   <% end %>
-                </tbody>
-              </table>
-
-                <div>
-                  <%= render "public/comments/form", comment: @comment %>
                 </div>
-                <div id="comments_area">
-                  <%= render "public/comments/index", comments: @comments, post: @post %>
-                </div>
+                <br>
+              <div>
+                <%= render "public/comments/form", comment: @comment %>
+              </div>
+              <div id="comments_area">
+                <%= render "public/comments/index", comments: @comments, post: @post %>
+              </div>
           </div>
         </div>
 
@@ -54,7 +50,6 @@
     }
 </style>
 <script>
-console.log('here')
   function initMap() {
     var address = {lat: <%= @post.latitude %>, lng: <%= @post.longitude %>};
     var map = new google.maps.Map(document.getElementById("map"), {
