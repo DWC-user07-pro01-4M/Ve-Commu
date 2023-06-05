@@ -66,10 +66,18 @@ class Public::PostsController < ApplicationController
         end
       else
         flash.now[:alert] = "画像が不適切です。"
-        render :new
+        render :edit
+      end
+    else
+      if @post.save
+         redirect_to post_path(@post), notice: "ありがとうございます。情報のシェアに成功しました。"
+      else
+          flash.now[:alert] = "必須項目を入力してください。"
+         render :edit
       end
     end
   end
+
 
   def destroy
     post = Post.find(params[:id])
