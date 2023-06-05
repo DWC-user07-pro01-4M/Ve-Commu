@@ -55,11 +55,19 @@ class Public::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    if @post.update(post_params)
-      redirect_to post_path(@post), notice: "シェア内容の更新に成功しました。"
-    else
-      flash.now[:alert] = "シェア内容の更新に失敗しました。"
-      render :edit
+    if post_params[:image].present?
+      result = Vision.image_analysis(post_params[:image])
+      if result
+        if @post.update(post_params)
+          redirect_to post_path(@post), notice: "シェア内容の更新に成功しました。"
+        else
+          flash.now[:alert] = "シェア内容の更新に失敗しました。"
+          render :edit
+        end
+      else
+        flash.now[:alert] = "画像が不適切です。"
+        render :new
+      end
     end
   end
 
