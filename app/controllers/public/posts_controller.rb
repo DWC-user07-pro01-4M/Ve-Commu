@@ -32,7 +32,7 @@ class Public::PostsController < ApplicationController
        if @post.save
          redirect_to post_path(@post), notice: "ありがとうございます。情報のシェアに成功しました。"
        else
-          flash.now[:alert] = "情報のシェアに失敗しました。"
+          flash.now[:alert] = "必須項目を入力してください。"
          render :new
        end
     end
