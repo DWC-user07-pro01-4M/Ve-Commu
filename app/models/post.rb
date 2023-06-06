@@ -5,7 +5,6 @@ class Post < ApplicationRecord
   has_many :association_post_and_tags, dependent: :destroy
   has_many :tags, through: :association_post_and_tags
   has_many :bookmarks, dependent: :destroy
-  has_many :api_tags, dependent: :destroy
 
   has_one_attached :image
 
