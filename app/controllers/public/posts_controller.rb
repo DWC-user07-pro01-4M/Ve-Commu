@@ -12,6 +12,21 @@ class Public::PostsController < ApplicationController
     @post = Post.new
   end
 
+  def show
+    @post = Post.find(params[:id])
+    @comment = Comment.new
+    @comments = @post.comments
+  end
+
+  def edit
+    @post = Post.find(params[:id])
+    if @post.end_user == current_end_user
+      render :edit
+    else
+      redirect_to post_path, notice: "投稿者以外編集はできません。"
+    end
+  end
+
   def create
     @post = Post.new(post_params)
     @post.end_user = current_end_user
@@ -38,21 +53,6 @@ class Public::PostsController < ApplicationController
     end
   end
 
-  def show
-    @post = Post.find(params[:id])
-    @comment = Comment.new
-    @comments = @post.comments
-  end
-
-  def edit
-    @post = Post.find(params[:id])
-    if @post.end_user == current_end_user
-      render :edit
-    else
-      redirect_to post_path, notice: "投稿者以外編集はできません。"
-    end
-  end
-
   def update
     @post = Post.find(params[:id])
     if post_params[:image].present?
@@ -69,8 +69,8 @@ class Public::PostsController < ApplicationController
         render :edit
       end
     else
-      if @post.save
-         redirect_to post_path(@post), notice: "ありがとうございます。情報のシェアに成功しました。"
+      if @post.update(post_params)
+         redirect_to post_path(@post), notice: "シェア内容の更新に成功しました。"
       else
           flash.now[:alert] = "必須項目を入力してください。"
          render :edit
