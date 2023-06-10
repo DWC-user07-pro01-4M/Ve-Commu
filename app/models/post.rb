@@ -41,9 +41,8 @@ class Post < ApplicationRecord
   private
 
   def geocode_must_be_present
-
     if latitude.blank? || longitude.blank?
-      errors.add(:address, "is not a valid address")
+      errors.add(:address, "に関する入力をしてください。")
     end
   end
 
