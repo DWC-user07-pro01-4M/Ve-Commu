@@ -12,9 +12,9 @@ class Post < ApplicationRecord
   validates :address, presence: true
   validates :detailed_description, presence: true, length: {maximum:200}
 
-
   geocoded_by :address
-  after_validation :geocode, if: :address_changed?
+  before_validation :geocode, if: :will_save_change_to_address?
+  validate :geocode_must_be_present
 
   def Post.search(keyword)
       Post.where("facility_name LIKE(?) OR address LIKE(?) OR detailed_description LIKE(?)", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%")
@@ -37,4 +37,14 @@ class Post < ApplicationRecord
     end
     image.variant(resize: "#{width}x#{height}^", gravity: "center", crop: "#{width}x#{height}+0+0").processed
   end
+
+  private
+
+  def geocode_must_be_present
+
+    if latitude.blank? || longitude.blank?
+      errors.add(:address, "is not a valid address")
+    end
+  end
+
 end
