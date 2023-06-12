@@ -1,7 +1,8 @@
 <div class="container-field align-items-center">
   <div class="row d-flex justify-content-center m-5">
-    <div class="col-5">
+    <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12">
       <div class="border border-danger contents-area bg-light">
+
         <div class="bg-danger p-2 text-light text-center">
           <h1>本当に退会しますか？</h1>
         </div>
@@ -17,11 +18,11 @@
         </div>
 
         <div class="row justify-content-center mb-3">
-          <div class="col-2 ml-5">
-            <%= link_to "退会しない", :back, class: "btn btn-primary" %>
+          <div class="col-sm-3">
+            <%= link_to "退会しない", :back, class: "btn btn-primary btn-block" %>
           </div>
-          <div class="col-2 col-offset-1">
-            <%= link_to "退会する", withdrawal_end_users_path, method: :patch, class: "btn btn-danger", "data-confirm" => "本当に退会しますか？" %>
+          <div class="col-sm-3">
+            <%= link_to "退会する", withdrawal_end_users_path, method: :patch, class: "btn btn-danger btn-block", "data-confirm" => "本当に退会しますか？" %>
           </div>
         </div>
 
