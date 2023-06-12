@@ -1,6 +1,6 @@
 <div class="container-field align-items-center">
   <div class="row d-flex justify-content-center m-5">
-    <div class="col-7">
+    <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12">
       <div class="border border-white contents-area bg-white">
 
         <%= render "error", end_user: @end_user %>
@@ -24,14 +24,13 @@
               </div>
 
               <div class="row justify-content-center mb-3">
-                <div class="col-2 ml-5">
-                  <%= f.submit "編集内容を保存", class: "btn btn-success btn_lg" %>
+                <div class="col-sm-3">
+                  <%= f.submit "編集内容を保存", class: "btn btn-success btn_lg btn-block" %>
                 </div>
-                <div class="col-2 col-offset-1">
-                  <%= link_to "退会", unsubscribe_end_users_path, class: "btn btn-danger btn_lg" %>
+                <div class="col-sm-3">
+                  <%= link_to "退会", unsubscribe_end_users_path, class: "btn btn-danger btn_lg btn-block" %>
                 </div>
               </div>
-
             <% end %>
           </div>
 
