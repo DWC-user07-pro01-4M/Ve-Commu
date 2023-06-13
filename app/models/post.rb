@@ -79,6 +79,17 @@ class Post < ApplicationRecord
     notification.save if notification.valid?
   end
 
+  def create_notification_follow!(current_end_user)
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_end_user.id, id, "bookmark"])
+    if temp.blank?
+      notification = current_end_user.active_notifications.new(
+        visited_id: id,
+        action: "bookmark"
+      )
+      notification.save if notification.valid?
+    end
+  end
+
   private
 
   def geocode_must_be_present
