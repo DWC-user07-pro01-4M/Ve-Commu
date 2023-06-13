@@ -23,6 +23,7 @@
               <%= tag.tag_type %>
             <% end %>
           </td>
+          <td><%= l post.created_at %></td>
           <td>コメント数: <%= post.comments.count %></td>
           <td>ブックマーク数: <%= post.bookmarks.count %></td>
           <td>いいね数: <%= post.likes.count %></td>
