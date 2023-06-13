@@ -1,17 +1,14 @@
 <div class="container border border-light contents-area bg-light" >
-  <div class="row mt-5">
+  <div class="row">
 
     <div class="container justify-content-center">
       <div class="row">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-          <div class="text-center mt-5"><h3><strong><%= flash[:notice] %></strong></h3></div>
-            <h3><strong class="border-bottom border-dark">投稿一覧</strong></h3>
-
-<%= link_to "新しい順", posts_path(latest: "true") %>
-|<%= link_to "古い順", posts_path(old: "true") %>
-|<%= link_to "ブックマークの多い順", posts_path(bookmark_count: "true") %>
-|<%= link_to "コメントの多い順", posts_path(comment_count: "true") %>
-|<%= link_to "いいねの多い順", posts_path(like_count: "true") %>
+          <div class="text-center mt-5"><h3><strong><%= flash[:notice] %></strong></h3>
+            <h1><strong class="border-bottom border-dark">投稿一覧</strong></h1>
+              <%= link_to "新しい順", posts_path(latest: "true") %>
+              |<%= link_to "古い順", posts_path(old: "true") %>
+          </div>
 
               <%= render "search", post: @post %>
 

@@ -6,12 +6,6 @@ class Public::PostsController < ApplicationController
       @posts = Post.latest
     elsif params[:old]
       @posts = Post.old
-    elsif params[:bookmark_count]
-      @posts = Post.bookmark_count
-    elsif params[:comment_count]
-      @posts = Post.comment_count
-    elsif params[:like_count]
-      @posts = Post.like_count
     else
       @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
     end
