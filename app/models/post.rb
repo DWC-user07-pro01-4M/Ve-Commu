@@ -5,7 +5,7 @@ class Post < ApplicationRecord
   has_many :association_post_and_tags, dependent: :destroy
   has_many :tags, through: :association_post_and_tags
   has_many :bookmarks, dependent: :destroy
-  has_many :likes
+  has_many :likes, dependent: :destroy
 
   has_one_attached :image
 
@@ -16,6 +16,10 @@ class Post < ApplicationRecord
   geocoded_by :address
   before_validation :geocode, if: :will_save_change_to_address?
   validate :geocode_must_be_present
+
+  def liked_by?(end_user)
+    likes.exists?(end_user_id: end_user.id)
+  end
 
   def Post.search(keyword)
       Post.where("facility_name LIKE(?) OR address LIKE(?) OR detailed_description LIKE(?)", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%")

@@ -7,13 +7,9 @@ class EndUser < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
-  has_many :likes
+  has_many :likes, dependent: :destroy
 
   validates :nickname, length: { minimum: 2, maximum: 10 }, presence: true
-  
-  def liked_by?(post_id)
-    likes.where(post_id: post_id).exists?
-  end
 
   # ゲストログイン用のメソッド
   def self.guest
