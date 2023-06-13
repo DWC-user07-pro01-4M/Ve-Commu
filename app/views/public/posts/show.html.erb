@@ -16,12 +16,8 @@
 
         <div class="col">
           <div class="mx-5">
-            <%= render "bookmark", post: @post %>
-
-            <div id="likes_buttons_<%= @post.id %>">
-              <%= render partial: "public/likes/like", locals: { post: @post } %>
-            </div>
-
+            <br>
+              <%= render "bookmark", post: @post %>
             <br>
               <h3><span class="border-bottom border-dark">投稿情報詳細</span></h3>
               <br>
@@ -33,6 +29,12 @@
                   <% end %>
                 </div>
                 <br>
+
+                <div id="likes_buttons_<%= @post.id %>">
+                  <%= render partial: "public/likes/like", locals: { post: @post } %>
+                </div>
+                <br>
+
               <div>
                 <%= render "public/comments/form", comment: @comment %>
               </div>
