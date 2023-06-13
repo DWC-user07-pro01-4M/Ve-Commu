@@ -41,39 +41,39 @@ Tag.create!(
 # 投稿用会員
 end_users = EndUser.create!(
   [
-    {email: "olivia@example.com", nickname: "オリバー", password: "password"},
-    {email: "james@example.com", nickname: "ジェームス", password: "password"},
-    {email: "lucas@example.com", nickname: "ルーカス", password: "password"},
-    {email: "hitomi@example.com", nickname: "ひとみ", password: "password"},
-    {email: "sousuke@example.com", nickname: "そうすけ", password: "password"},
-    {email: "tatuya@example.com", nickname: "たつや", password: "password"},
-    {email: "kikuo@example.com", nickname: "きくお", password: "password"},
-    {email: "kisuke@example.com", nickname: "きすけ", password: "password"},
-    {email: "masahiko@example.com", nickname: "まさひこ", password: "password"},
-    {email: "kaoru@example.com", nickname: "かおる", password: "password"},
+    {email: "olivia@example.com",   nickname: "オリバー",   password: "password"},
+    {email: "james@example.com",    nickname: "ジェームス", password: "password"},
+    {email: "lucas@example.com",    nickname: "ルーカス",   password: "password"},
+    {email: "hitomi@example.com",   nickname: "ひとみ",     password: "password"},
+    {email: "sousuke@example.com",  nickname: "そうすけ",   password: "password"},
+    {email: "tatuya@example.com",   nickname: "たつや",     password: "password"},
+    {email: "kikuo@example.com",    nickname: "きくお",     password: "password"},
+    {email: "kisuke@example.com",   nickname: "きすけ",     password: "password"},
+    {email: "masahiko@example.com", nickname: "まさひこ",   password: "password"},
+    {email: "kaoru@example.com",    nickname: "かおる",     password: "password"},
     {email: "ryukichi@example.com", nickname: "りゅうきち", password: "password"},
-    {email: "kanzi@example.com", nickname: "かんじ", password: "password"},
-    {email: "masahiro@example.com", nickname: "まさひろ", password: "password"},
-    {email: "kaoruko@example.com", nickname: "かおるこ", password: "password"}
+    {email: "kanzi@example.com",    nickname: "かんじ",     password: "password"},
+    {email: "masahiro@example.com", nickname: "まさひろ",   password: "password"},
+    {email: "kaoruko@example.com",  nickname: "かおるこ",   password: "password"}
   ]
 )
 
 # 投稿内容
 Post.create!(
   [
-    {facility_name: "A旅館", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop1.png"), filename:"shop1.png"), address: "滋賀県", detailed_description: "スタッフが親切でした。", end_user_id: end_users[0].id },
-    {facility_name: "Bホテル", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop2.png"), filename:"shop2.png"), address: "東京都", detailed_description: "柔軟に対応してくれました。", end_user_id: end_users[1].id },
-    {facility_name: "Cリゾート", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop3.png"), filename:"shop3.png"), address: "北海道", detailed_description: "対応が丁寧でした。" , end_user_id: end_users[2].id },
-    {facility_name: "Dカプセル", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop4.png"), filename:"shop4.png"), address: "愛知県", detailed_description: "嫌がらず対応してくれました。" , end_user_id: end_users[3].id },
-    {facility_name: "Eペンション", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop5.png"), filename:"shop5.png"), address: "福岡県", detailed_description: "子供達にとても親切にしてくれました。" , end_user_id: end_users[4].id },
-    {facility_name: "F店", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop6.png"), filename:"shop6.png"), address: "千葉県", detailed_description: "理解ある対応をしてくれました。" , end_user_id: end_users[5].id },
-    {facility_name: "Gレストラン", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop7.png"), filename:"shop7.png"), address: "福島県", detailed_description: "ホスピタリティがめっちゃ高かった！。" , end_user_id: end_users[6].id },
-    {facility_name: "H旅館", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop8.png"), filename:"shop8.png"), address: "山梨県", detailed_description: "みんな優しかったです。" , end_user_id: end_users[7].id },
-    {facility_name: "Iホテル", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop9.png"), filename:"shop9.png"), address: "京都府", detailed_description: "ぜひ利用して欲しい施設です！。" , end_user_id: end_users[8].id },
-    {facility_name: "Jリゾート", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop10.png"), filename:"shop10.png"), address: "大阪府", detailed_description: "すごくいいところ、また利用したいです。" , end_user_id: end_users[9].id },
-    {facility_name: "Kカプセル", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop11.png"), filename:"shop11.png"), address: "岡山県", detailed_description: "異国料理が楽しめました。" , end_user_id: end_users[10].id },
-    {facility_name: "Lペンション", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop12.png"), filename:"shop12.png"), address: "静岡県", detailed_description: "外国人の利用者も多かったです。" , end_user_id: end_users[11].id },
-    {facility_name: "N店", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop13.png"), filename:"shop13.png"), address: "石川県", detailed_description: "観光に来たなら是非利用して欲しいお店です。" , end_user_id: end_users[12].id },
-    {facility_name: "Mレストラン", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop14.png"), filename:"shop14.png"), address: "群馬県", detailed_description: "こちらの要望を柔軟に受け入れてくれました。" , end_user_id: end_users[13].id }
+    {facility_name: "A旅館",       image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop1.jpg"), filename:"shop1.jpg"), address: "滋賀県", detailed_description: "スタッフが親切でした。",                      end_user_id: end_users[0].id },
+    {facility_name: "Bホテル",     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop2.jpg"), filename:"shop2.jpg"), address: "東京都", detailed_description: "柔軟に対応してくれました。",                  end_user_id: end_users[1].id },
+    {facility_name: "Cリゾート",   image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop3.jpg"), filename:"shop3.jpg"), address: "北海道", detailed_description: "対応が丁寧でした。" ,                         end_user_id: end_users[2].id },
+    {facility_name: "Dカプセル",   image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop4.jpg"), filename:"shop4.jpg"), address: "愛知県", detailed_description: "嫌がらず対応してくれました。" ,               end_user_id: end_users[3].id },
+    {facility_name: "Eペンション", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop5.jpg"), filename:"shop5.jpg"), address: "福岡県", detailed_description: "子供達にとても親切にしてくれました。" ,       end_user_id: end_users[4].id },
+    {facility_name: "F店",         image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop6.jpg"), filename:"shop6.jpg"), address: "千葉県", detailed_description: "理解ある対応をしてくれました。" ,             end_user_id: end_users[5].id },
+    {facility_name: "Gレストラン", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop7.jpg"), filename:"shop7.jpg"), address: "福島県", detailed_description: "ホスピタリティがめっちゃ高かった！。" ,       end_user_id: end_users[6].id },
+    {facility_name: "H旅館",       image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop8.jpg"), filename:"shop8.jpg"), address: "山梨県", detailed_description: "みんな優しかったです。" ,                     end_user_id: end_users[7].id },
+    {facility_name: "Iホテル",     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop9.jpg"), filename:"shop9.jpg"), address: "京都府", detailed_description: "ぜひ利用して欲しい施設です！。" ,             end_user_id: end_users[8].id },
+    {facility_name: "Jリゾート",   image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop1.jpg"), filename:"shop1.jpg"), address: "大阪府", detailed_description: "すごくいいところ、また利用したいです。" ,     end_user_id: end_users[9].id },
+    {facility_name: "Kカプセル",   image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop2.jpg"), filename:"shop2.jpg"), address: "岡山県", detailed_description: "異国料理が楽しめました。" ,                   end_user_id: end_users[10].id },
+    {facility_name: "Lペンション", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop3.jpg"), filename:"shop3.jpg"), address: "静岡県", detailed_description: "外国人の利用者も多かったです。" ,             end_user_id: end_users[11].id },
+    {facility_name: "N店",         image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop4.jpg"), filename:"shop4.jpg"), address: "石川県", detailed_description: "観光に来たなら是非利用して欲しいお店です。" , end_user_id: end_users[12].id },
+    {facility_name: "Mレストラン", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop4.jpg"), filename:"shop5.jpg"), address: "群馬県", detailed_description: "こちらの要望を柔軟に受け入れてくれました。" , end_user_id: end_users[13].id }
   ]
 )
