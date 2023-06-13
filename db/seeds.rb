@@ -74,6 +74,6 @@ Post.create!(
     {facility_name: "Kカプセル",   image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop2.jpg"), filename:"shop2.jpg"), address: "岡山県", detailed_description: "異国料理が楽しめました。" ,                   end_user_id: end_users[10].id },
     {facility_name: "Lペンション", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop3.jpg"), filename:"shop3.jpg"), address: "静岡県", detailed_description: "外国人の利用者も多かったです。" ,             end_user_id: end_users[11].id },
     {facility_name: "N店",         image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop4.jpg"), filename:"shop4.jpg"), address: "石川県", detailed_description: "観光に来たなら是非利用して欲しいお店です。" , end_user_id: end_users[12].id },
-    {facility_name: "Mレストラン", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop4.jpg"), filename:"shop5.jpg"), address: "群馬県", detailed_description: "こちらの要望を柔軟に受け入れてくれました。" , end_user_id: end_users[13].id }
+    {facility_name: "Mレストラン", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop5.jpg"), filename:"shop5.jpg"), address: "群馬県", detailed_description: "こちらの要望を柔軟に受け入れてくれました。" , end_user_id: end_users[13].id }
   ]
 )
