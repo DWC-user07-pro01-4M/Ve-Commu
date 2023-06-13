@@ -17,6 +17,12 @@ class Post < ApplicationRecord
   before_validation :geocode, if: :will_save_change_to_address?
   validate :geocode_must_be_present
 
+  scope :latest, -> {order(created_at: :desc)}
+  scope :old, -> {order(created_at: :asc)}
+  scope :bookmark_count, -> {order(bookmark: :desc)}
+  scope :comment_count, -> {order(comment: :desc)}
+  scope :like_count, -> {order(like: :desc)}
+
   def Post.search(keyword)
       Post.where("facility_name LIKE(?) OR address LIKE(?) OR detailed_description LIKE(?)", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%")
   end

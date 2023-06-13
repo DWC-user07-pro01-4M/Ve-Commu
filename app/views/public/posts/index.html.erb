@@ -7,6 +7,12 @@
           <div class="text-center mt-5"><h3><strong><%= flash[:notice] %></strong></h3></div>
             <h3><strong class="border-bottom border-dark">投稿一覧</strong></h3>
 
+<%= link_to "新しい順", posts_path(latest: "true") %>
+|<%= link_to "古い順", posts_pat(old: "true") %>
+|<%= link_to "ブックマークの多い順", posts_pat(bookmark_count: "true") %>
+|<%= link_to "コメントの多い順", posts_pat(comment_count: "true") %>
+|<%= link_to "いいねの多い順", posts_pat(like_count: "true") %>
+
               <%= render "search", post: @post %>
 
               <%= render "index", post: @post %>
