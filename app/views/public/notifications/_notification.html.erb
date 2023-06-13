@@ -1,0 +1,57 @@
+<div class="mx-auto">
+  <% visitor = notification.visitor %>
+  <% visitor_comment = notification.project_comment_id %>
+  <% project = Project.find_by(id: notification.project_id) %>
+  <% if project.present? %>
+    <% company = project.company %>
+  <% end %>
+
+  <% group = Group.find_by(id: notification.group_id) %>
+  <% visitor_chat = notification.chat_id %>
+  <div class="card mb-1">
+    <div class="card-body">
+
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <%= link_to public_user_path(visitor), class: 'text-dark' do %>
+            <%= image_tag visitor.get_profile_image(50,50), class: 'rounded-circle' %>
+            <%= visitor.name %>さんが
+          <% end %>
+        </div>
+        <span><%= "#{time_ago_in_words(notification.created_at)}前" %></span>
+      </div>
+
+      <div class="mt-2">
+        <% case notification.action %>
+        <% when 'favorite' %>
+          <i class="fas fa-heart mr-1"></i>
+            <%= link_to project.name, company_project_path(company, notification.project_id), class: "font-weight-bold text-dark" %>
+            にいいねしました
+        <% when 'comment' %>
+          <i class="fas fa-comments mr-1"></i>
+            <% comment = ProjectComment.find_by(id: visitor_comment) %>
+            <% comment_content =comment.comment %>
+            <%= link_to project.name, company_project_path(company, notification.project_id), class: "font-weight-bold text-dark" %>
+            にコメントしました
+          <p class="text-muted mb-0">
+            <%= comment_content %>
+          </p>
+        <% when 'join' %>
+          <i class="fas fa-user-plus"></i>
+          <%= link_to group.name, group_path(group),class: "font-weight-bold text-dark" %>
+          に参加しました
+        <% when 'chat' %>
+          <i class="fas fa-comments mr-1"></i>
+          <% chat = Chat.find_by(id: visitor_chat) %>
+          <% chat_content = chat.message %>
+          <%= link_to group.name,  group_path(group),class: "font-weight-bold text-dark" %>
+          にコメントしました
+          <p class="text-muted mb-0">
+            <%= chat_content %>
+          </p>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
