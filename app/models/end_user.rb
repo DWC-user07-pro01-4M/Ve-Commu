@@ -10,6 +10,10 @@ class EndUser < ApplicationRecord
   has_many :likes
 
   validates :nickname, length: { minimum: 2, maximum: 10 }, presence: true
+  
+  def liked_by?(post_id)
+    likes.where(post_id: post_id).exists?
+  end
 
   # ゲストログイン用のメソッド
   def self.guest
