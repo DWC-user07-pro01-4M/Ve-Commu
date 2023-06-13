@@ -16,6 +16,9 @@ import "../stylesheets/application"
 // FontAwesomeの導入
 import '@fortawesome/fontawesome-free/js/all'
 
+// その他追加
+//= require jquery
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
