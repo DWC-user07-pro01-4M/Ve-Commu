@@ -1,26 +1,23 @@
-<div class="container border border-light contents-area bg-light" >
-  <div class="row">
+<div class="container-field">
+  <div class="row justify-content-center">
+    <div class="col-xl-10 col-lg-12 col-md-12 col-sm-12">
+      <div class="border contents-area bg-light">
 
-    <div class="container justify-content-center">
-      <div class="row">
-        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-          <div class="text-center mt-5"><h3><strong><%= flash[:notice] %></strong></h3>
-            <h1><strong class="border-bottom border-dark">投稿一覧</strong></h1>
-              <%= link_to "新しい順", posts_path(latest: "true") %>
-              |<%= link_to "古い順", posts_path(old: "true") %>
+        <div class="text-center mt-5"><h3><strong><%= flash[:notice] %></strong></h3>
+          <h1><strong class="border-bottom border-dark">投稿一覧</strong></h1>
+            <%= link_to "新しい順", posts_path(latest: "true") %>
+            |<%= link_to "古い順", posts_path(old: "true") %>
+        </div>
+
+            <%= render "search", post: @post %>
+
+            <%= render "index", post: @post %>
+
+          <div class="pagination justify-content-center mt-3">
+            <%= paginate @posts, theme: "bootstrap-5" %>
           </div>
 
-              <%= render "search", post: @post %>
-
-              <%= render "index", post: @post %>
-
-            <div class="pagination justify-content-center mt-3">
-              <%= paginate @posts, theme: "bootstrap-5" %>
-            </div>
-
-        </div>
       </div>
     </div>
-
   </div>
 </div>
