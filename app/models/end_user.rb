@@ -7,6 +7,7 @@ class EndUser < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
+  has_many :likes
 
   validates :nickname, length: { minimum: 2, maximum: 10 }, presence: true
 
