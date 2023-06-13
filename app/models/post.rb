@@ -17,10 +17,6 @@ class Post < ApplicationRecord
   before_validation :geocode, if: :will_save_change_to_address?
   validate :geocode_must_be_present
 
-  def liked_by?(end_user)
-    likes.exists?(end_user_id: end_user.id)
-  end
-
   def Post.search(keyword)
       Post.where("facility_name LIKE(?) OR address LIKE(?) OR detailed_description LIKE(?)", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%")
   end
@@ -33,6 +29,10 @@ class Post < ApplicationRecord
     if keyword.present?
        where("facility_name LIKE(?) OR address LIKE(?) OR detailed_description LIKE(?)", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%")
     end
+  end
+
+  def liked_by?(end_user)
+    likes.exists?(end_user_id: end_user.id)
   end
 
   def get_image(width, height)
