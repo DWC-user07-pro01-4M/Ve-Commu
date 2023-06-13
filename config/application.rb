@@ -16,6 +16,7 @@ module VeCommuApp
     # バッチ処理,APIのために追記
     config.paths.add "lib", eager_load: true
 
+    config.time_zone = 'Asia/Tokyo'
 
     # Configuration for the application, engines, and railties goes here.
     #
