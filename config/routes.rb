@@ -43,6 +43,9 @@ Rails.application.routes.draw do
     end
 
     get "search" => "posts#search"
+
+    post "like/:id" => "likes#create", as: "create_like"
+    delete "like/:id" => "likes#destroy", as: "destroy_like"
   end
 
   # お問い合わせ用ルーティング
