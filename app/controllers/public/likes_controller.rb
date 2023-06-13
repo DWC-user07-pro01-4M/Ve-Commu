@@ -1,15 +1,18 @@
 class Public::LikesController < ApplicationController
+  before_action :post_params
 
   def create
-    post =  Post.find(params[:post_id])
-    like = current_end_user.likes.new(post_id: post.id)
-    like.save
+    Like.create(end_user_id: current_end_user.id, post_id: params[:id])
   end
 
   def destroy
-    post =  Post.find(params[:post_id])
-    like = current_end_user.likes.find_by(post_id: post.id)
-    like.destroy
+    Like.find_by(end_user_id: current_end_user.id, post_id: params[:id]).destroy
+  end
+
+  private
+
+  def post_params
+    @post = Post.find(params[:id])
   end
 
 end

@@ -5,7 +5,7 @@ class Post < ApplicationRecord
   has_many :association_post_and_tags, dependent: :destroy
   has_many :tags, through: :association_post_and_tags
   has_many :bookmarks, dependent: :destroy
-  has_many :likes, dependent: :destroy
+  has_many :likes
 
   has_one_attached :image
 
@@ -29,10 +29,6 @@ class Post < ApplicationRecord
     if keyword.present?
        where("facility_name LIKE(?) OR address LIKE(?) OR detailed_description LIKE(?)", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%")
     end
-  end
-
-  def liked_by?(end_user)
-    likes.exists?(end_user_id: end_user.id)
   end
 
   def get_image(width, height)

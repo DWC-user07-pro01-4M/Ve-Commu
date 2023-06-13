@@ -1,17 +1,17 @@
 <% if end_user_signed_in? %>
-  <% if post.liked_by?(current_end_user) %>
-    <td>
-      <%= link_to post_likes_path(post), method: :delete, remote: true do %>
-        <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
-      <% end %>
-      <%= post.likes.count %> いいね
+ <% if current_end_user.liked_by?(post.id) %>
+   <td>
+     <%= link_to destroy_like_path(post), method: :DELETE, remote: true do %>
+       <i class="fa fa-heart unlike-btn"></i>
+     <% end %>
+     <%= post.likes.count %> いいね
    </td>
-  <% else %>
-    <td>
-      <%= link_to post_likes_path(post), method: :post, remote: true do %>
-        <i class="fas fa-heart" aria-hidden="true"></i>
-      <% end %>
-      <%= post.likes.count %> いいね
-    </td>
-  <% end %>
+ <% else %>
+   <td>
+     <%= link_to create_like_path(post), method: :POST, remote: true do %>
+       <i class="fa fa-heart like-btn"></i>
+     <% end %>
+     <%= post.likes.count %> いいね
+   </td>
+ <% end %>
 <% end %>
