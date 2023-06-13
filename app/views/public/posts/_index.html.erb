@@ -1,4 +1,4 @@
-<table class="table table-hover text-center contents-area">
+<table class="table table-hover">
   <thead>
     <tr>
       <th>投稿者</th>
@@ -7,7 +7,7 @@
       <th>施設住所</th>
       <th>詳細説明</th>
       <th>タグ</th>
-      <th colspan="3"></th>
+      <th colspan="5"></th>
     </tr>
   </thead>
     <% @posts.each do |post| %>
@@ -23,6 +23,7 @@
               <%= tag.tag_type %>
             <% end %>
           </td>
+          <td><%= l post.created_at %></td>
           <td>コメント数: <%= post.comments.count %></td>
           <td>ブックマーク数: <%= post.bookmarks.count %></td>
           <td>いいね数: <%= post.likes.count %></td>

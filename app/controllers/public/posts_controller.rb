@@ -2,7 +2,13 @@ class Public::PostsController < ApplicationController
   before_action :authenticate_end_user!
 
   def index
-    @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
+    if params[:latest]
+      @posts = Post.latest
+    elsif params[:old]
+      @posts = Post.old
+    else
+      @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
+    end
     @posts = @posts.search(params[:keyword])
     @posts = @posts.page(params[:page])
     @keyword = params[:keyword]
