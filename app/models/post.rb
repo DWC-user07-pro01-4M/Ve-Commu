@@ -6,6 +6,7 @@ class Post < ApplicationRecord
   has_many :tags, through: :association_post_and_tags
   has_many :bookmarks, dependent: :destroy
   has_many :likes
+  has_many :notifications, dependent: :destroy
 
   has_one_attached :image
 
