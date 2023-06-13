@@ -16,7 +16,7 @@
 
         <div class="col">
           <div class="mx-5">
-            <%= render "bookmark", post: @post %>
+            <%= render "bookmark", post: @post %><%= render partial: 'likes/like', locals: {post: @post} %>
             <br>
               <h3><span class="border-bottom border-dark">投稿情報詳細</span></h3>
               <br>
