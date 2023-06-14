@@ -45,6 +45,11 @@
 
         <% elsif end_user_signed_in? %>
         <li class="nav-item">
+          <%= link_to notifications_path, class: "btn btn-outline-warning btn-lg" do %>
+            <i class="fas fa-bell"></i> 通知
+          <% end %>
+        </li>
+        <li class="nav-item">
           <%= link_to end_user_path(current_end_user), class: "btn btn-outline-light btn-lg" do %>
             <i class="fas fa-users"></i> マイページ
           <% end %>

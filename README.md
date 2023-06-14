@@ -1,5 +1,5 @@
 # Ve-Commu
-![ve_commu](https://github.com/DWC-user07-pro01-4M/Ve-Commu/assets/124852092/6b099882-6dbb-4e79-b001-47a6bfaf04bf)
+![read_me](https://github.com/DWC-user07-pro01-4M/Ve-Commu/assets/124852092/cc9be156-4c56-45ad-98d4-8608b61b8cba)
 ### サイトテーマ
 様々な思想・宗教上の理由から食事に制限のある方々が、<br>
 食文化に対応、または対応してくれる飲食店や宿泊施設を<br>
