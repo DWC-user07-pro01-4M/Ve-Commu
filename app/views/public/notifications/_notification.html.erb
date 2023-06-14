@@ -1,4 +1,5 @@
 <div class="mx-auto">
+
   <% visitor = notification.visitor %>
   <% visited = notification.visited %>
 
@@ -15,30 +16,29 @@
 
       <div class="mt-2">
         <% case notification.action %>
-        <% when "like" %>
+          <% when "like" %>
             <%= link_to "あなたの投稿", notification.post, style: "font-weight: bold" %>
             にいいねしました。
 
-        <% when "comment" %>
-          <% if notification.post.end_user_id == visited.id %>
-            <%= link_to "あなたの投稿", notification.post, style: "font-weight: bold" %>
-          <% else %>
-            <%= link_to post_path(notification.post) do %>
-              <%= notification.post.end_user.nickname + "さんの投稿" %>
-            にコメントしました。
-          <% end %>
-          <p class="text-muted mb-0">
-            <%= Comment.find_by(id: notification.comment_id)&.comment %>
-          </p>
+          <% when "comment" %>
+            <% if notification.post.end_user_id == visited.id %>
+              <%= link_to "あなたの投稿", notification.post, style: "font-weight: bold" %>
+            <% else %>
+              <%= link_to post_path(notification.post) do %>
+                <%= notification.post.end_user.nickname + "さんの投稿" %>
+              にコメントしました。
+            <% end %>
+              <p class="text-muted mb-0">
+                <%= Comment.find_by(id: notification.comment_id)&.comment %>
+              </p>
 
-
-        <% when "bookmark" %>
-          <%= link_to group.name, group_path(group),class: "font-weight-bold text-dark" %>
-          しました。
-
+          <% when "bookmark" %>
+            <%= link_to group.name, group_path(group),class: "font-weight-bold text-dark" %>
+            しました。
         <% end %>
       </div>
 
     </div>
   </div>
+
 </div>

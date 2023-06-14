@@ -1,4 +1,4 @@
-<div class="container h-100">
+<div class="container bg-white">
 
   <h2 class="text-center">通知</h3>
 
@@ -13,14 +13,15 @@
   <div class="row mt-2 ">
     <div class="col-11 col-md-10 col-lg-8 mx-auto p-3">
       <% @notifications = @notifications.where.not(visitor_id: current_end_user.id) %>
-      <% if @notifications.exists? %>
-        <div>
-          <%= render @notifications %>
-        </div>
-      <% else %>
-          <p>通知はありません</p>
+        <% if @notifications.exists? %>
+          <div>
+            <%= render @notifications %>
+          </div>
+        <% else %>
+            <p>通知はありません</p>
       <% end %>
     </div>
   </div>
+
   <%= paginate @notifications %>
-</div>
+  </div>
