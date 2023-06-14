@@ -12,10 +12,10 @@
 
   <div class="row mt-2 ">
     <div class="col-11 col-md-10 col-lg-8 mx-auto p-3">
-      <% @notifications = @notifications.where.not(visitor_id: current_end_user.id) %>
-        <% if @notifications.exists? %>
+      <% notifications = @notifications.where.not(visitor_id: current_end_user.id) %>
+        <% if notifications.exists? %>
           <div>
-            <%= render @notifications %>
+            <%= render "notification", notification: @notification %>
           </div>
         <% else %>
             <p>通知はありません</p>
@@ -23,5 +23,5 @@
     </div>
   </div>
 
-  <%= paginate @notifications %>
+  <%= paginate @notifications, theme: "bootstrap-5" %>
 </div>

@@ -8,7 +8,7 @@
 
       <div class="d-flex justify-content-between align-items-center">
         <div>
-          <%= link_to end_user_path(visitor), class: 'text-dark' do %>
+          <%= link_to end_user_path(visitor), class: "text-dark" do %>
             <%= visitor.nickname %>さんが
           <% end %>
         </div>
@@ -27,6 +27,7 @@
               <%= link_to post_path(notification.post) do %>
                 <%= notification.post.end_user.nickname + "さんの投稿" %>
               にコメントしました。
+              <% end %>
             <% end %>
               <p class="text-muted mb-0">
                 <%= Comment.find_by(id: notification.comment_id)&.comment %>

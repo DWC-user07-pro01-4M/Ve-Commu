@@ -2,8 +2,8 @@ class Public::LikesController < ApplicationController
   before_action :post_params
 
   def create
-    post.create_notification_like(current_end_user)
     Like.create(end_user_id: current_end_user.id, post_id: params[:id])
+    @post.create_notification_like(current_end_user)
   end
 
   def destroy
