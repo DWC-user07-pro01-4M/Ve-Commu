@@ -46,18 +46,18 @@ Rails.application.routes.draw do
 
     post "like/:id" => "likes#create", as: "create_like"
     delete "like/:id" => "likes#destroy", as: "destroy_like"
+
+    # 通知機能用ルーティング
+    resources :notifications, only: [:index] do
+      collection do
+        delete "destroy_all"
+      end
+    end
   end
 
   # お問い合わせ用ルーティング
   resources :contacts, only: [:new, :create] do
     get "/thanks" => "contacts#thanks"
-  end
-
-  # 通知機能用ルーティング
-  resources :notifications, only: [:index] do
-    collection do
-      delete "destroy_all"
-    end
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
