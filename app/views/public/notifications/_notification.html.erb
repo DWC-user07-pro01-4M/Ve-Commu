@@ -1,0 +1,41 @@
+<div class="mx-auto">
+
+  <% visitor = notification.visitor %>
+  <% visited = notification.visited %>
+
+  <div class="card mb-1">
+    <div class="card-body">
+
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <%= link_to end_user_path(visitor), class: "text-dark" do %>
+            <%= visitor.nickname %>さんが
+          <% end %>
+        </div>
+      </div>
+
+      <div class="mt-2">
+        <% case notification.action %>
+          <% when "like" %>
+            <%= link_to "あなたの投稿", notification.post, style: "font-weight: bold" %>
+            にいいねしました。
+
+          <% when "comment" %>
+            <% if notification.post.end_user_id == visited.id %>
+              <%= link_to "あなたの投稿", notification.post, style: "font-weight: bold" %>
+            <% else %>
+              <%= link_to post_path(notification.post) do %>
+                <%= notification.post.end_user.nickname + "さんの投稿" %>
+              にコメントしました。
+              <% end %>
+            <% end %>
+              <p class="text-muted mb-0">
+                <%= Comment.find_by(id: notification.comment_id)&.comment %>
+              </p>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+
+</div>
