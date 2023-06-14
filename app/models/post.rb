@@ -43,12 +43,12 @@ class Post < ApplicationRecord
     image.variant(resize: "#{width}x#{height}^", gravity: "center", crop: "#{width}x#{height}+0+0").processed
   end
 
-  def create_notification_like!(current_user)
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_end_user.id, end_user_id, id, 'like'])
+  def create_notification_like!(current_end_user)
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_end_user.id, end_user_id, id, "like"])
     if temp.blank?
-      notification = current_user.active_notifications.new(
+      notification = current_end_user.active_notifications.new(
         post_id: id,
-        visited_id: user_id,
+        visited_id: end_user_id,
         action: "like"
       )
       if notification.visitor_id == notification.visited_id
