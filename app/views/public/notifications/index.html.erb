@@ -1,10 +1,12 @@
-<div class="container">
+<div class="container-field">
   <div class="row d-flex justify-content-center m-5">
+    <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12">
+      <div class="contents-area bg-white">
 
   <h2 class="text-center">通知</h3>
 
-  <div class="row mt-5">
-    <div class="col-11 col-md-10 col-lg-8 mx-auto">
+  <div class="row">
+    <div class="col-11 mx-auto">
       <%= link_to destroy_all_notifications_path, method: :delete, class: 'text-dark' do %>
         <i class="fas fa-trash-alt"></i> 全削除
       <% end %>
@@ -12,7 +14,7 @@
   </div>
 
   <div class="row mt-2 ">
-    <div class="col-11 col-md-10 col-lg-8 mx-auto p-3">
+    <div class="col-11 mx-auto p-3">
       <% notifications = @notifications.where.not(visitor_id: current_end_user.id) %>
         <% if notifications.exists? %>
           <% notifications.each do |notification| %>
@@ -28,5 +30,7 @@
 
     <%= paginate @notifications, theme: "bootstrap-5" %>
 
+      </div>
+    </div>
   </div>
 </div>
