@@ -16,8 +16,9 @@ Admin.create!(
   email: 'adomin@portfolio.com',
   password: '111-111'
 )
+
 # タグ種類
-Tag.create!(
+tags = Tag.create!(
   [
     { tag_type: "ヴィーガン対応" },
     { tag_type: "フルータリアン対応" },
@@ -59,7 +60,7 @@ end_users = EndUser.create!(
 )
 
 # 投稿内容
-Post.create!(
+posts = Post.create!(
   [
     {facility_name: "A旅館",       image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop1.jpg"), filename:"shop1.jpg"), address: "滋賀県", detailed_description: "スタッフが親切でした。",                      end_user_id: end_users[0].id },
     {facility_name: "Bホテル",     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop2.jpg"), filename:"shop2.jpg"), address: "東京都", detailed_description: "柔軟に対応してくれました。",                  end_user_id: end_users[1].id },
@@ -75,5 +76,24 @@ Post.create!(
     {facility_name: "Lペンション", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop3.jpg"), filename:"shop3.jpg"), address: "静岡県", detailed_description: "外国人の利用者も多かったです。" ,             end_user_id: end_users[11].id },
     {facility_name: "N店",         image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop4.jpg"), filename:"shop4.jpg"), address: "石川県", detailed_description: "観光に来たなら是非利用して欲しいお店です。" , end_user_id: end_users[12].id },
     {facility_name: "Mレストラン", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop5.jpg"), filename:"shop5.jpg"), address: "群馬県", detailed_description: "こちらの要望を柔軟に受け入れてくれました。" , end_user_id: end_users[13].id }
+  ]
+)
+
+AssociationPostAndTag.create!(
+  [
+    { post_id: posts[0].id,  tag_id: tags[0].id },
+    { post_id: posts[1].id,  tag_id: tags[1].id },
+    { post_id: posts[2].id,  tag_id: tags[2].id },
+    { post_id: posts[3].id,  tag_id: tags[3].id },
+    { post_id: posts[4].id,  tag_id: tags[4].id },
+    { post_id: posts[5].id,  tag_id: tags[5].id },
+    { post_id: posts[6].id,  tag_id: tags[6].id },
+    { post_id: posts[7].id,  tag_id: tags[7].id },
+    { post_id: posts[8].id,  tag_id: tags[8].id },
+    { post_id: posts[9].id,  tag_id: tags[9].id },
+    { post_id: posts[10].id, tag_id: tags[10].id },
+    { post_id: posts[11].id, tag_id: tags[11].id },
+    { post_id: posts[12].id, tag_id: tags[12].id },
+    { post_id: posts[13].id, tag_id: tags[13].id }
   ]
 )
