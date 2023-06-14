@@ -31,10 +31,6 @@
               <p class="text-muted mb-0">
                 <%= Comment.find_by(id: notification.comment_id)&.comment %>
               </p>
-
-          <% when "bookmark" %>
-            <%= link_to group.name, group_path(group),class: "font-weight-bold text-dark" %>
-            しました。
         <% end %>
       </div>
 

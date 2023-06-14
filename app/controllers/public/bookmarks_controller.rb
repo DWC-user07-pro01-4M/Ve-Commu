@@ -6,7 +6,6 @@ class Public::BookmarksController < ApplicationController
     @post = @bookmark.post
     if @bookmark.valid?
       @bookmark.save
-      @post.create_notification_bookmark!(current_end_user)
       redirect_to post_path(@post), notice: "この投稿をブックマークしました。"
     end
   end
