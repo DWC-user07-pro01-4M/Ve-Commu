@@ -1,4 +1,5 @@
-<div class="container bg-white">
+<div class="container">
+  <div class="row d-flex justify-content-center m-5">
 
   <h2 class="text-center">通知</h3>
 
@@ -14,14 +15,18 @@
     <div class="col-11 col-md-10 col-lg-8 mx-auto p-3">
       <% notifications = @notifications.where.not(visitor_id: current_end_user.id) %>
         <% if notifications.exists? %>
-          <div>
-            <%= render "notification", notification: @notification %>
-          </div>
+          <% notifications.each do |notification| %>
+            <div>
+              <%= render "notification", notification: notification %>
+            </div>
+          <% end %>
         <% else %>
             <p>通知はありません</p>
       <% end %>
     </div>
   </div>
 
-  <%= paginate @notifications, theme: "bootstrap-5" %>
+    <%= paginate @notifications, theme: "bootstrap-5" %>
+
+  </div>
 </div>

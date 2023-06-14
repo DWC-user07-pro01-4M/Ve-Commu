@@ -7,7 +7,7 @@ class Public::CommentsController < ApplicationController
     @comment.end_user_id = current_end_user.id
     if @comment.save
       @comments = @post.comments
-      @post.create_notification_comment!(current_end_user, @comment.id)
+      @post.create_notification_comment(current_end_user, @comment.id)
     else
       redirect_to request.referer, notice: "コメントを送信に失敗しました。"
     end
