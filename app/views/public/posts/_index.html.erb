@@ -3,7 +3,7 @@
   <div class="col-1 py-3 font-weight-bold">施設画像</div>
   <div class="col-1 py-3 font-weight-bold">施設名</div>
   <div class="col-1 py-3 font-weight-bold">施設住所</div>
-  <div class="col-1 py-3 font-weight-bold">詳細説明</div>
+  <div class="col-2 py-3 font-weight-bold">詳細説明</div>
   <div class="col-1 py-3 font-weight-bold">タグ</div>
 </div>
 
@@ -13,7 +13,7 @@
       <div class="col-1 py-3"><%= image_tag post.get_image(50,50) %></div>
       <div class="col-1 py-3"><%= post.facility_name %></div>
       <div class="col-1 py-3"><%= post.address %></div>
-      <div class="col-1 py-3"><%= post.detailed_description %></div>
+      <div class="col-2 py-3"><%= post.detailed_description %></div>
       <div class="col-1 py-3">
         <% post.tags.each do |tag| %>
           <%= tag.tag_type %>
@@ -23,6 +23,7 @@
       <div class="col-1 py-3">コメント数: <%= post.comments.count %></div>
       <div class="col-1 py-3">ブックマーク数: <%= post.bookmarks.count %></div>
       <div class="col-1 py-3">いいね数: <%= post.likes.count %></div>
+
       <div class="col-1 py-3">
         <%= link_to "詳細を確認", post_path(post.id), class: "btn btn-warning btn_lg" %>
       </div>
