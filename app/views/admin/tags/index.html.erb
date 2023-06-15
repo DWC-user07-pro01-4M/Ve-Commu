@@ -1,6 +1,6 @@
 <div class="container border border-white contents-area bg-white" >
   <div class="row mt-5 mb-5">
-    <div class="col-10 mx-auto">
+    <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12 mx-auto">
 
       <%= render "error", tag: @tag %>
       <h3><strong><%= flash[:notice] %><%= flash[:alert] %></strong></h3>
@@ -27,14 +27,16 @@
             </tr>
           </thead>
             <tbody>
-            <% @tags.each do |tag| %>
-              <tr>
-                <td class="align-middle"><%= tag.tag_type %></td>
-                <td colspan="3"></td>
-                <td><%= link_to "タグを変更する", edit_admin_tag_path(tag.id), class: "btn btn-success" %></td>
-                <td><%= link_to "タグを削除する", admin_tag_path(tag.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当にタグを削除しますか?" %></td>
-              </tr>
-            <% end %>
+              <% @tags.each do |tag| %>
+                <tr>
+                  <td class="align-middle"><%= tag.tag_type %></td>
+                  <td colspan="3"></td>
+                  <td>
+                    <%= link_to "タグを変更する", edit_admin_tag_path(tag.id), class: "btn btn-success" %>
+                    <%= link_to "タグを削除する", admin_tag_path(tag.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当にタグを削除しますか?" %>
+                  </td>
+                </tr>
+              <% end %>
             </tbody>
           </table>
 
