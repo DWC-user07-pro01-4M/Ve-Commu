@@ -1,7 +1,6 @@
 <div class="container-field">
   <div class="row justify-content-center">
-    <div class="col-xl-10 col-lg-12 col-md-12 col-sm-12">
-      <div class="border contents-area bg-light">
+    <div class="col-xl-11 col-lg-11 col-md-10 col-sm-10 bg-light">
 
         <div class="text-center mt-5"><h3><strong><%= flash[:notice] %></strong></h3>
           <h1><strong class="border-bottom border-dark">投稿一覧</strong></h1>
@@ -10,14 +9,13 @@
         </div>
 
             <%= render "search", post: @post %>
-              <br>
+
             <%= render "index", post: @post %>
 
           <div class="pagination justify-content-center mt-3">
             <%= paginate @posts, theme: "bootstrap-5" %>
           </div>
 
-      </div>
     </div>
   </div>
 </div>

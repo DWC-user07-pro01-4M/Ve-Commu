@@ -1,36 +1,31 @@
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>投稿者</th>
-      <th>施設画像</th>
-      <th>施設名</th>
-      <th>施設住所</th>
-      <th>詳細説明</th>
-      <th>タグ</th>
-      <th colspan="5"></th>
-    </tr>
-  </thead>
-    <% @posts.each do |post| %>
-      <tbody>
-        <tr>
-          <td><%= post.end_user.nickname %></td>
-          <td><%= image_tag post.get_image(50,50) %></td>
-          <td><%= post.facility_name %></td>
-          <td><%= post.address %></td>
-          <td><%= post.detailed_description %></td>
-          <td>
-            <% post.tags.each do |tag| %>
-              <%= tag.tag_type %>
-            <% end %>
-          </td>
-          <td><%= l post.created_at %></td>
-          <td>コメント数: <%= post.comments.count %></td>
-          <td>ブックマーク数: <%= post.bookmarks.count %></td>
-          <td>いいね数: <%= post.likes.count %></td>
-          <td>
-            <%= link_to "詳細を確認", post_path(post.id), class: "btn btn-warning btn_lg" %>
-          </td>
-      </tr>
-    </tbody>
+<div class="row d-flex border-bottom m-5">
+  <div class="col-1 py-3 font-weight-bold">投稿者</div>
+  <div class="col-1 py-3 font-weight-bold">施設画像</div>
+  <div class="col-1 py-3 font-weight-bold">施設名</div>
+  <div class="col-1 py-3 font-weight-bold">施設住所</div>
+  <div class="col-2 py-3 font-weight-bold">詳細説明</div>
+  <div class="col-1 py-3 font-weight-bold">タグ</div>
+</div>
+
+  <% @posts.each do |post| %>
+    <div class="row d-flex flex-wrap border-bottom m-5">
+      <div class="col-1 py-3"><%= post.end_user.nickname %></div>
+      <div class="col-1 py-3"><%= image_tag post.get_image(50,50) %></div>
+      <div class="col-1 py-3"><%= post.facility_name %></div>
+      <div class="col-1 py-3"><%= post.address %></div>
+      <div class="col-2 py-3"><%= post.detailed_description %></div>
+      <div class="col-1 py-3">
+        <% post.tags.each do |tag| %>
+          <%= tag.tag_type %>
+        <% end %>
+      </div>
+      <div class="col-1 py-3"><%= l post.created_at %></div>
+      <div class="col-1 py-3">コメント数: <%= post.comments.count %></div>
+      <div class="col-1 py-3">ブックマーク数: <%= post.bookmarks.count %></div>
+      <div class="col-1 py-3">いいね数: <%= post.likes.count %></div>
+
+      <div class="col-1 py-3">
+        <%= link_to "詳細を確認", post_path(post.id), class: "btn btn-warning btn_lg" %>
+      </div>
+    </div>
   <% end %>
-</table>
