@@ -31,7 +31,7 @@ Ve-Commu(ヴィーコミュ)はそんな発想から生まれたコミュニテ�
 
 ## 設計書
 * ER図</br>
-![ve_commu_er](https://github.com/DWC-user07-pro01-4M/Ve-Commu/assets/124852092/c092cd01-9d17-49ef-a6a7-9344d753c719)
+https://github.com/DWC-user07-pro01-4M/Ve-Commu/assets/124852092/ef0f9898-3f81-4a7c-b8e3-ed41a60b20ff
 * テーブル定義書</br>
 https://docs.google.com/spreadsheets/d/1xIf2JTtK0hWZwK1NNK-RFSDIh5LOmPg1/edit?usp=sharing
 * アプリケーション詳細設計書</br>
