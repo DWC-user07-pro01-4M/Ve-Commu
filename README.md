@@ -35,7 +35,6 @@ Ve-Commu(ヴィーコミュ)はそんな発想から生まれたコミュニテ�
 |:----|
 ![post_like_comment](https://user-images.githubusercontent.com/124852092/246374613-405c9fcd-9dc1-477b-81a8-461437d97c31.gif)
 |気に入った投稿はブックマークすることができます。|
-|:----|
 ![bookmark](https://user-images.githubusercontent.com/124852092/246375133-501b40d9-faa0-46a7-9400-59d40ac868c1.gif)
 
 ---
