@@ -61,7 +61,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # ここから導入したもの
 gem 'devise'
 gem 'kaminari'
-gem 'enum_help'
 gem 'bootstrap5-kaminari-views'
 gem 'whenever', require: false
 gem 'rails-i18n'

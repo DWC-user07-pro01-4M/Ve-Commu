@@ -95,8 +95,6 @@ GEM
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
       railties (>= 3.2)
-    enum_help (0.0.19)
-      activesupport (>= 3.0.0)
     erubi (1.12.0)
     ffi (1.15.5)
     geocoder (1.8.1)
@@ -290,7 +288,6 @@ DEPENDENCIES
   capybara (>= 3.26)
   devise
   dotenv-rails
-  enum_help
   geocoder
   gon
   image_processing (~> 1.2)
