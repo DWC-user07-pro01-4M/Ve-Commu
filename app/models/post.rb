@@ -2,11 +2,12 @@ class Post < ApplicationRecord
   belongs_to :end_user
 
   has_many :comments, dependent: :destroy
-  has_many :association_post_and_tags, dependent: :destroy
-  has_many :tags, through: :association_post_and_tags
   has_many :bookmarks, dependent: :destroy
   has_many :likes
   has_many :notifications, dependent: :destroy
+  # 投稿モデルとタグモデルを繋ぐ中間テーブルです。
+  has_many :association_post_and_tags, dependent: :destroy
+  has_many :tags, through: :association_post_and_tags
 
   has_one_attached :image
 
