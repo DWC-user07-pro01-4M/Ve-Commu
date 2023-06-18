@@ -34,11 +34,6 @@ class Post < ApplicationRecord
     end
   end
 
-  def bookmark_by(end_user)
-    Bookmark.find_by(end_user_id: end_user.id, post_id: id)
-    # bookmarks.find_by(end_user_id: end_user.id)
-  end
-
   def find_bookmark(end_user)
     bookmarks.find_by(end_user_id: end_user.id)
   end
