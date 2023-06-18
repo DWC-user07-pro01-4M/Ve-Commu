@@ -25,13 +25,7 @@ class Post < ApplicationRecord
   scope :old_post, -> {order(created_at: :asc)}
 
   def self.search(keyword)
-    self.where("facility_name LIKE ? or address LIKE ? or detailed_description LIKE ?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%")
-  end
-
-  def search(keyword)
-    if keyword.present?
-      where("facility_name LIKE ? or address LIKE ? or detailed_description LIKE ?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%")
-    end
+    where("facility_name LIKE ? or address LIKE ? or detailed_description LIKE ?", "%#{sanitize_sql_like(keyword)}%", "%#{sanitize_sql_like(keyword)}%", "%#{sanitize_sql_like(keyword)}%")
   end
 
   def find_bookmark(end_user)
@@ -65,6 +59,14 @@ class Post < ApplicationRecord
     end
     save_notification_comment(current_end_user, comment_id, end_user_id) if temp_ids.blank?
   end
+
+  # def create_notification_comment(current_end_user, comment_id)
+  #   end_user_ids = Comment.where(post_id: id).where.not(end_user_id: current_end_user.id).pluck(:end_user_id).distinct
+  #   end_user_ids.each do |end_user_id|
+  #     save_notification_comment(current_end_user, comment_id, end_user_id["end_user_id"])
+  #   end
+  #   save_notification_comment(current_end_user, comment_id, end_user_id) if end_user_ids.blank?
+  # end
 
   def save_notification_comment(current_end_user, comment_id, visited_id)
     notification = current_end_user.active_notifications.new(

@@ -9,8 +9,11 @@ class Public::PostsController < ApplicationController
     else
       @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
     end
-    @posts = @posts.search(params[:keyword])
-    @posts = @posts.page(params[:page])
+    if params[:keyword]
+      @posts = @posts.search(params[:keyword]).page(params[:page])
+    else
+      @posts = @posts.page(params[:page])
+    end
     @keyword = params[:keyword]
   end
 
