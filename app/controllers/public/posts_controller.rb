@@ -2,10 +2,10 @@ class Public::PostsController < ApplicationController
   before_action :authenticate_end_user!
 
   def index
-    if params[:latest]
-      @posts = Post.latest
-    elsif params[:old]
-      @posts = Post.old
+    if params[:new_post]
+      @posts = Post.new_post
+    elsif params[:old_post]
+      @posts = Post.old_post
     else
       @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
     end

@@ -4,8 +4,8 @@
 
         <div class="text-center mt-5"><h3><strong><%= flash[:notice] %></strong></h3>
           <h1><strong class="border-bottom border-dark">投稿一覧</strong></h1>
-            <%= link_to "新しい順", posts_path(latest: "true") %>
-            |<%= link_to "古い順", posts_path(old: "true") %>
+            <%= link_to "新しい順", posts_path(new_post: "true") %>
+            |<%= link_to "古い順", posts_path(old_post: "true") %>
         </div>
 
             <%= render "search", post: @post %>
