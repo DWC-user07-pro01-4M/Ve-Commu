@@ -38,10 +38,6 @@ class Post < ApplicationRecord
     bookmarks.find_by(end_user_id: end_user.id)
   end
 
-  def bookmark_by?(end_user)
-    bookmarks.exists?(end_user_id: end_user.id)
-  end
-
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join("app/assets/images/no_image.png")
