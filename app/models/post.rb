@@ -14,8 +14,10 @@ class Post < ApplicationRecord
   validates :address, presence: true
   validates :detailed_description, presence: true, length: {maximum:200}
 
+  # 施設住所に緯度と経度の情報が含まれているか、保存する前に確認を行います。
   geocoded_by :address
   before_validation :geocode, if: :will_save_change_to_address?
+  # 84行目以降のメソッドを呼び出しています。
   validate :geocode_must_be_present
 
   scope :latest, -> {order(created_at: :desc)}
@@ -25,14 +27,14 @@ class Post < ApplicationRecord
       Post.where("facility_name LIKE(?) OR address LIKE(?) OR detailed_description LIKE(?)", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%")
   end
 
-  def bookmark_by(end_user)
-      Bookmark.find_by(end_user_id: end_user.id, post_id: id)
-  end
-
   def search(keyword)
     if keyword.present?
        where("facility_name LIKE(?) OR address LIKE(?) OR detailed_description LIKE(?)", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%")
     end
+  end
+
+  def bookmark_by(end_user)
+      Bookmark.find_by(end_user_id: end_user.id, post_id: id)
   end
 
   def get_image(width, height)
