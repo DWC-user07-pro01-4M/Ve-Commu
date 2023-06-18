@@ -24,8 +24,8 @@ class Post < ApplicationRecord
   scope :new_post, -> {order(created_at: :desc)}
   scope :old_post, -> {order(created_at: :asc)}
 
-  def Post.search(keyword) #selfに変える
-    Post.where("facility_name LIKE(?) OR address LIKE(?) OR detailed_description LIKE(?)", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%")
+  def self.search(keyword)
+    self.where("facility_name LIKE(?) OR address LIKE(?) OR detailed_description LIKE(?)", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%")
   end
 
   def search(keyword)
