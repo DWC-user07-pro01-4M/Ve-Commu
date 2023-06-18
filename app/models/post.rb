@@ -25,12 +25,12 @@ class Post < ApplicationRecord
   scope :old_post, -> {order(created_at: :asc)}
 
   def self.search(keyword)
-    self.where("facility_name LIKE(?) OR address LIKE(?) OR detailed_description LIKE(?)", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%")
+    self.where("facility_name LIKE ? or address LIKE ? or detailed_description LIKE ?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%")
   end
 
   def search(keyword)
     if keyword.present?
-      where("facility_name LIKE(?) OR address LIKE(?) OR detailed_description LIKE(?)", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%")
+      where("facility_name LIKE ? or address LIKE ? or detailed_description LIKE ?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%")
     end
   end
 
