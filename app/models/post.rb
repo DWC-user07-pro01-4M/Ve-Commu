@@ -53,20 +53,8 @@ class Post < ApplicationRecord
   end
 
   def create_notification_comment(current_end_user, comment_id)
-    temp_ids = Comment.select(:end_user_id).where(post_id: id).where.not(end_user_id: current_end_user.id).distinct
-    temp_ids.each do |temp_id|
-      save_notification_comment(current_end_user, comment_id, temp_id["end_user_id"])
-    end
-    save_notification_comment(current_end_user, comment_id, end_user_id) if temp_ids.blank?
+    save_notification_comment(current_end_user, comment_id, end_user_id)
   end
-
-  # def create_notification_comment(current_end_user, comment_id)
-  #   end_user_ids = Comment.where(post_id: id).where.not(end_user_id: current_end_user.id).pluck(:end_user_id).distinct
-  #   end_user_ids.each do |end_user_id|
-  #     save_notification_comment(current_end_user, comment_id, end_user_id["end_user_id"])
-  #   end
-  #   save_notification_comment(current_end_user, comment_id, end_user_id) if end_user_ids.blank?
-  # end
 
   def save_notification_comment(current_end_user, comment_id, visited_id)
     notification = current_end_user.active_notifications.new(
