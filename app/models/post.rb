@@ -14,7 +14,7 @@ class Post < ApplicationRecord
   validates :facility_name, presence: true
   validates :address, presence: true
   validates :detailed_description, presence: true, length: {maximum:200}
-  # 84行目以降のメソッドを呼び出しています。
+  # private以降のメソッドを呼び出しています。
   validate :geocode_must_be_present
 
   # 施設住所に緯度と経度の情報が含まれているか、保存する前に確認を行います。
@@ -47,36 +47,19 @@ class Post < ApplicationRecord
   end
 
   def create_notification_like(current_end_user)
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_end_user.id, end_user_id, id, "like"])
-          #Notification.where(visitor_id: current_end_user.id, visited_id: end_user_id, post_id: id, action: 'lIKE')
-    if temp.blank?
-      notification = current_end_user.active_notifications.new(
-        post_id: id,
-        visited_id: end_user_id,
-        action: "like"
-      )
-      if notification.visitor_id == notification.visited_id
-        notification.checked = true
-      end
-      notification.save if notification.valid?
-    end
+    return if notifications.exists?(visitor_id: current_end_user.id, visited_id: end_user.id, action: "like")
+
+    notification = current_end_user.active_notifications.build(
+      post_id: id,
+      visited_id: end_user_id,
+      action: "like"
+    )
+    notification.checked = true if notification.myself
+    notification.save
   end
-
-  # def create_notification_like(current_end_user)
-  #   return if notifications.exists?(visitor_id: current_end_user.id, visited_id: end_user.id, action: 'like')
-
-  #   notification = current_end_user.active_notifications.build(
-  #     post_id: id,
-  #     visited_id: end_user_id,
-  #     action: "like"
-  #   )
-  #   notification.checked = true if notification.自分自身か？
-  #   notification.save
-  # end
 
   def create_notification_comment(current_end_user, comment_id)
     temp_ids = Comment.select(:end_user_id).where(post_id: id).where.not(end_user_id: current_end_user.id).distinct
-    #end_user_ids = Comments.where.not(end_user_id: current_end_user.id).pluck(:end_user_id).distinct
     temp_ids.each do |temp_id|
       save_notification_comment(current_end_user, comment_id, temp_id["end_user_id"])
     end
