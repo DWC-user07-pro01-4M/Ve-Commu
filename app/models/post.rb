@@ -1,41 +1,50 @@
 class Post < ApplicationRecord
   belongs_to :end_user
 
-  has_many :comments, dependent: :destroy
-  has_many :bookmarks, dependent: :destroy
-  has_many :likes
-  has_many :notifications, dependent: :destroy
+  has_many :comments,                  dependent: :destroy
+  has_many :bookmarks,                 dependent: :destroy
+  has_many :likes,                     dependent: :destroy
+  has_many :notifications,             dependent: :destroy
   # 投稿モデルとタグモデルを繋ぐ中間テーブルです。
   has_many :association_post_and_tags, dependent: :destroy
-  has_many :tags, through: :association_post_and_tags
+  has_many :tags,                      through: :association_post_and_tags
 
   has_one_attached :image
 
   validates :facility_name, presence: true
   validates :address, presence: true
   validates :detailed_description, presence: true, length: {maximum:200}
+  # 84行目以降のメソッドを呼び出しています。
+  validate :geocode_must_be_present
 
   # 施設住所に緯度と経度の情報が含まれているか、保存する前に確認を行います。
   geocoded_by :address
   before_validation :geocode, if: :will_save_change_to_address?
-  # 84行目以降のメソッドを呼び出しています。
-  validate :geocode_must_be_present
 
-  scope :latest, -> {order(created_at: :desc)}
+  scope :latest, -> {order(created_at: :desc)} #並び順のスコープだとすわかるように
   scope :old, -> {order(created_at: :asc)}
 
-  def Post.search(keyword)
-      Post.where("facility_name LIKE(?) OR address LIKE(?) OR detailed_description LIKE(?)", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%")
+  def Post.search(keyword) #selfに変える
+    Post.where("facility_name LIKE(?) OR address LIKE(?) OR detailed_description LIKE(?)", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%")
   end
 
   def search(keyword)
     if keyword.present?
-       where("facility_name LIKE(?) OR address LIKE(?) OR detailed_description LIKE(?)", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%")
+      where("facility_name LIKE(?) OR address LIKE(?) OR detailed_description LIKE(?)", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%")
     end
   end
 
   def bookmark_by(end_user)
-      Bookmark.find_by(end_user_id: end_user.id, post_id: id)
+    Bookmark.find_by(end_user_id: end_user.id, post_id: id)
+    # bookmarks.find_by(end_user_id: end_user.id)
+  end
+
+  def find_bookmark(end_user)
+    bookmarks.find_by(end_user_id: end_user.id)
+  end
+
+  def bookmark_by?(end_user)
+    bookmarks.exists?(end_user_id: end_user.id)
   end
 
   def get_image(width, height)
@@ -48,6 +57,7 @@ class Post < ApplicationRecord
 
   def create_notification_like(current_end_user)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_end_user.id, end_user_id, id, "like"])
+          #Notification.where(visitor_id: current_end_user.id, visited_id: end_user_id, post_id: id, action: 'lIKE')
     if temp.blank?
       notification = current_end_user.active_notifications.new(
         post_id: id,
@@ -61,8 +71,21 @@ class Post < ApplicationRecord
     end
   end
 
+  # def create_notification_like(current_end_user)
+  #   return if notifications.exists?(visitor_id: current_end_user.id, visited_id: end_user.id, action: 'like')
+
+  #   notification = current_end_user.active_notifications.build(
+  #     post_id: id,
+  #     visited_id: end_user_id,
+  #     action: "like"
+  #   )
+  #   notification.checked = true if notification.自分自身か？
+  #   notification.save
+  # end
+
   def create_notification_comment(current_end_user, comment_id)
     temp_ids = Comment.select(:end_user_id).where(post_id: id).where.not(end_user_id: current_end_user.id).distinct
+    #end_user_ids = Comments.where.not(end_user_id: current_end_user.id).pluck(:end_user_id).distinct
     temp_ids.each do |temp_id|
       save_notification_comment(current_end_user, comment_id, temp_id["end_user_id"])
     end
