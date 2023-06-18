@@ -10,5 +10,5 @@ class Notification < ApplicationRecord
   def myself
     visitor_id == visited_id
   end
-
+  
 end
