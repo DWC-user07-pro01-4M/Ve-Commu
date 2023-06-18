@@ -11,15 +11,15 @@ class Post < ApplicationRecord
 
   has_one_attached :image
 
-  validates :facility_name, presence: true
-  validates :address, presence: true
+  validates :facility_name,        presence: true
+  validates :address,              presence: true
   validates :detailed_description, presence: true, length: {maximum:200}
-  # private以降のメソッドを呼び出しています。
-  validate :geocode_must_be_present
 
   # 施設住所に緯度と経度の情報が含まれているか、保存する前に確認を行います。
   geocoded_by :address
   before_validation :geocode, if: :will_save_change_to_address?
+  # 下記のprivate以降のメソッドを呼び出しています。
+  validate :geocode_must_be_present
 
   scope :new_post, -> {order(created_at: :desc)}
   scope :old_post, -> {order(created_at: :asc)}
@@ -76,11 +76,11 @@ class Post < ApplicationRecord
     if notification.visitor_id == notification.visited_id
       notification.checked = true
     end
-    notification.save if notification.valid?
+    notification.save
   end
 
   private
-
+  # 投稿を保存する前に、施設住所に緯度と経度を含む情報がなければエラーを返します。
   def geocode_must_be_present
     if latitude.blank? || longitude.blank?
       errors.add(:address, "に関する入力をしてください。")
