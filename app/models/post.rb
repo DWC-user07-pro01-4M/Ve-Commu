@@ -18,7 +18,6 @@ class Post < ApplicationRecord
   # 施設住所に緯度と経度の情報が含まれているか、保存する前に確認を行います。
   geocoded_by :address
   before_validation :geocode, if: :will_save_change_to_address?
-  after_validation  :geocode, if: :address_changed?
   # 下記のprivate以降のメソッドを呼び出しています。
   validate :geocode_must_be_present
 
