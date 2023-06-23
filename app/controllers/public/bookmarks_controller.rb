@@ -6,7 +6,7 @@ class Public::BookmarksController < ApplicationController
     @post = @bookmark.post
     if @bookmark.valid?
       @bookmark.save
-      redirect_to post_path(@post), notice: "この投稿をブックマークしました。"
+      redirect_to post_path(@post), notice: "お気に入り登録しました。"
     end
   end
 
@@ -14,7 +14,7 @@ class Public::BookmarksController < ApplicationController
     @bookmark = Bookmark.find(params[:id])
     @post = @bookmark.post
     if @bookmark.destroy
-      redirect_to post_path(@post), notice: "ブックマークをはずしました。"
+      redirect_to post_path(@post), notice: "お気に入り登録を解除しました。"
     end
 
   end
