@@ -5,7 +5,7 @@ class Post < ApplicationRecord
   has_many :bookmarks,                 dependent: :destroy
   has_many :likes,                     dependent: :destroy
   has_many :notifications,             dependent: :destroy
-  # 投稿モデルとタグモデルを繋ぐ中間テーブルです。
+  # 「association_post_and_tags」はpostとtagを繋ぐ中間テーブルです。
   has_many :association_post_and_tags, dependent: :destroy
   has_many :tags,                      through: :association_post_and_tags
 
@@ -14,12 +14,11 @@ class Post < ApplicationRecord
   validates :facility_name,        presence: true
   validates :address,              presence: true
   validates :detailed_description, presence: true, length: {maximum:200}
-
-  # 施設住所に緯度と経度の情報が含まれているか、保存する前に確認を行います。
-  geocoded_by :address
-  before_validation :geocode, if: :will_save_change_to_address?
   # 下記のprivate以降のメソッドを呼び出しています。
   validate :geocode_must_be_present
+
+  geocoded_by :address
+  before_validation :geocode, if: :will_save_change_to_address?
 
   scope :new_post, -> {order(created_at: :desc)}
   scope :old_post, -> {order(created_at: :asc)}
@@ -70,7 +69,7 @@ class Post < ApplicationRecord
   end
 
   private
-  # 投稿を保存する前に、施設住所に緯度と経度を含む情報がなければエラーを返します。
+  # 施設住所に緯度と経度を含む情報がなければエラーを返します。
   def geocode_must_be_present
     if latitude.blank? || longitude.blank?
       errors.add(:address, "に関する入力をしてください。")
