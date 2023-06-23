@@ -6,7 +6,7 @@ class Public::BookmarksController < ApplicationController
     @post = @bookmark.post
     if @bookmark.valid?
       @bookmark.save
-      redirect_to post_path(@post), notice: "お気に入り登録しました。"
+      redirect_to post_path(@post), notice: "お気に入りに登録しました。"
     end
   end
 
