@@ -1,5 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_end_user!
+  before_action :ensure_correct_end_user, only: [:destroy]
 
   def index
     if params[:new_post]
@@ -97,6 +98,13 @@ class Public::PostsController < ApplicationController
   private
   def post_params
     params.require(:post).permit(:facility_name, :address, :detailed_description, :image, tag_ids: [])
+  end
+
+  def ensure_correct_user
+    post = Post.find(params[:id])
+    unless post.end_user == current_end_user
+      redirect_to posts_path, notice: "投稿者以外削除はできません。"
+    end
   end
 
 end
