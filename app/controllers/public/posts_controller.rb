@@ -99,11 +99,4 @@ class Public::PostsController < ApplicationController
     params.require(:post).permit(:facility_name, :address, :detailed_description, :image, tag_ids: [])
   end
 
-  def ensure_end_user
-    @end_user = EndUser.find(params[:id])
-    if @end_user.nickname == "guestuser"
-      redirect_to end_user_path(current_end_user) , notice: "ゲストユーザーは編集画面へ遷移できません。"
-    end
-  end
-
 end
