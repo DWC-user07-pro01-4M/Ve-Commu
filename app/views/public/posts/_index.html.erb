@@ -1,31 +1,75 @@
-<div class="row d-flex border-bottom m-5">
-  <div class="col-1 py-3 font-weight-bold">投稿者</div>
-  <div class="col-1 py-3 font-weight-bold">施設画像</div>
-  <div class="col-1 py-3 font-weight-bold">施設名</div>
-  <div class="col-1 py-3 font-weight-bold">施設住所</div>
-  <div class="col-2 py-3 font-weight-bold">詳細説明</div>
-  <div class="col-1 py-3 font-weight-bold">タグ</div>
+<div id="pc">
+  <div class="row d-flex border-bottom m-5">
+    <div class="col-1 py-3 font-weight-bold">投稿者</div>
+    <div class="col-1 py-3 font-weight-bold">施設画像</div>
+    <div class="col-1 py-3 font-weight-bold">施設名</div>
+    <div class="col-1 py-3 font-weight-bold">施設住所</div>
+    <div class="col-2 py-3 font-weight-bold">詳細説明</div>
+    <div class="col-1 py-3 font-weight-bold">タグ</div>
+  </div>
+
+    <% @posts.each do |post| %>
+      <div class="row d-flex flex-wrap border-bottom m-5">
+        <div class="col-1 py-3"><%= post.end_user.nickname %></div>
+        <div class="col-1 py-3"><%= image_tag post.get_image(50,50) %></div>
+        <div class="col-1 py-3"><%= post.facility_name %></div>
+        <div class="col-1 py-3"><%= post.address %></div>
+        <div class="col-2 py-3"><%= post.detailed_description %></div>
+        <div class="col-1 py-3">
+          <% post.tags.each do |tag| %>
+            <%= tag.tag_type %>
+          <% end %>
+        </div>
+        <div class="col-1 py-3"><%= l post.created_at %></div>
+        <div class="col-1 py-3">コメント数: <%= post.comments.count %></div>
+        <div class="col-1 py-3">ブックマーク数: <%= post.bookmarks.count %></div>
+        <div class="col-1 py-3">いいね数: <%= post.likes.count %></div>
+
+        <div class="col-1 py-3">
+          <%= link_to "詳細を確認", post_path(post.id), class: "btn btn-warning btn_lg" %>
+        </div>
+      </div>
+    <% end %>
+
 </div>
 
-  <% @posts.each do |post| %>
-    <div class="row d-flex flex-wrap border-bottom m-5" data-href="public/posts/ <%= post.id%>">
-      <div class="col-1 py-3"><%= post.end_user.nickname %></div>
-      <div class="col-1 py-3"><%= image_tag post.get_image(50,50) %></div>
-      <div class="col-1 py-3"><%= post.facility_name %></div>
-      <div class="col-1 py-3"><%= post.address %></div>
-      <div class="col-2 py-3"><%= post.detailed_description %></div>
-      <div class="col-1 py-3">
-        <% post.tags.each do |tag| %>
-          <%= tag.tag_type %>
-        <% end %>
-      </div>
-      <div class="col-1 py-3"><%= l post.created_at %></div>
-      <div class="col-1 py-3">コメント数: <%= post.comments.count %></div>
-      <div class="col-1 py-3">ブックマーク数: <%= post.bookmarks.count %></div>
-      <div class="col-1 py-3">いいね数: <%= post.likes.count %></div>
 
-      <div class="col-1 py-3">
-        <%= link_to "詳細を確認", post_path(post.id), class: "btn btn-warning btn_lg" %>
-      </div>
-    </div>
-  <% end %>
+<div id="mobile">
+  モバイルテスト
+  ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+    <div class="row d-flex border-bottom m-5">
+    <div class="col-1 py-3 font-weight-bold">投稿者</div>
+    <div class="col-1 py-3 font-weight-bold">施設画像</div>
+    <div class="col-1 py-3 font-weight-bold">施設名</div>
+    <div class="col-1 py-3 font-weight-bold">施設住所</div>
+    <div class="col-2 py-3 font-weight-bold">詳細説明</div>
+    <div class="col-1 py-3 font-weight-bold">タグ</div>
+  </div>
+</div>
+
+<script>
+// PCのDOM要素を取得
+const pc = document.getElementById("pc")
+// MOBILE DOM要素を取得
+const mobile = document.getElementById("mobile")
+// 取得したDOM要素のスタイルシートを編集する
+pc.style.display = "none"
+mobile.style.display = "none"
+
+// 関数
+function watch() {
+  if(window.innerWidth <= 687) {
+    mobile.style.display = "block"
+    pc.style.display = "none"
+  } else {
+    mobile.style.display = "none"
+    pc.style.display = "block"
+  }
+}
+// 初期表示の表示非常時のために一回関数を呼ぶ
+watch()
+// windowのイベントリスナであるresizeを使用する
+// これは画面サイズが切り替わったときに、コールバック関数を呼び出す
+window.addEventListener("resize", watch)
+
+</script>
