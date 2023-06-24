@@ -23,10 +23,10 @@
               <br>
               <%= render "show", post: @post %>
             <div>
-              <%# if @post.end_user == current_end_user %>
+              <% if @post.end_user == current_end_user %>
                 <%= link_to "編集", edit_post_path(@post.id), class: "btn btn-warning btn-lg" %>
                 <%= link_to "削除", post_path(@post.id), class: "btn btn-danger btn_lg", method: :delete, "data-confirm" => "本当に投稿を削除してよろしいですか?" %>
-              <%# end %>
+              <% end %>
             </div>
               <br>
             <div id="likes_buttons_<%= @post.id %>">
