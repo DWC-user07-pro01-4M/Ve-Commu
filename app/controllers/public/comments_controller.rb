@@ -28,7 +28,9 @@ class Public::CommentsController < ApplicationController
 
   def ensure_correct_end_user
     @comment = Comment.find(params[:id])
-     @comment.end_user == current_end_user
+    unless @comment.end_user == current_end_user
+      redirect_to posts_path, notice: "コメントは削除できません。"
+    end
   end
 
 end
