@@ -56,6 +56,9 @@ Ve-Commu(ヴィーコミュ)はそんな発想から生まれたコミュニテ�
 ![responsive](https://user-images.githubusercontent.com/124852092/246374248-2636e5ec-7385-4142-afc0-be019817422b.gif)
 ---
 
+## :eyes:実装内容をQiitaに投稿しています。
+スキルシート：サービス詳細/開発環境の項目にURLがございますので、ご覧ください。
+
 ## 設計書
 * ER図</br>
 * テーブル定義書</br>
