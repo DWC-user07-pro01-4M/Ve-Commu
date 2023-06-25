@@ -19,12 +19,12 @@
 
 # Learn more: http://github.com/javan/whenever
 
-# 30分おきにゲストユーザーの投稿は全て削除される処理
+# 30分おきにゲストユーザーの投稿は全て削除される
 require File.expand_path(File.dirname(__FILE__) + "/environment")
 rails_env = Rails.env.to_sym
 set :environment, :production
-set :output, 'log/cron.log'
-every 30.minute do
+set :output, "log/cron.log"
+every 1.day, at: "9:00 am" do
   begin
     runner "Batch::DataReset.data_reset"
   rescue => e
