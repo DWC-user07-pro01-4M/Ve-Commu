@@ -9,24 +9,26 @@
   </div>
 
     <% @posts.each do |post| %>
-      <div class="row d-flex flex-wrap border-bottom m-5">
-        <div class="col-1 py-3"><%= post.end_user.nickname %></div>
-        <div class="col-1 py-3"><%= image_tag post.get_image(50,50) %></div>
-        <div class="col-1 py-3"><%= post.facility_name %></div>
-        <div class="col-1 py-3"><%= post.address %></div>
-        <div class="col-2 py-3"><%= post.detailed_description %></div>
-        <div class="col-1 py-3">
-          <% post.tags.each do |tag| %>
-            <%= tag.tag_type %>
-          <% end %>
-        </div>
-        <div class="col-1 py-3"><%= l post.created_at %></div>
-        <div class="col-1 py-3">コメント数: <%= post.comments.count %></div>
-        <div class="col-1 py-3">ブックマーク数: <%= post.bookmarks.count %></div>
-        <div class="col-1 py-3">いいね数: <%= post.likes.count %></div>
+      <div class="hover">
+        <div class="row d-flex flex-wrap border-bottom m-5">
+          <div class="col-1 py-3"><%= post.end_user.nickname %></div>
+          <div class="col-1 py-3"><%= image_tag post.get_image(50,50) %></div>
+          <div class="col-1 py-3"><%= post.facility_name %></div>
+          <div class="col-1 py-3"><%= post.address %></div>
+          <div class="col-2 py-3"><%= post.detailed_description %></div>
+          <div class="col-1 py-3">
+            <% post.tags.each do |tag| %>
+              <%= tag.tag_type %>
+            <% end %>
+          </div>
+          <div class="col-1 py-3"><%= l post.created_at %></div>
+          <div class="col-1 py-3">コメント数: <%= post.comments.count %></div>
+          <div class="col-1 py-3">ブックマーク数: <%= post.bookmarks.count %></div>
+          <div class="col-1 py-3">いいね数: <%= post.likes.count %></div>
 
-        <div class="col-1 py-3">
-          <%= link_to "詳細を確認", post_path(post.id), class: "btn btn-warning btn_lg" %>
+          <div class="col-1 py-3">
+            <%= link_to "詳細を確認", post_path(post.id), class: "btn btn-warning btn_lg" %>
+          </div>
         </div>
       </div>
     <% end %>
@@ -36,33 +38,35 @@
 
 
 <div id="mobile">
-  <% @posts.each do |post| %>
-    <div class="card" style="width: 35rem;">
-      <div class="col-1 py-3"><%= image_tag post.get_image(150,150) %></div>
-      <div class="card-body">
-        <div class="card-title"><strong>投稿者</strong></div>
-          <p class="card-text"><%= post.end_user.nickname %></p>
-        <div class="card-title"><strong>施設名</strong></div>
-          <p class="card-text"><%= post.facility_name %></p>
-        <div class="card-title"><strong>施設住所</strong></div>
-          <p class="card-text"><%= post.address %></p>
-        <div class="card-title"><strong>詳細説明</strong></div>
-          <p class="card-text"><%= post.detailed_description %></p>
-        <div class="card-title"><strong>タグ</strong></div>
-          <p class="card-text">
-            <% post.tags.each do |tag| %>
-              <%= tag.tag_type %>
-            <% end %>
-          </p>
-        <div class="card-title"><strong>コメント数: <%= post.comments.count %></strong></div>
-        <div class="card-title"><strong>ブックマーク数: <%= post.bookmarks.count %></strong></div>
-        <div class="card-title"><strong>いいね数: <%= post.likes.count %></strong></div>
-        <div>
-          <%= link_to "詳細を確認", post_path(post.id), class: "btn btn-warning btn_lg" %>
+  <div class="row justify-content-center">
+    <% @posts.each do |post| %>
+        <div class="card" style="width: 35rem;">
+          <div class="col-1 py-3"><%= image_tag post.get_image(150,150) %></div>
+          <div class="card-body">
+            <div class="card-title"><strong>投稿者</strong></div>
+              <p class="card-text"><%= post.end_user.nickname %></p>
+            <div class="card-title"><strong>施設名</strong></div>
+              <p class="card-text"><%= post.facility_name %></p>
+            <div class="card-title"><strong>施設住所</strong></div>
+              <p class="card-text"><%= post.address %></p>
+            <div class="card-title"><strong>詳細説明</strong></div>
+              <p class="card-text"><%= post.detailed_description %></p>
+            <div class="card-title"><strong>タグ</strong></div>
+              <p class="card-text">
+                <% post.tags.each do |tag| %>
+                  <%= tag.tag_type %>
+                <% end %>
+              </p>
+            <div class="card-title"><strong>コメント数: <%= post.comments.count %></strong></div>
+            <div class="card-title"><strong>ブックマーク数: <%= post.bookmarks.count %></strong></div>
+            <div class="card-title"><strong>いいね数: <%= post.likes.count %></strong></div>
+            <div>
+              <%= link_to "詳細を確認", post_path(post.id), class: "btn btn-warning btn_lg" %>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
 
 <script>
