@@ -31,7 +31,6 @@
         </div>
       </div>
     <% end %>
-
 </div>
 
 
@@ -56,21 +55,26 @@
               <%= tag.tag_type %>
             <% end %>
           </p>
-        <div>コメント数: <%= post.comments.count %></div>
-        <div>ブックマーク数: <%= post.bookmarks.count %></div>
-        <div>いいね数: <%= post.likes.count %></div>
+        <div class="card-title"><strong>コメント数: <%= post.comments.count %></strong></div>
+        <div class="card-title"><strong>ブックマーク数: <%= post.bookmarks.count %></strong></div>
+        <div class="card-title"><strong>いいね数: <%= post.likes.count %></strong></div>
         <div>
           <%= link_to "詳細を確認", post_path(post.id), class: "btn btn-warning btn_lg" %>
         </div>
       </div>
     </div>
   <% end %>
+</div>
 
 <script>
 // PCのDOM要素を取得
-const pc = document.getElementById("pc")
+if(pc) {
+  let pc = document.getElementById("pc")
+}
 // MOBILE DOM要素を取得
-const mobile = document.getElementById("mobile")
+if(mobile) {
+  let mobile = document.getElementById("mobile")
+}
 // 取得したDOM要素のスタイルシートを編集する
 pc.style.display = "none"
 mobile.style.display = "none"
