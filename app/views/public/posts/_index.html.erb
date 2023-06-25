@@ -35,17 +35,20 @@
 
 
 <div id="mobile">
-  モバイルテスト
-  ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-    <div class="row d-flex border-bottom m-5">
-    <div class="col-1 py-3 font-weight-bold">投稿者</div>
-    <div class="col-1 py-3 font-weight-bold">施設画像</div>
-    <div class="col-1 py-3 font-weight-bold">施設名</div>
-    <div class="col-1 py-3 font-weight-bold">施設住所</div>
-    <div class="col-2 py-3 font-weight-bold">詳細説明</div>
-    <div class="col-1 py-3 font-weight-bold">タグ</div>
-  </div>
-</div>
+  <% @posts.each do |post| %>
+    <div class="card" style="width: 35rem;">
+      <div class="col-1 py-3"><%= image_tag post.get_image(150,150) %></div>
+    </div>
+  <% end %>
+<!--  <div class="card" style="width: 18rem;">-->
+<!--    <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"/><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Image cap</text></svg>-->
+<!--    <div class="card-body">-->
+<!--      <h5 class="card-title">Card title</h5>-->
+<!--      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+<!--      <a href="#" class="btn btn-primary">Go somewhere</a>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
 
 <script>
 // PCのDOM要素を取得
