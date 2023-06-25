@@ -1,5 +1,4 @@
 <div id="pc">
-
   <div class="row d-flex border-bottom m-5">
     <div class="col-1 py-3 font-weight-bold">投稿者</div>
     <div class="col-1 py-3 font-weight-bold">施設画像</div>
@@ -67,19 +66,17 @@
 </div>
 
 <script>
-// PCのDOM要素を取得
 if(pc) {
   let pc = document.getElementById("pc")
 }
-// MOBILE DOM要素を取得
+
 if(mobile) {
   let mobile = document.getElementById("mobile")
 }
-// 取得したDOM要素のスタイルシートを編集する
+
 pc.style.display = "none"
 mobile.style.display = "none"
 
-// 関数
 function watch() {
   if(window.innerWidth <= 687) {
     mobile.style.display = "block"
@@ -89,10 +86,6 @@ function watch() {
     pc.style.display = "block"
   }
 }
-// 初期表示の表示非常時のために一回関数を呼ぶ
 watch()
-// windowのイベントリスナであるresizeを使用する
-// これは画面サイズが切り替わったときに、コールバック関数を呼び出す
 window.addEventListener("resize", watch)
-
 </script>
