@@ -8,13 +8,14 @@
             |<%= link_to "古い順", posts_path(old_post: "true") %>
         </div>
 
-            <%= render "search", post: @post %>
+            <%= render "search",  post: @post %>
 
-            <%= render "index", post: @post %>
+            <%= render "index", { post: @post  } %>
 
           <div class="pagination justify-content-center mt-3">
             <%= paginate @posts, theme: "bootstrap-5" %>
           </div>
+
 
     </div>
   </div>
