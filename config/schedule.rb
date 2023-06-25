@@ -19,7 +19,7 @@
 
 # Learn more: http://github.com/javan/whenever
 
-# 30分おきにゲストユーザーの投稿は全て削除される
+# 朝９時おきにゲストユーザーの投稿は全て削除される
 require File.expand_path(File.dirname(__FILE__) + "/environment")
 rails_env = Rails.env.to_sym
 set :environment, :production
