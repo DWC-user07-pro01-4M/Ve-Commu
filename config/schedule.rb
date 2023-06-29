@@ -19,12 +19,11 @@
 
 # Learn more: http://github.com/javan/whenever
 
-# 朝９時おきにゲストユーザーの投稿は全て削除される
 require File.expand_path(File.dirname(__FILE__) + "/environment")
 rails_env = Rails.env.to_sym
-set :environment, :production
-set :output, "log/cron.log"
-every 1.day, at: "9:00 am" do
+set :environment, rails_env
+set :output, 'log/cron.log'
+every 1.day, at: "10:00 am" do
   begin
     runner "Batch::DataReset.data_reset"
   rescue => e
